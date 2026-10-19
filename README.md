@@ -1,4 +1,4 @@
-# kslu-legal-studies
+# LegallyKH
 
 Study material for the 3-year LL.B. programme (KSLU), organised by paper.
 

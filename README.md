@@ -10,12 +10,12 @@ Study material for the 3-year LL.B. programme (KSLU), organised by paper.
 
 ## Live page
 
-The Question Map is published with GitHub Pages from `docs/index.html` (source copy: `family-law-1/question-map.html`). Page URL: https://dgpl-ananthu-nair.github.io/kslu-legal-studies/
+The Question Map is published with GitHub Pages from `docs/index.html` (source copy: `family-law-1/question-map.html`). Page URL: https://dgpl-ananthu-nair.github.io/LegallyKH/
 
 ## Layout
 
 ```
-kslu-legal-studies/
+LegallyKH/
 ├── README.md
 ├── docs/
 │   ├── index.html

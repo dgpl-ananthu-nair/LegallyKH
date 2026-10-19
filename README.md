@@ -8,11 +8,17 @@ Study material for the 3-year LL.B. programme (KSLU), organised by paper.
 | --- | --- | --- |
 | Family Law I (Hindu Law), Semester I, paper code 4004 | `family-law-1/` | Past question bank, 13 papers (June 2019 to Jan/Feb 2026) |
 
+## Live page
+
+The Question Map is published with GitHub Pages from `docs/index.html` (source copy: `family-law-1/question-map.html`). Page URL: https://dgpl-ananthu-nair.github.io/kslu-legal-studies/
+
 ## Layout
 
 ```
 kslu-legal-studies/
 ├── README.md
+├── docs/
+│   └── index.html
 └── family-law-1/
     ├── question-bank.md
     └── question-map.html

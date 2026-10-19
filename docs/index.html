@@ -1,0 +1,293 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Family Law I Question Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&display=swap">
+<style>
+/* Layout: one exam-register grid — topics down, eleven sittings across, a tally at the right edge. */
+:root {
+  --bg: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --rule: #e1e0d9;
+  --axis: #c3c2b7;
+  --essay: #256abf;
+  --note: #86b6ef;
+  --empty: #ecebe6;
+  --focus: #1c5cab;
+  --chip-on: #0b0b0b;
+  --chip-on-ink: #fcfcfb;
+  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --rule: #2c2c2a; --axis: #383835; --essay: #3987e5; --note: #1c5cab; --empty: #262624;
+    --focus: #86b6ef; --chip-on: #f0efec; --chip-on-ink: #1a1a19; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --rule: #2c2c2a; --axis: #383835; --essay: #3987e5; --note: #1c5cab; --empty: #262624;
+  --focus: #86b6ef; --chip-on: #f0efec; --chip-on-ink: #1a1a19; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 20px; }
+header { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--serif); font-weight: 650; font-size: clamp(24px, 4vw, 32px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.lede { color: var(--ink-2); font-size: 15px; line-height: 1.5; max-width: 66ch; margin: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px var(--sans); color: var(--ink-2); background: transparent; border: 1px solid var(--axis);
+  border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.chip:hover { border-color: var(--ink-2); color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
+.chip:focus-visible, td.cell:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--ink-2); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.sw.e { background: var(--essay); } .sw.n { background: var(--note); } .sw.x { background: var(--empty); }
+.board { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; overflow-x: auto; }
+table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 760px; font-size: 13px; }
+th, td { padding: 0; }
+thead th { font-weight: 500; color: var(--muted); font-size: 11.5px; padding: 12px 2px 8px; text-align: center;
+  font-variant-numeric: tabular-nums; line-height: 1.25; border-bottom: 1px solid var(--axis); position: sticky; top: 0; background: var(--surface); }
+thead th.topic-h { text-align: left; padding-left: 16px; }
+thead th.tally-h { text-align: left; padding-left: 12px; }
+th.topic { text-align: left; font-weight: 450; color: var(--ink); padding: 0 12px 0 16px; height: 34px;
+  position: sticky; left: 0; background: var(--surface); z-index: 1; min-width: 220px; max-width: 280px; }
+tr.unit th { text-align: left; padding: 18px 16px 6px; font-family: var(--serif); font-weight: 650; font-size: 14px;
+  color: var(--ink); border-bottom: 1px solid var(--rule); position: sticky; left: 0; background: var(--surface); }
+tr.unit th small { font-family: var(--sans); font-weight: 400; font-size: 12px; color: var(--muted); margin-left: 8px; }
+td.cell { text-align: center; width: 46px; cursor: default; }
+td.cell i { display: inline-block; width: 22px; height: 22px; border-radius: 4px; background: var(--empty); vertical-align: middle; }
+td.cell.e i { background: var(--essay); } td.cell.n i { background: var(--note); }
+td.cell.e, td.cell.n { cursor: pointer; }
+tbody tr.row:hover th.topic, tbody tr.row:hover td { background: color-mix(in srgb, var(--surface) 88%, var(--essay)); }
+td.tally { padding: 0 16px 0 12px; min-width: 150px; }
+.bar { display: flex; align-items: center; gap: 8px; }
+.bar b { display: block; height: 8px; border-radius: 0 4px 4px 0; background: var(--essay); }
+.bar em { font-style: normal; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; white-space: nowrap; }
+.tip { position: fixed; z-index: 20; max-width: 300px; background: var(--surface); color: var(--ink); border: 1px solid var(--axis);
+  border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.45; box-shadow: 0 6px 20px rgba(0,0,0,.14); pointer-events: none; }
+.tip .k { color: var(--muted); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+.notes { color: var(--muted); font-size: 12.5px; line-height: 1.5; max-width: 80ch; margin: 0; }
+.tbtn { all: unset; cursor: pointer; display: flex; align-items: center; gap: 8px; width: 100%; padding-block: 8px; color: var(--ink); }
+.tbtn:hover span { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--axis); }
+.tbtn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.tbtn svg { flex: none; width: 10px; height: 10px; fill: var(--muted); transition: transform .15s ease; }
+.tbtn[aria-expanded="true"] svg { transform: rotate(90deg); }
+.tbtn[aria-expanded="true"] span { font-weight: 600; }
+tr.detail td { padding: 4px 16px 16px; border-bottom: 1px solid var(--rule); }
+.qlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-width: 760px; }
+.qlist li { display: grid; grid-template-columns: 7.5em 7.5em 1fr; gap: 12px; align-items: baseline; font-size: 13px; line-height: 1.45; }
+.qlist .when { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.qlist .kind { font-size: 11.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.qlist .kind i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.qlist .kind.e i { background: var(--essay); } .qlist .kind.n i { background: var(--note); }
+.qlist .q { color: var(--ink); min-width: 0; }
+.detail-actions { margin-top: 10px; display: flex; gap: 8px; }
+.ybtn { all: unset; cursor: pointer; color: var(--focus); text-decoration: underline; text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--focus) 45%, transparent); border-radius: 4px; padding: 2px 3px; display: inline-block; }
+.ybtn:hover { text-decoration-color: currentColor; }
+.ybtn:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.ybtn[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); text-decoration: none; }
+.paper { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
+.paper-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.paper h2 { font-family: var(--serif); font-weight: 650; font-size: 20px; margin: 0; }
+.paper h2 small { font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--muted); margin-left: 8px; }
+.paper .close { font: 500 13px var(--sans); color: var(--ink-2); background: transparent; border: 1px solid var(--axis); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.paper .close:hover { color: var(--ink); border-color: var(--ink-2); }
+.paper .close:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.paper-units { display: grid; gap: 14px; }
+.paper-unit h3 { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 6px; }
+.paper .qlist li { grid-template-columns: 7.5em 1fr; }
+.paper .note { font-size: 12.5px; color: var(--muted); margin: 0; }
+@media (max-width: 560px) { .qlist li { grid-template-columns: 1fr; gap: 2px; } }
+@media (max-width: 560px) { th.topic { min-width: 150px; font-size: 12.5px; padding-left: 12px; } thead th.topic-h, tr.unit th { padding-left: 12px; } }
+@media (prefers-reduced-motion: no-preference) { .bar b { transition: width .25s ease; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">KSLU · 3-year LL.B. · Semester I · Paper 4004</span>
+    <h1>Family Law I Question Map</h1>
+    <p class="lede">What KSLU asked in 13 Hindu Law papers from June 2019 to Jan/Feb 2026, topic by topic. Papers marked † come from STS notes, not a scanned paper. Each paper has five units, and each unit has a 10-mark essay and a 6-mark short note, both with an OR choice. Click a year to see that whole paper, click a topic to list every question asked on it, or hover over a square to see one question.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by unit" id="chips"></div>
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw e"></i>Essay, 10 marks</span>
+      <span><i class="sw n"></i>Short note or problem, 6 marks</span>
+      <span><i class="sw x"></i>Not asked</span>
+    </div>
+  </div>
+
+  <section class="paper" id="paper" hidden aria-live="polite"></section>
+
+  <div class="board"><table id="grid" aria-label="Topics asked in each exam sitting"></table></div>
+
+  <p class="notes">If a topic appeared as both an essay and a short note in the same paper, the square shows the essay. "Times asked" counts papers, not questions. March/April 2021 and Oct/Nov 2021 used the older pattern (any five 10-mark and any five 6-mark questions out of ten). The file labelled "March 2024" is the August/September 2024 paper. The Oct–Nov 2022 and Mar–Apr 2024 papers (marked †) are taken from STS notes, which list both choices for each question; their wording could not be checked against a scan.</p>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const S = [
+  ["S1","Jun–Jul","2019"],["S2","Dec","2019"],["S3","Mar–Apr","2021"],["S4","Oct–Nov","2021"],["S5","Apr–May","2022"],["N1","Oct–Nov","2022"],
+  ["S6","Mar–Apr","2023"],["S7","Sep–Oct","2023"],["N2","Mar–Apr","2024"],["S8","Aug–Sep","2024"],["S9","Jan–Feb","2025"],["S10","Jun–Jul","2025"],["S11","Jan–Feb","2026"]
+];
+const UNITS = {I:"Sources, schools, who is a Hindu", II:"Marriage and divorce", III:"Joint family, partition, endowments", IV:"Succession", V:"Adoption, guardianship, maintenance"};
+// type E = essay (10 marks), N = short note / problem (6 marks)
+const T = [
+ ["I","Who is a Hindu (by birth, conversion)",{N1:["N","Who is a Hindu"],N2:["E","Who is a 'Hindu' for the purpose of application of Hindu law"],S1:["E","Who are Hindus? Persons to whom Hindu law does and does not apply"],S2:["N","Hindu by birth"],S3:["N","'Hindu'; Conversion"],S4:["N","Who is a Hindu?"],S5:["E","Who are Hindus? Persons to whom Hindu law does and does not apply"],S6:["N","Hindu by birth"],S7:["N","'Hindu'"],S8:["E","Who are Hindus? To whom is Hindu law applicable?"],S9:["N","Hindu by conversion"],S10:["N","Conversion"],S11:["N","Hindu by birth"]}],
+ ["I","Schools of Hindu law (Mitakshara, Dayabhaga)",{N1:["N","Mitakshara"],N2:["N","Mitakshara school"],S1:["N","Distinguish Mitakshara and Dayabhaga schools"],S2:["E","Distinguish Mitakshara and Dayabhaga schools"],S3:["E","Different schools of Hindu law"],S4:["E","Different schools of Hindu law"],S6:["N","Mitakshara school"],S7:["E","Fundamental differences between the schools of Hindu law"],S8:["N","Mitakshara school"],S9:["N","Mitakshara"],S10:["N","Mitakshara school"],S11:["E","Schools of Hindu law and the fundamental differences between them"]}],
+ ["I","Custom (essentials; 'clear proof of usage')",{N1:["E","Meaning and essentials of a valid custom"],S2:["E","What is custom? Requirements of a valid custom"],S4:["E","Meaning and essentials of custom"],S5:["E","'A clear proof of usage will outweigh the written text of the law' – Comment"],S6:["E","What is custom? Requirements of a valid custom"],S8:["N","Custom"],S9:["E","'A clear proof of custom outweighs the written text of law' – Explain"],S10:["E","What is custom? Requirements of a valid custom"],S11:["N","Custom"]}],
+ ["I","Sources of Hindu law (Shruti, Smriti)",{N1:["E","Smriti as a source of law"],N2:["E","Ancient sources of Hindu law"],S1:["N","Ancient sources of Hindu law"],S3:["E","Ancient sources of Hindu law"],S7:["E","Sources of Hindu law"],S8:["E","Shruti and Smriti as ancient sources of Hindu law"],S9:["E","Sources of Hindu law with special reference to Smritis"],S10:["E","Ancient sources of Hindu law"]}],
+ ["I","Concept of Dharma",{N2:["N","Concept of Dharma"],S2:["N","Concept of Dharma"],S4:["N","Concept of Dharma"],S5:["N","Concept of Dharma"],S6:["E","Concept of Dharma"],S7:["N","Concept of Dharma"],S11:["E","Concept of Dharma"]}],
+ ["I","Justice, equity and good conscience",{S5:["N","Relevance of equity, justice and good conscience in resolving disputes"]}],
+
+ ["II","Divorce by mutual consent",{S2:["N","Problem: married July 2018, want to dissolve the marriage within 3 months"],S3:["N","Divorce by mutual consent"],S5:["N","Divorce by mutual consent"],S6:["N","Divorce by mutual consent"],S7:["N","Divorce by mutual consent"],S9:["N","Divorce by mutual consent"],S10:["N","Divorce by mutual consent"]}],
+ ["II","Conditions of a valid marriage",{N2:["E","Essential conditions of a valid marriage under the HMA, 1955"],S3:["E","Essential conditions of a valid marriage"],S7:["E","Essential conditions of a valid marriage"],S8:["E","Essentials of a valid marriage under the HMA, 1955"],S9:["E","Essential conditions of a valid marriage"],S10:["E","Essential conditions of a valid marriage"],S11:["N","Valid marriage"]}],
+ ["II","Void and voidable marriages",{N1:["N","Void marriages"],S1:["N","Void and voidable marriages"],S2:["N","Void marriage"],S3:["E","Void vs voidable marriages under the HMA, 1955"],S5:["E","Void vs voidable marriages under the HMA, 1955"],S7:["E","Void vs voidable marriages under the HMA, 1955"],S10:["E","Void vs voidable marriages under the HMA, 1955"]}],
+ ["II","Grounds of divorce (wife's, both spouses')",{N1:["E","Grounds of divorce under the HMA"],N2:["E","Grounds of divorce under the HMA, 1955; also a problem: Raghu seeks divorce because his wife is barren"],S2:["E","Grounds available to a Hindu wife for dissolution"],S4:["E","Grounds on which husband and wife can file for divorce"],S5:["E","Grounds on which a Hindu marriage can be dissolved"],S8:["E","Grounds available to both husband and wife; also a note on the wife's special grounds"],S9:["E","Grounds available to a Hindu wife for dissolution"],S11:["E","Grounds on which a wife can petition for divorce"]}],
+ ["II","Restitution of conjugal rights",{N2:["N","Restitution of conjugal rights"],S1:["E","Constitutionality of restitution of conjugal rights (leading cases)"],S4:["N","Conjugal rights"],S5:["N","Problem: wife ignores a restitution decree; can the husband get a divorce?"],S6:["E","Constitutionality of restitution of conjugal rights (leading cases)"],S8:["N","Restitution of conjugal rights"]}],
+ ["II","Marriage: sacrament or contract",{N1:["E","Hindu marriage is a sacrament and also a contract"],S1:["E","Hindu marriage is a sacrament and also a contract"],S4:["E","'Marriage under the HMA, 1955 is no longer a sacrament' – Comment"],S6:["E","Hindu marriage is a sacrament and also a contract"]}],
+ ["II","Marriage Laws (Amendment) Act, 1976",{S2:["E","Changes made by the 1976 Amendment"],S11:["E","Important changes made by the 1976 Amendment"]}],
+ ["II","Marriage ceremonies",{S6:["N","Marriage ceremonies"],S10:["N","Marriage ceremonies"]}],
+ ["II","Judicial separation",{S7:["N","Judicial separation"],S11:["N","Judicial separation"]}],
+ ["II","Dowry",{N1:["N","Dowry"],S1:["N","Customary practices and legislation on dowry"],S9:["N","Dowry"]}],
+ ["II","Desertion; remarriage after divorce",{S3:["N","When divorced persons may remarry"],S4:["N","Facts needed to establish desertion"]}],
+
+ ["III","Partition (modes, re-opening, who can claim)",{N2:["N","When can a partition be re-opened?"],S1:["E","Partition; when it can be re-opened"],S2:["E","What is partition? How is it effected?"],S3:["E","Process of partition; re-opening (also a note on partial partition)"],S4:["N","Modes of partition"],S5:["E","Who can claim partition? Modes of partition"],S6:["E","Partition; when it can be re-opened"],S7:["E","Partition and its modes"],S8:["E","Different modes of partition"],S9:["E","Partition; when it can be re-opened"],S10:["E","Who can claim partition? Modes of partition"]}],
+ ["III","Coparcenary (features, rights, incidents)",{N1:["E","Features of coparcenary"],N2:["E","Formation and essentials of a Mitakshara coparcenary"],S1:["E","Features of a coparcenary and rights of a coparcener (asked in Unit I)"],S2:["N","Dayabhaga coparcenary"],S4:["E","Ancestral property; coparcenary vs separate property"],S6:["E","Features of the Hindu joint family and coparcenary"],S7:["N","Apratibandha daya"],S8:["N","Incidents of coparcenary"],S9:["E","Who is a coparcener? His rights in a Mitakshara family"],S10:["E","Features of coparcenary and rights of a coparcener (also a note on apratibandha daya)"],S11:["E","Incidents of coparcenary"]}],
+ ["III","Endowments; Mahant",{N1:["N","Mahant"],S2:["E","What are endowments? Essentials"],S3:["N","Endowment"],S4:["E","Essentials of endowments; how they are created"],S5:["N","Devolution of the office of Mahant"],S7:["E","Endowments and essentials of a valid endowment"],S8:["N","Mahant"],S9:["N","Religious and charitable endowments"],S11:["N","Mahant"]}],
+ ["III","Pious obligation; father's debts",{N2:["N","Is the daughter liable for a debt the father took for his personal benefit?"],S1:["N","Problem: is the son liable for his father's personal debt?"],S2:["N","Doctrine of pious obligation"],S4:["N","What is pious obligation?"],S5:["N","Is the son liable for a debt the father took for personal benefit?"],S6:["N","Doctrine of pious obligation"],S9:["N","Pious obligation"],S10:["N","Doctrine of pious obligation"]}],
+ ["III","Karta",{N1:["E","Who is Karta? Status, duties and powers"],N2:["E","Who can be Karta of a joint family? Powers of Karta"],S1:["E","Karta: position, duties and powers"],S3:["E","Karta: powers and duties"],S5:["E","Karta and when he can alienate joint family property"],S7:["N","Position of Karta"],S8:["E","Karta and his powers"],S11:["E","Karta: status, liabilities and powers"]}],
+ ["III","Re-union",{N1:["N","Re-union"],S1:["N","Re-union"],S6:["N","Re-union"],S11:["N","Re-union"]}],
+
+ ["IV","Distribution problem (assign shares)",{N1:["N","Male leaves mother, widow, 2 daughters and a step-son"],N2:["N","H leaves widow, 2 daughters, a son, father and mother"],S2:["N","Harish leaves father, mother, two sons and a daughter"],S3:["N","Female leaves mother, father, son, husband and an illegitimate daughter"],S4:["N","X leaves wife, unmarried daughter, two sons and mother"],S5:["N","Female leaves husband, mother, son's son's daughter and daughter's daughter (wording from STS notes)"],S6:["N","Mohan Kumar (d. 2020) leaves wife, mother, two daughters, two sons and father"],S7:["N","Female leaves son, step-son and husband"],S8:["N","Female leaves son, two daughters and husband"],S9:["N","Male leaves daughter, adopted son, father and brother; OR Vijayalaxmi leaves an illegitimate daughter, son, father and mother"],S10:["N","Naresh leaves son, father and brother"],S11:["N","Female leaves one son, two daughters, husband and brother"]}],
+ ["IV","Male intestate succession; Class I heirs",{S2:["E","General rules of succession, male intestate"],S3:["E","General rules of succession, male intestate"],S4:["E","General principles of succession, male Hindu"],S5:["E","Inheritance principles for male and female intestates"],S7:["E","General rules of succession, male intestate"],S8:["E","General rules of succession, male intestate"],S10:["E","Who are Class I heirs? Rules of distribution among them"],S11:["E","General rules of succession, male intestate"]}],
+ ["IV","Female intestate succession",{N1:["E","General rules of succession, female intestate"],N2:["E","General rules of succession, female intestate"],S1:["E","Succession to a female's property under the HSA"],S3:["E","General rules of succession, female intestate"],S5:["E","Inheritance principles for male and female intestates"],S6:["E","Rules of succession, female intestate"],S9:["E","Rules of succession, female intestate"],S10:["E","Rules of succession, female intestate"]}],
+ ["IV","HSA (Amendment) Act, 2005",{N1:["E","Salient features of the HSA (Amendment) Act, 2005"],S4:["E","Changes made by the HSA 1956 and the 2005 Amendment"],S7:["E","Changes made by the 2005 Amendment"],S8:["E","Salient features of the 2005 Amendment"],S9:["E","Changes after the 2005 Amendment"],S11:["E","Salient features of the 2005 Amendment"]}],
+ ["IV","Gift; Will",{N2:["N","Privileged will"],S1:["N","Wills; OR Gift"],S3:["N","Will"],S5:["N","Gift"],S6:["N","Gift deed"],S10:["N","Gift"]}],
+ ["IV","Stridhana",{S2:["N","Stridhana"],S4:["N","Stridhana"],S7:["N","Stridhan"],S8:["N","Stridhana"]}],
+ ["IV","HSA 1956: features, general rules",{N2:["E","Salient features of the HSA, 1956"],S1:["E","Salient features of the HSA, 1956"],S2:["E","Important changes made by the HSA, 1956"],S6:["E","General rules of succession under the HSA, 1956"]}],
+ ["IV","Agnate",{N1:["N","Agnate"],S11:["N","Agnate"]}],
+
+ ["V","Valid adoption (requisites, capacity, HAMA)",{N1:["E","Salient features of HAMA, 1956"],S1:["E","Requirements of a valid adoption under HAMA, 1956"],S2:["E","Essentials of a valid adoption"],S3:["E","Requisites of a valid adoption"],S5:["E","Requisites of a valid adoption"],S6:["E","Requirements of a valid adoption"],S7:["E","Requirements of a valid adoption"],S8:["E","Adoption provisions under HAMA, 1956"],S9:["E","Capacity of a male and a female Hindu to adopt"],S10:["E","Essentials of a valid adoption"],S11:["E","Salient features of HAMA, 1956"]}],
+ ["V","Adoption problems; effect; relation back",{N2:["N","A adopts B, who is already adopted by C"],S3:["N","A and B jointly adopt C; also a note on the doctrine of relation back"],S4:["N","Effect of adoption on the natural and adoptive families"],S7:["N","A adopts B, who is already adopted by C"],S8:["N","Doctrine of relation back"],S9:["N","Ajay and Vijay jointly want to adopt a child"],S10:["N","A adopts B, who is already adopted by C"]}],
+ ["V","Natural guardian and powers",{N2:["E","Natural and testamentary guardians and their powers"],S3:["E","Natural guardians and their powers"],S5:["E","Kinds of guardian; duties of a natural guardian"],S6:["E","Natural guardians of a minor and their powers"],S8:["E","Natural guardian and powers"],S9:["E","Natural guardians and their powers"],S10:["E","Natural guardians of a minor and their powers"]}],
+ ["V","Court-appointed, testamentary guardian; HMGA",{N1:["N","Testamentary guardian"],N2:["N","Guardian appointed by the court"],S1:["E","When the court may appoint and remove a guardian; powers"],S4:["E","Testamentary guardian: powers and obligations"],S7:["E","Salient features of the HMGA, 1956"],S8:["N","Guardian appointed by the court"],S9:["N","Guardian appointed by the court"],S11:["N","Problem: father's will appoints his brother as guardian; the mother also claims"]}],
+ ["V","Dependents",{S1:["N","Dependents"],S4:["E","Who are dependents under HAMA, 1956?"],S5:["N","Maintenance of dependents"],S7:["N","Dependents"],S11:["N","Dependents"]}],
+ ["V","Maintenance (wife, widow, quantum)",{N1:["E","Maintenance of a Hindu wife under HAMA, 1956"],N2:["E","When a Hindu wife can live separately and claim maintenance"],S1:["N","Problem: Arundati seeks separate residence and maintenance"],S2:["N","Maintenance of wife"],S4:["N","When a wife can claim maintenance and separate residence"],S5:["N","Widow sues her father and father-in-law for maintenance"],S6:["N","How the court fixes the quantum of maintenance"]}],
+ ["V","Welfare of the minor",{N1:["N","Welfare of the minor"],S2:["E","'Welfare of the minor is the paramount consideration'"],S10:["N","Welfare of the minor"],S11:["E","'Welfare of the minor is the paramount consideration' – Elucidate"]}],
+ ["V","Minor's property sold without court permission",{S2:["N","Problem: father sells a minor's immovable property without court permission"],S6:["N","Problem: father sells a minor's immovable property without court permission"]}]
+];
+
+const grid = document.getElementById('grid'), tip = document.getElementById('tip'), chips = document.getElementById('chips');
+let unit = 'All';
+const open = new Set();
+let paper = null;
+const NOTES = {N1:"From STS notes; no PDF of this paper was available to check the wording.", N2:"From STS notes; no PDF of this paper was available to check the wording. This is a different paper from the Aug–Sep 2024 one.", S3:"Old pattern: answer any five 10-mark and any five 6-mark questions out of ten.", S4:"Old pattern: answer any five 10-mark and any five 6-mark questions out of ten.", S5:"Paper marked Dec. 2021. The Unit IV problem was unreadable in the scan; its wording comes from STS notes.", S6:"Paper marked Dec. 2022.", S7:"Paper marked June 2023.", S8:"The file is labelled 'March 2024'; the paper inside is the August/September 2024 exam."};
+const paperEl = document.getElementById('paper');
+function renderPaper(){
+  if (!paper) { paperEl.hidden = true; paperEl.innerHTML = ''; return; }
+  const [id,m,y] = S.find(x => x[0] === paper);
+  let units = '';
+  for (const u of Object.keys(UNITS)) {
+    const seen = new Set(), rows = [];
+    for (const r of T) { if (r[0] !== u) continue; const c = r[2][id]; if (!c || seen.has(c[1])) continue; seen.add(c[1]); rows.push([c, r[1]]); }
+    if (!rows.length) continue;
+    rows.sort((a,b) => (a[0][0] === b[0][0]) ? 0 : (a[0][0] === 'E' ? -1 : 1));
+    units += `<div class="paper-unit"><h3>Unit ${u} · ${UNITS[u]}</h3><ul class="qlist">` + rows.map(([c,t]) =>
+      `<li><span class="kind ${c[0].toLowerCase()}"><i></i>${c[0] === 'E' ? 'Essay · 10' : 'Note · 6'}</span><span class="q">${esc(c[1])}${c[1] === t ? '' : ` <span class="when">(${esc(t)})</span>`}</span></li>`).join('') + `</ul></div>`;
+  }
+  paperEl.innerHTML = `<div class="paper-head"><h2>${m} ${y} paper<small>Questions grouped by unit, essays first</small></h2><button class="close" type="button" id="paper-close">Close</button></div>`
+    + (NOTES[id] ? `<p class="note">${NOTES[id]}</p>` : '') + `<div class="paper-units">${units}</div>`;
+  paperEl.hidden = false;
+}
+paperEl.addEventListener('click', e => { if (e.target.closest('#paper-close')) { const was = paper; paper = null; renderPaper(); render(); document.getElementById('yr-' + was)?.focus(); } });
+try { const u = localStorage.getItem('fl1-unit'); if (u && (u === 'All' || UNITS[u])) unit = u; } catch (e) {}
+
+function esc(s){ return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function render(){
+  let h = '<thead><tr><th class="topic-h" scope="col">Topic</th>';
+  for (const [id,m,y] of S) h += `<th scope="col"><button class="ybtn" type="button" id="yr-${id}" data-s="${id}" aria-pressed="${paper === id}" aria-controls="paper" title="Show the ${m} ${y} paper">${m}<br>${y}${id[0] === 'N' ? '†' : ''}</button></th>`;
+  h += '<th class="tally-h" scope="col">Times asked (of ' + S.length + ')</th></tr></thead><tbody>';
+  for (const u of Object.keys(UNITS)) {
+    if (unit !== 'All' && unit !== u) continue;
+    h += `<tr class="unit"><th colspan="${S.length + 2}" scope="colgroup">Unit ${u}<small>${UNITS[u]}</small></th></tr>`;
+    const rows = T.map((r,i)=>[r,i]).filter(([r]) => r[0] === u).sort((a,b) => Object.keys(b[0][2]).length - Object.keys(a[0][2]).length);
+    for (const [[, topic, cells], i] of rows) {
+      const n = Object.keys(cells).length;
+      const isOpen = open.has(i);
+      h += `<tr class="row"><th class="topic" scope="row"><button class="tbtn" type="button" id="topic-${i}" data-t="${i}" aria-expanded="${isOpen}" aria-controls="detail-${i}"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l6 4-6 4z"/></svg><span>${esc(topic)}</span></button></th>`;
+      for (const [id,m,y] of S) {
+        const c = cells[id];
+        if (c) {
+          const kind = c[0] === 'E' ? 'Essay, 10 marks' : 'Short note or problem, 6 marks';
+          h += `<td class="cell ${c[0].toLowerCase()}" tabindex="0" data-r="${i}" data-s="${id}" aria-label="${esc(topic)}, ${m} ${y}: ${kind}. ${esc(c[1])}"><i></i></td>`;
+        } else {
+          h += `<td class="cell" aria-label="${esc(topic)}, ${m} ${y}: not asked"><i></i></td>`;
+        }
+      }
+      h += `<td class="tally"><div class="bar"><b style="width:${n/S.length*100}px"></b><em>${n}</em></div></td></tr>`;
+      if (isOpen) {
+        const items = S.filter(([id]) => cells[id]).map(([id,m,y]) => { const c = cells[id];
+          return `<li><span class="when">${m} ${y}</span><span class="kind ${c[0].toLowerCase()}"><i></i>${c[0] === 'E' ? 'Essay · 10' : 'Note · 6'}</span><span class="q">${esc(c[1])}</span></li>`; }).reverse().join('');
+        h += `<tr class="detail" id="detail-${i}"><td colspan="${S.length + 2}"><ul class="qlist" aria-label="Questions asked on ${esc(topic)}, newest first">${items}</ul></td></tr>`;
+      }
+    }
+  }
+  grid.innerHTML = h + '</tbody>';
+}
+
+function renderChips(){
+  chips.innerHTML = ['All', ...Object.keys(UNITS)].map(u =>
+    `<button class="chip" type="button" id="chip-${u}" aria-pressed="${u === unit}" data-u="${u}">${u === 'All' ? 'All units' : 'Unit ' + u}</button>`).join('');
+}
+chips.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  unit = b.dataset.u; try { localStorage.setItem('fl1-unit', unit); } catch (err) {}
+  renderChips(); render(); hideTip();
+});
+
+grid.addEventListener('click', e => {
+  const y = e.target.closest('.ybtn');
+  if (y) { paper = (paper === y.dataset.s) ? null : y.dataset.s; hideTip(); renderPaper(); render();
+    const f = document.getElementById('yr-' + y.dataset.s); f?.focus(); if (paper) paperEl.scrollIntoView({block:'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); return; }
+  const b = e.target.closest('.tbtn'); if (!b) return;
+  const i = +b.dataset.t; open.has(i) ? open.delete(i) : open.add(i);
+  hideTip(); render(); document.getElementById('topic-' + i)?.focus();
+});
+function showTip(td){
+  const r = T[+td.dataset.r], s = S.find(x => x[0] === td.dataset.s), c = r[2][td.dataset.s];
+  tip.innerHTML = `<span class="k">${s[1]} ${s[2]} · ${c[0] === 'E' ? 'Essay, 10 marks' : 'Short note / problem, 6 marks'}</span>${esc(c[1])}`;
+  tip.hidden = false;
+  const b = td.getBoundingClientRect(), w = tip.offsetWidth, ht = tip.offsetHeight;
+  let x = b.left + b.width/2 - w/2; x = Math.max(8, Math.min(x, window.innerWidth - w - 8));
+  let y = b.top - ht - 8; if (y < 8) y = b.bottom + 8;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip(){ tip.hidden = true; }
+grid.addEventListener('mouseover', e => { const td = e.target.closest('td.cell[data-r]'); td ? showTip(td) : hideTip(); });
+grid.addEventListener('mouseleave', hideTip);
+grid.addEventListener('focusin', e => { const td = e.target.closest('td.cell[data-r]'); if (td) showTip(td); });
+grid.addEventListener('focusout', hideTip);
+grid.addEventListener('click', e => { const td = e.target.closest('td.cell[data-r]'); if (td) showTip(td); });
+document.querySelector('.board').addEventListener('scroll', hideTip, {passive:true});
+window.addEventListener('scroll', hideTip, {passive:true});
+
+renderChips(); render();
+</script>
+
+</body></html>

@@ -14,8 +14,11 @@ Study material for the 3-year LL.B. programme (KSLU), organised by paper.
 kslu-legal-studies/
 ├── README.md
 └── family-law-1/
-    └── question-bank.md
+    ├── question-bank.md
+    └── question-map.html
 ```
+
+`family-law-1/question-map.html` is the interactive Question Map (open in a browser): topics against the 13 sittings, with a per-paper view that lists questions by unit, essays first.
 
 Each paper gets its own folder. Add new material (notes, case summaries, answer outlines) next to the question bank for that paper.
 

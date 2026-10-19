@@ -103,6 +103,10 @@ tr.detail td { padding: 4px 16px 16px; border-bottom: 1px solid var(--rule); }
 .paper-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .paper h2 { font-family: var(--serif); font-weight: 650; font-size: 20px; margin: 0; }
 .paper h2 small { font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--muted); margin-left: 8px; }
+.dl { font: 500 13px var(--sans); color: var(--focus); text-decoration: underline; text-underline-offset: 2px; display: inline-flex; align-items: center; gap: 6px; }
+.dl:hover { text-decoration-thickness: 2px; }
+.dl:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.paper-actions { display: flex; align-items: center; gap: 14px; }
 .paper .close { font: 500 13px var(--sans); color: var(--ink-2); background: transparent; border: 1px solid var(--axis); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
 .paper .close:hover { color: var(--ink); border-color: var(--ink-2); }
 .paper .close:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
@@ -197,6 +201,7 @@ let unit = 'All';
 const open = new Set();
 let paper = null;
 const NOTES = {N1:"From STS notes; no PDF of this paper was available to check the wording.", N2:"From STS notes; no PDF of this paper was available to check the wording. This is a different paper from the Aug–Sep 2024 one.", S3:"Old pattern: answer any five 10-mark and any five 6-mark questions out of ten.", S4:"Old pattern: answer any five 10-mark and any five 6-mark questions out of ten.", S5:"Paper marked Dec. 2021. The Unit IV problem was unreadable in the scan; its wording comes from STS notes.", S6:"Paper marked Dec. 2022.", S7:"Paper marked June 2023.", S8:"The file is labelled 'March 2024'; the paper inside is the August/September 2024 exam."};
+const PDF = {S1:'2019-06-jun-jul',S2:'2019-12-dec',S3:'2021-03-mar-apr',S4:'2021-10-oct-nov',S5:'2022-04-apr-may',S6:'2023-03-mar-apr',S7:'2023-09-sep-oct',S8:'2024-08-aug-sep',S9:'2025-01-jan-feb',S10:'2025-06-jun-jul',S11:'2026-01-jan-feb'};
 const paperEl = document.getElementById('paper');
 function renderPaper(){
   if (!paper) { paperEl.hidden = true; paperEl.innerHTML = ''; return; }
@@ -210,8 +215,8 @@ function renderPaper(){
     units += `<div class="paper-unit"><h3>Unit ${u} · ${UNITS[u]}</h3><ul class="qlist">` + rows.map(([c,t]) =>
       `<li><span class="kind ${c[0].toLowerCase()}"><i></i>${c[0] === 'E' ? 'Essay · 10' : 'Note · 6'}</span><span class="q">${esc(c[1])}${c[1] === t ? '' : ` <span class="when">(${esc(t)})</span>`}</span></li>`).join('') + `</ul></div>`;
   }
-  paperEl.innerHTML = `<div class="paper-head"><h2>${m} ${y} paper<small>Questions grouped by unit, essays first</small></h2><button class="close" type="button" id="paper-close">Close</button></div>`
-    + (NOTES[id] ? `<p class="note">${NOTES[id]}</p>` : '') + `<div class="paper-units">${units}</div>`;
+  paperEl.innerHTML = `<div class="paper-head"><h2>${m} ${y} paper<small>Questions grouped by unit, essays first</small></h2><div class="paper-actions">${PDF[id] ? `<a class="dl" href="papers/${PDF[id]}.pdf" download target="_blank" rel="noopener">Download question paper (PDF)</a>` : ''}<button class="close" type="button" id="paper-close">Close</button></div></div>`
+    + (NOTES[id] ? `<p class="note">${NOTES[id]}</p>` : '') + (PDF[id] ? '' : `<p class="note">No scanned PDF is available for this paper.</p>`) + `<div class="paper-units">${units}</div>`;
   paperEl.hidden = false;
 }
 paperEl.addEventListener('click', e => { if (e.target.closest('#paper-close')) { const was = paper; paper = null; renderPaper(); render(); document.getElementById('yr-' + was)?.focus(); } });

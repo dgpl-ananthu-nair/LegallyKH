@@ -18,13 +18,17 @@ The Question Map is published with GitHub Pages from `docs/index.html` (source c
 kslu-legal-studies/
 ├── README.md
 ├── docs/
-│   └── index.html
+│   ├── index.html
+│   └── papers/            (PDF copies served by the Pages site)
 └── family-law-1/
     ├── question-bank.md
-    └── question-map.html
+    ├── question-map.html
+    └── papers/            (11 scanned question papers, named YYYY-MM-sitting.pdf)
 ```
 
 `family-law-1/question-map.html` is the interactive Question Map (open in a browser): topics against the 13 sittings, with a per-paper view that lists questions by unit, essays first.
+
+Each paper's panel in the map has a "Download question paper (PDF)" link. The PDFs live in `family-law-1/papers/`; `docs/papers/` holds identical copies so the links work on the Pages site (keep the two in sync). The Oct/Nov 2022 and Mar/Apr 2024 papers come from STS notes and have no scan.
 
 Each paper gets its own folder. Add new material (notes, case summaries, answer outlines) next to the question bank for that paper.
 

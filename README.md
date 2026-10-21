@@ -6,7 +6,7 @@ Study material for the 3-year LL.B. programme (KSLU), organised by paper.
 
 | Paper | Folder | Status |
 | --- | --- | --- |
-| Family Law I (Hindu Law), Semester I, subject code 4004 (3-year LL.B.) | `family-law-1/` | Past question bank, 13 papers (June 2019 to Jan/Feb 2026) |
+| Family Law I (Hindu Law), Semester I, subject code 4004 | `family-law-1/` | Past question bank, 13 papers (June 2019 to Jan/Feb 2026) |
 
 ## Live page
 

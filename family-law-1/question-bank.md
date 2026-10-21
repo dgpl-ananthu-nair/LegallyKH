@@ -1,6 +1,6 @@
 # Family Law I (Hindu Law) — KSLU Past Question Bank
 
-3-year LL.B., Semester I (subject code 4004 for the 3-year LL.B.). Compiled from 13 question papers, June 2019 – Jan/Feb 2026: 11 scanned papers plus 2 (marked †) taken from STS notes, whose wording could not be checked against a scan. All papers carry 80 marks.
+3-year LL.B., Semester I (subject code 4004). Compiled from 13 question papers, June 2019 – Jan/Feb 2026: 11 scanned papers plus 2 (marked †) taken from STS notes, whose wording could not be checked against a scan. All papers carry 80 marks.
 
 **Pattern (2019 onward, except 2021):** Answer all five Units. Each Unit has (a) an essay (10 marks, with an OR choice) and (b) a short note or problem (6 marks, with an OR choice).
 **March/April 2021 and Oct/Nov 2021** used the old pattern: answer any five (a) questions (10 marks each) and any five (b) questions (6 marks each) out of ten.

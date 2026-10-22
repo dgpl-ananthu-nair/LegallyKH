@@ -1,0 +1,304 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Contract I Question Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&display=swap">
+<style>
+/* Layout: one exam-register grid. Topics down, ten sittings across, a tally at the right edge. */
+:root {
+  --bg: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --rule: #e1e0d9;
+  --axis: #c3c2b7;
+  --essay: #256abf;
+  --note: #86b6ef;
+  --empty: #ecebe6;
+  --focus: #1c5cab;
+  --chip-on: #0b0b0b;
+  --chip-on-ink: #fcfcfb;
+  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --rule: #2c2c2a; --axis: #383835; --essay: #3987e5; --note: #1c5cab; --empty: #262624;
+    --focus: #86b6ef; --chip-on: #f0efec; --chip-on-ink: #1a1a19; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --rule: #2c2c2a; --axis: #383835; --essay: #3987e5; --note: #1c5cab; --empty: #262624;
+  --focus: #86b6ef; --chip-on: #f0efec; --chip-on-ink: #1a1a19; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 20px; }
+header { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--serif); font-weight: 650; font-size: clamp(24px, 4vw, 32px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.lede { color: var(--ink-2); font-size: 15px; line-height: 1.5; max-width: 66ch; margin: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px var(--sans); color: var(--ink-2); background: transparent; border: 1px solid var(--axis);
+  border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.chip:hover { border-color: var(--ink-2); color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
+.chip:focus-visible, td.cell:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--ink-2); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.sw.e { background: var(--essay); } .sw.n { background: var(--note); } .sw.x { background: var(--empty); }
+.board { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; overflow-x: auto; }
+table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 700px; font-size: 13px; }
+th, td { padding: 0; }
+thead th { font-weight: 500; color: var(--muted); font-size: 11.5px; padding: 12px 2px 8px; text-align: center;
+  font-variant-numeric: tabular-nums; line-height: 1.25; border-bottom: 1px solid var(--axis); position: sticky; top: 0; background: var(--surface); }
+thead th.topic-h { text-align: left; padding-left: 16px; }
+thead th.tally-h { text-align: left; padding-left: 12px; }
+th.topic { text-align: left; font-weight: 450; color: var(--ink); padding: 0 12px 0 16px; height: 34px;
+  position: sticky; left: 0; background: var(--surface); z-index: 1; min-width: 230px; max-width: 290px; }
+tr.unit th { text-align: left; padding: 18px 16px 6px; font-family: var(--serif); font-weight: 650; font-size: 14px;
+  color: var(--ink); border-bottom: 1px solid var(--rule); position: sticky; left: 0; background: var(--surface); }
+tr.unit th small { font-family: var(--sans); font-weight: 400; font-size: 12px; color: var(--muted); margin-left: 8px; }
+td.cell { text-align: center; width: 50px; cursor: default; }
+td.cell i { display: inline-block; width: 22px; height: 22px; border-radius: 4px; background: var(--empty); vertical-align: middle; }
+td.cell.e i { background: var(--essay); } td.cell.n i { background: var(--note); }
+td.cell.e, td.cell.n { cursor: pointer; }
+tbody tr.row:hover th.topic, tbody tr.row:hover td { background: color-mix(in srgb, var(--surface) 88%, var(--essay)); }
+td.tally { padding: 0 16px 0 12px; min-width: 150px; }
+.bar { display: flex; align-items: center; gap: 8px; }
+.bar b { display: block; height: 8px; border-radius: 0 4px 4px 0; background: var(--essay); }
+.bar em { font-style: normal; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; white-space: nowrap; }
+.tip { position: fixed; z-index: 20; max-width: 300px; background: var(--surface); color: var(--ink); border: 1px solid var(--axis);
+  border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.45; box-shadow: 0 6px 20px rgba(0,0,0,.14); pointer-events: none; }
+.tip .k { color: var(--muted); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+.notes { color: var(--muted); font-size: 12.5px; line-height: 1.5; max-width: 80ch; margin: 0; }
+.tbtn { all: unset; cursor: pointer; display: flex; align-items: center; gap: 8px; width: 100%; padding-block: 8px; color: var(--ink); }
+.tbtn:hover span { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--axis); }
+.tbtn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.tbtn svg { flex: none; width: 10px; height: 10px; fill: var(--muted); transition: transform .15s ease; }
+.tbtn[aria-expanded="true"] svg { transform: rotate(90deg); }
+.tbtn[aria-expanded="true"] span { font-weight: 600; }
+tr.detail td { padding: 4px 16px 16px; border-bottom: 1px solid var(--rule); }
+.qlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-width: 760px; }
+.qlist li { display: grid; grid-template-columns: 7.5em 7.5em 1fr; gap: 12px; align-items: baseline; font-size: 13px; line-height: 1.45; }
+.qlist .when { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.qlist .kind { font-size: 11.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.qlist .kind i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.qlist .kind.e i { background: var(--essay); } .qlist .kind.n i { background: var(--note); }
+.qlist .q { color: var(--ink); min-width: 0; }
+.ybtn { all: unset; cursor: pointer; color: var(--focus); text-decoration: underline; text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--focus) 45%, transparent); border-radius: 4px; padding: 2px 3px; display: inline-block; }
+.ybtn:hover { text-decoration-color: currentColor; }
+.ybtn:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.ybtn[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); text-decoration: none; }
+.paper { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
+.paper-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.paper h2 { font-family: var(--serif); font-weight: 650; font-size: 20px; margin: 0; }
+.paper h2 small { font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--muted); margin-left: 8px; }
+.paper .close { font: 500 13px var(--sans); color: var(--ink-2); background: transparent; border: 1px solid var(--axis); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.paper .close:hover { color: var(--ink); border-color: var(--ink-2); }
+.paper .close:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.paper-units { display: grid; gap: 14px; }
+.paper-unit h3 { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 6px; }
+.paper .qlist li { grid-template-columns: 7.5em 1fr; }
+.paper .note { font-size: 12.5px; color: var(--muted); margin: 0; }
+@media (max-width: 560px) { .qlist li { grid-template-columns: 1fr; gap: 2px; } }
+@media (max-width: 560px) { th.topic { min-width: 150px; font-size: 12.5px; padding-left: 12px; } thead th.topic-h, tr.unit th { padding-left: 12px; } }
+@media (prefers-reduced-motion: no-preference) { .bar b { transition: width .25s ease; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">KSLU · LL.B. · Semester I · Subject code 4002</span>
+    <h1>Contract I Question Map</h1>
+    <p class="lede">What KSLU asked in 10 Law of General Contract papers from June 2019 to Jan/Feb 2026, topic by topic. Each paper has five units, and each unit has a 10-mark essay and a 6-mark short note or problem, both with an OR choice. Click a sitting to see that whole paper, click a topic to list every question asked on it, or hover over a square to see one question.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by unit" id="chips"></div>
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw e"></i>Essay, 10 marks</span>
+      <span><i class="sw n"></i>Short note or problem, 6 marks</span>
+      <span><i class="sw x"></i>Not asked</span>
+    </div>
+  </div>
+
+  <section class="paper" id="paper" hidden aria-live="polite"></section>
+
+  <div class="board"><table id="grid" aria-label="Topics asked in each exam sitting"></table></div>
+
+  <p class="notes">If a topic appeared as both an essay and a short note in the same paper, the square shows the essay. "Times asked" counts papers, not questions. Problems are filed under the rule they test, so the same facts can sit under two topics (for example, the coercion versus undue influence essay in Sept/Oct 2023). The October/November 2021 paper used the older pattern (any five 10-mark and any five 6-mark questions out of ten), so its questions have no OR choices. Unit numbers are the ones printed in each paper. Privity, contingent contracts, frustration and anticipatory breach move between units from one paper to the next, so each topic sits in the unit where it appears most often. Three papers carry two dates on the file (April/May 2022 is marked Dec. 2021, March/April 2023 is marked Dec. 2022, Sept/Oct 2023 is marked June 2023); the grid uses the main exam date. Some questions were checked against the scan itself because the text extraction was garbled.</p>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const S = [
+  ["S1","Jun–Jul","2019"],["S2","Dec","2019"],["S3","Oct–Nov","2021"],["S4","Apr–May","2022"],["S5","Mar–Apr","2023"],
+  ["S6","Sep–Oct","2023"],["S7","Aug–Sep","2024"],["S8","Jan–Feb","2025"],["S9","Jun–Jul","2025"],["S10","Jan–Feb","2026"]
+];
+const UNITS = {I:"Formation of contract and consideration", II:"Capacity, free consent, void agreements", III:"Performance and discharge", IV:"Quasi-contract and remedies for breach", V:"Specific Relief Act, 1963"};
+// type E = essay (10 marks), N = short note / problem (6 marks)
+const T = [
+ ["I","Agreement vs contract; essentials of a valid contract",{S1:["E","'All contracts are agreements, but all agreements are not necessarily contracts' – Explain"],S3:["E","Explain the essentials of a valid contract"],S7:["E","'An agreement enforceable by law is a contract' – Discuss"],S8:["E","'All contracts are agreements but all agreements are not contracts' – Explain"]}],
+ ["I","Acceptance (essentials, rules, effect)",{S2:["E","Define acceptance. What is the effect of acceptance?"],S4:["E","Define acceptance. Rules of a valid acceptance with leading cases"],S6:["E","Define acceptance. Essentials of a valid acceptance"],S9:["E","Define acceptance. Essentials of a valid acceptance with illustrations"]}],
+ ["I","Offer (rules, general offer, invitation to offer)",{S5:["E","Define offer. Rules relating to a valid offer with decided cases"],S7:["N","Note on general offer"],S9:["N","Note on offer and invitation to offer (treat)"],S10:["E","Define offer. Rules relating to a valid offer with decided cases"]}],
+ ["I","Shop display or price tag problem",{S1:["N","A picks an article with a price tag in a departmental store; the shopkeeper refuses to sell it"],S2:["N","A selects a book displayed in a departmental store; the manager refuses to sell"],S3:["N","A takes an article to the cash counter; the clerk refuses because it is only a sample"],S5:["N","Sneha picks a book at a book stall; the shopkeeper declines to sell"],S10:["N","Chitra picks a packet of chips in a super market; the shopkeeper refuses to sell"]}],
+ ["I","Communication, revocation and lapse of offer",{S1:["N","A proposed in June 2017 and B accepted in August 2018; is it a valid acceptance?"],S6:["E","When are the communications of proposal, acceptance and revocation complete? Illustrate"],S9:["N","Modes of revocation of an offer"]}],
+ ["I","Reward or general offer problem (knowledge of offer)",{S4:["N","Ram's son is missing; his servant finds the boy without knowing of the ₹1,00,000 reward"],S6:["N","Anand says he will give ₹25,000 to whoever marries his daughter; Ravi marries her and sues"]}],
+ ["I","Consideration (meaning, essentials)",{S2:["E","Define consideration. Essentials of a valid consideration"],S5:["E","Define consideration. Essentials of a valid consideration"],S7:["E","Consideration with leading cases; difference between English and Indian law"]}],
+ ["I","Agreement without consideration is void; exceptions",{S1:["E","'An agreement without consideration is void' – Explain with exceptions"],S4:["E","An agreement without consideration is void – Discuss"],S10:["E","'Agreement without consideration is void' – Discuss with decided cases"]}],
+ ["I","Inadequate consideration problem",{S4:["N","Ajay sold his ₹7,00,000 electric car to Vijay for ₹70,000; can the sale be questioned?"],S7:["N","A sold his ₹10,000 car to B for ₹5,000; can it be questioned and on what grounds?"],S8:["N","Raja agreed to sell his ₹3,00,000 car for ₹10,000 and wants to cancel because the consideration is inadequate"]}],
+ ["I","Privity of contract",{S3:["E","Explain the doctrine of privity of contract with exceptions, if any"],S6:["N","Short note on privity of contract"],S8:["E","Explain the doctrine of privity of contract; state the exceptions"],S9:["E","Explain the doctrine of privity of contract; state its exceptions"],S10:["E","Doctrine of privity of contract with exceptions, if any (Unit II in this paper)"]}],
+ ["I","Social invitation problem (dinner, party)",{S2:["N","A invited B to dinner and B accepted but could not attend; A sues to recover the dinner expenses"],S3:["N","Ramu invited friends to dinner and spent ₹10,000; they did not attend; can he sue?"],S5:["N","Mamta invited friends to a birthday party and spent ₹20,000; they did not attend"],S8:["N","A invited B to dinner and B could not attend; A sues for the dinner expenses"],S10:["N","Meghana spent ₹25,000 on a party; her friends did not come (the English text says more friends turned up)"]}],
+
+ ["II","Capacity; minor's agreement",{S1:["E","Legal effects of a minor's agreement"],S2:["E","Provisions relating to capacity to contract"],S3:["E","Who are competent to contract? Effects of a minor's agreement"],S4:["E","Provisions relating to capacity to contract"],S5:["E","Legal effects of a minor's agreement"],S7:["E","Who are competent to contract? Principle in Mohori Bibee v. Dhurmodas Ghose"],S8:["E","Effects of a minor's agreement"],S10:["E","Effects of a minor's agreement"]}],
+ ["II","Minor problems (mobile sold, false age)",{S2:["N","A supplied a mobile to B, a minor; can A recover the price?"],S7:["N","Minor A falsely says he is a major and buys goods on credit; B sues for the price"],S8:["N","A supplied a mobile to B, a minor; can A recover the price?"]}],
+ ["II","Necessaries supplied to a lunatic's family",{S8:["N","Raju supplied necessaries to the wife and children of Ramu, a lunatic; can he recover the price?"],S10:["N","Ramesh supplied rice, wheat, oil, ghee and sugar to the family of Iliyas, a lunatic; will he succeed?"]}],
+ ["II","Free consent; consent",{S7:["E","Define free consent. Elements of fraud. Cite leading cases"],S8:["E","What is consent? Circumstances in which consent is free"]}],
+ ["II","Coercion",{S3:["N","A kidnaps B's son and threatens to kill him unless B signs a contract; can B set it aside?"],S5:["N","Ranjit kidnaps Sujit's daughter; Sujit signs a sale deed out of fear and wants to set it aside"],S6:["E","Define coercion. How does it differ from undue influence? (OR problem: a husband threatens suicide unless his wife transfers her assets)"],S8:["N","A kidnaps B's son and threatens to kill him unless B signs a sale deed; can B set it aside?"],S9:["N","Short note on coercion"]}],
+ ["II","Undue influence",{S1:["N","Anand, a spiritual advisor, persuades old Bhaskar to gift all his property; Bhaskar wants to cancel it"],S4:["N","Shiva, a spiritual advisor, persuades old Shaila to gift all her property; Shaila wants to cancel it"],S6:["E","Define coercion. How does it differ from undue influence?"],S10:["N","A (student) sold a ₹50,000 article to B (teacher) for ₹25,000 and pleads undue influence"]}],
+ ["II","Fraud and misrepresentation",{S4:["E","What is fraud? Essential elements of fraud"],S6:["N","Short note on misrepresentation"],S7:["E","Define free consent. What are the elements of fraud? Cite leading cases"],S9:["E","What is fraud? Essential elements of fraud"]}],
+ ["II","Mistake",{S2:["E","Effect of mistake on the legality of a contract"]}],
+ ["II","Restitution (Ss. 64–65)",{S9:["E","Explain the doctrine of restitution with decided cases"]}],
+ ["II","Restraint of trade",{S1:["E","'An agreement in restraint of trade is void' – Explain with exceptions"],S2:["E","'An agreement in restraint of trade is void' – Discuss (Unit III in this paper)"],S3:["E","'An agreement in restraint of trade is void' – Explain and state the exceptions"],S5:["E","'Agreement in restraint of trade is void' – Explain with exceptions"]}],
+ ["II","Agreements declared void in the Act",{S6:["E","Discuss in brief the agreements declared void in the Indian Contract Act"]}],
+ ["II","Unlawful object or public policy problem",{S1:["N","A contracts with B to kill C for ₹1 lakh; B kills C and A refuses to pay"],S2:["N","A and B agree before marriage to live separately after it (OR: A pays B ₹5,000 to settle his marriage with C)"],S4:["N","Arun promises to get Anita a school job; Anita promises ten lakhs"],S5:["N","Akil contracts with Nikhil to kill Raj for ₹50,000; Akil refuses to pay"],S9:["N","Nikhil agrees with Suraj to kill Vaibhav for ₹50,000; Suraj refuses to pay"]}],
+ ["II","Wagering and contingent contracts",{S2:["N","A agrees to pay B ₹5,000 if B's house is destroyed; B has no house"],S3:["N","A pays B ₹10,000 if it rains on a day, otherwise B pays A; it rains; can B recover?"],S7:["N","Short note on contingent contract"],S10:["E","Define contingent contract. Rules for its enforcement (Unit III in this paper)"]}],
+
+ ["III","Modes of discharge",{S1:["E","Various modes of discharge of contracts, in brief"],S3:["E","Explain the different modes of discharge of contract"],S5:["E","Various modes of discharge of contract, in brief"],S6:["E","Various ways of discharge of contract (also a note on discharge by operation of law)"],S8:["E","Explain the different modes of discharge of contract"],S10:["E","Various modes of discharge of contract (printed as 'breach' in the English text)"]}],
+ ["III","Frustration; impossibility of performance",{S4:["E","Explain the doctrine of frustration with decided cases"],S5:["N","Short note on impossibility of performance"],S6:["E","Doctrine of frustration with decided cases"],S7:["E","Doctrine of frustration with decided cases"],S8:["E","Doctrine of frustration with decided cases"],S9:["E","Grounds of impossibility of performance of a contract"],S10:["E","Doctrine of frustration with decided cases (Unit IV in this paper)"]}],
+ ["III","Frustration problem (fire, illness, death)",{S1:["N","Umesh's house is destroyed by fire before he can sell it to Ganesh; Ganesh sues"],S2:["N","A famous singer dies before the programme; can B compel her son to sing? (OR: dancer falls ill)"],S3:["N","Dancer A loses both legs in an accident and cannot perform; B sues for breach"],S4:["N","Sandeep's Kala Bhavan is destroyed by fire before the wedding; Jaideep sues"],S6:["N","A musical hall let out for a day is destroyed by fire; is the promisor absolved?"],S8:["N","Famous singer dies before the programme; can B compel her son to sing? (OR: dancer falls ill)"],S9:["N","Singer A is ill and cannot sing at B's festival; B sues for breach"]}],
+ ["III","Appropriation of payment",{S2:["E","Provisions relating to appropriation of payment"],S3:["N","Short note on appropriation of payment"],S4:["N","Short note on appropriation of payments"],S7:["N","Short note on the law relating to appropriation of payments"],S9:["E","Rules on appropriation of payment between debtor and creditor"]}],
+ ["III","Time and place of performance",{S1:["E","Law relating to time and place of performance of a contract"],S5:["E","Law relating to time and place of performance of a contract"],S9:["N","Time is of the essence: Ramesh fails to deliver at Mysore on the day; Suresh rescinds and sues for damages"]}],
+ ["III","Joint promisors (Ss. 42–45)",{S7:["N","P, Q and R jointly promise to pay Z ₹3,000; P and Q cannot be traced; can Z compel R to pay in full?"]}],
+ ["III","Breach and anticipatory breach",{S3:["E","What is breach of contract? Types of breach"],S4:["E","What is breach of contract? Effects of anticipatory breach"],S5:["E","Effects of anticipatory breach of contract"],S7:["E","What is anticipatory breach? Consequences of such a breach"],S10:["N","Effects of anticipatory breach of contract (Unit IV in this paper)"]}],
+ ["III","Promise to marry after father's death (problem)",{S1:["N","Rama promised to marry Seeta after his father's death but married Suma while the father was alive"],S5:["N","Nagesh promised to marry Neeta on his father's death but married Nagavva while the father was alive"],S8:["N","Rama promised to marry Seeta after his father's death but married Suma while the father was alive"],S9:["N","Hrishikesh promised to marry Neeta on his father's death but married Sonal while the father was alive"],S10:["N","Narendra promised to marry Leelavathi on his father's death but married Shubha while the father was alive"]}],
+
+ ["IV","Quasi-contract (kinds; finder of goods)",{S2:["E","Who is a finder of goods? Duties of a finder of goods"],S3:["E","What is quasi-contract? When does quasi-contractual liability arise?"],S4:["E","What is quasi-contract? Explain the different types"],S6:["N","Short note on quasi contract"],S7:["E","What is quasi contract? When does quasi-contractual liability arise?"],S8:["E","What is quasi-contract? Explain the different types"],S9:["E","What is quasi contract? When does quasi-contractual liability arise?"]}],
+ ["IV","Quasi-contract problem (goods left by mistake, dues paid)",{S1:["N","A leaves an article at B's house by mistake; can A recover it?"],S3:["N","Tenant A pays the municipal taxes B failed to pay; can A recover the amount from B?"],S5:["N","Babita leaves an article at Namita's house by mistake; can she recover it?"],S6:["N","X leaves a packet of fruits at Y's house by mistake and Y consumes them; can X recover the money?"]}],
+ ["IV","Remedies for breach of contract",{S1:["E","What are the remedies available for a breach of contract?"],S4:["E","Remedies available for breach of contract"],S7:["E","Various remedies available for breach of contract"],S8:["E","What are the remedies available for a breach of contract?"],S10:["E","Explain the remedies for breach of contract"]}],
+ ["IV","Kinds and measure of damages",{S1:["E","General and special damages with the help of decided cases"],S2:["E","Ordinary and special damages with the help of decided cases"],S3:["E","Explain special damages and liquidated damages"],S5:["E","Explain the different kinds of damages"],S6:["E","'Damages are compensatory and not penal' – Elucidate"],S9:["E","Principles relating to measurement of damages (also a note on kinds of damages)"]}],
+ ["IV","Remoteness of damages; Hadley v. Baxendale",{S1:["N","A fails to supply goods on the day and B has to close his factory; advise B on remedies"],S4:["N","Rule in Hadley v. Baxendale"],S6:["E","Principle of remoteness of damages, with special reference to Hadley v. Baxendale"],S7:["N","Short note on remoteness of damages"],S10:["N","Short note on remoteness of damage"]}],
+ ["IV","Liquidated damages and penalty",{S3:["N","X must pay Y ₹1,00,000 if he fails to supply goods worth ₹20,000 on a day and fails; can Y recover ₹1,00,000?"],S4:["N","Liquidated damages and penalty"],S5:["N","Liquidated damages and penalty"],S7:["N","Distinguish between liquidated damages and penalty"]}],
+
+ ["V","Specific performance (meaning; who can claim)",{S1:["E","What is specific performance? Who can claim it?"],S4:["E","By whom and against whom specific performance can be claimed"],S7:["E","What is specific performance? When can contracts be specifically enforced?"],S8:["E","What is meant by specific performance? Who can claim it?"]}],
+ ["V","Contracts specifically enforceable or not",{S2:["E","Explain the contracts which can be specifically enforced"],S3:["E","Explain the contracts which cannot be specifically enforced"],S4:["N","Contracts which are not specifically enforceable"],S5:["E","Explain the contracts which can be specifically enforced"],S6:["E","Explain the contracts which cannot be specifically enforced"],S7:["E","When contracts can be specifically enforced"],S9:["N","Short note on contracts which can be specifically enforced"],S10:["E","Explain the contracts which can be specifically enforced"]}],
+ ["V","Injunctions (kinds; preventive relief)",{S1:["E","Perpetual and temporary injunctions (also a problem: a medical adviser threatens to publish a patient's letters)"],S2:["E","Explain preventive relief and how it is granted"],S3:["N","A, B's medical adviser, threatens to disclose B's communications as his patient; advise B"],S4:["N","Short note on injunction"],S5:["E","What is injunction? Explain its different kinds"],S6:["E","Preventive reliefs under the Specific Relief Act"],S7:["E","What is an injunction? Kinds of injunction under the Specific Relief Act"],S8:["E","Explain perpetual and temporary injunctions"],S9:["E","Circumstances in which the court may grant a temporary injunction"],S10:["E","Define injunction. Describe the various types of injunctions"]}],
+ ["V","Recovery of possession of property",{S1:["N","Shama forcibly dispossesses Rama of his building; advise Rama"],S2:["N","Short note on recovery of movable property"],S4:["E","Provisions relating to recovery of movable and immovable property"],S5:["N","Short note on recovery of movable property"],S8:["N","Short note on recovery of immovable property"],S9:["E","Recovery of movable and immovable property under the Specific Relief Act, 1963"],S10:["N","Short note on recovery of movable property"]}],
+ ["V","Cancellation and rectification of instruments",{S2:["N","Short note on cancellation of an instrument"],S3:["E","Explain the provisions relating to cancellation of instruments"],S5:["N","Short note on cancellation of instruments"],S6:["N","Short note on rectification of instruments"],S7:["N","Short note on cancellation of instruments"],S8:["N","Short note on cancellation of instruments"],S9:["N","Short note on cancellation of instruments"],S10:["N","Short note on cancellation of instruments"]}],
+ ["V","Declaratory relief",{S3:["N","Short note on declaratory relief"],S6:["N","Short note on declaratory decrees"],S7:["N","Short note on declaratory decree"]}]
+];
+
+const grid = document.getElementById('grid'), tip = document.getElementById('tip'), chips = document.getElementById('chips');
+let unit = 'All';
+const open = new Set();
+let paper = null;
+const NOTES = {
+  S1:"2018 batch paper.",
+  S2:"2018 and 2019 batch paper.",
+  S3:"Old pattern: answer any five 10-mark and any five 6-mark questions out of ten, so there are no OR choices.",
+  S4:"The file is marked April/May 2022 (Dec. 2021).",
+  S5:"The file is marked March/April 2023 (Dec. 2022).",
+  S6:"The file is marked Sept./Oct. 2023 (June 2023).",
+  S10:"Question 1(b) on the party: the English text says more friends turned up, while the Kannada text says no one came."
+};
+const paperEl = document.getElementById('paper');
+function esc(s){ return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function renderPaper(){
+  if (!paper) { paperEl.hidden = true; paperEl.innerHTML = ''; return; }
+  const [id,m,y] = S.find(x => x[0] === paper);
+  let units = '';
+  for (const u of Object.keys(UNITS)) {
+    const seen = new Set(), rows = [];
+    for (const r of T) { if (r[0] !== u) continue; const c = r[2][id]; if (!c || seen.has(c[1])) continue; seen.add(c[1]); rows.push([c, r[1]]); }
+    if (!rows.length) continue;
+    rows.sort((a,b) => (a[0][0] === b[0][0]) ? 0 : (a[0][0] === 'E' ? -1 : 1));
+    units += `<div class="paper-unit"><h3>Unit ${u} · ${UNITS[u]}</h3><ul class="qlist">` + rows.map(([c,t]) =>
+      `<li><span class="kind ${c[0].toLowerCase()}"><i></i>${c[0] === 'E' ? 'Essay · 10' : 'Note · 6'}</span><span class="q">${esc(c[1])} <span class="when">(${esc(t)})</span></span></li>`).join('') + `</ul></div>`;
+  }
+  paperEl.innerHTML = `<div class="paper-head"><h2>${m} ${y} paper<small>Questions grouped by unit, essays first</small></h2><button class="close" type="button" id="paper-close">Close</button></div>`
+    + (NOTES[id] ? `<p class="note">${NOTES[id]}</p>` : '') + `<div class="paper-units">${units}</div>`;
+  paperEl.hidden = false;
+}
+paperEl.addEventListener('click', e => { if (e.target.closest('#paper-close')) { const was = paper; paper = null; renderPaper(); render(); document.getElementById('yr-' + was)?.focus(); } });
+try { const u = localStorage.getItem('cl1-unit'); if (u && (u === 'All' || UNITS[u])) unit = u; } catch (e) {}
+
+function render(){
+  let h = '<thead><tr><th class="topic-h" scope="col">Topic</th>';
+  for (const [id,m,y] of S) h += `<th scope="col"><button class="ybtn" type="button" id="yr-${id}" data-s="${id}" aria-pressed="${paper === id}" aria-controls="paper" title="Show the ${m} ${y} paper">${m}<br>${y}</button></th>`;
+  h += '<th class="tally-h" scope="col">Times asked (of ' + S.length + ')</th></tr></thead><tbody>';
+  for (const u of Object.keys(UNITS)) {
+    if (unit !== 'All' && unit !== u) continue;
+    h += `<tr class="unit"><th colspan="${S.length + 2}" scope="colgroup">Unit ${u}<small>${UNITS[u]}</small></th></tr>`;
+    const rows = T.map((r,i)=>[r,i]).filter(([r]) => r[0] === u).sort((a,b) => Object.keys(b[0][2]).length - Object.keys(a[0][2]).length);
+    for (const [[, topic, cells], i] of rows) {
+      const n = Object.keys(cells).length;
+      const isOpen = open.has(i);
+      h += `<tr class="row"><th class="topic" scope="row"><button class="tbtn" type="button" id="topic-${i}" data-t="${i}" aria-expanded="${isOpen}" aria-controls="detail-${i}"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l6 4-6 4z"/></svg><span>${esc(topic)}</span></button></th>`;
+      for (const [id,m,y] of S) {
+        const c = cells[id];
+        if (c) {
+          const kind = c[0] === 'E' ? 'Essay, 10 marks' : 'Short note or problem, 6 marks';
+          h += `<td class="cell ${c[0].toLowerCase()}" tabindex="0" data-r="${i}" data-s="${id}" aria-label="${esc(topic)}, ${m} ${y}: ${kind}. ${esc(c[1])}"><i></i></td>`;
+        } else {
+          h += `<td class="cell" aria-label="${esc(topic)}, ${m} ${y}: not asked"><i></i></td>`;
+        }
+      }
+      h += `<td class="tally"><div class="bar"><b style="width:${n/S.length*100}px"></b><em>${n}</em></div></td></tr>`;
+      if (isOpen) {
+        const items = S.filter(([id]) => cells[id]).map(([id,m,y]) => { const c = cells[id];
+          return `<li><span class="when">${m} ${y}</span><span class="kind ${c[0].toLowerCase()}"><i></i>${c[0] === 'E' ? 'Essay · 10' : 'Note · 6'}</span><span class="q">${esc(c[1])}</span></li>`; }).reverse().join('');
+        h += `<tr class="detail" id="detail-${i}"><td colspan="${S.length + 2}"><ul class="qlist" aria-label="Questions asked on ${esc(topic)}, newest first">${items}</ul></td></tr>`;
+      }
+    }
+  }
+  grid.innerHTML = h + '</tbody>';
+}
+
+function renderChips(){
+  chips.innerHTML = ['All', ...Object.keys(UNITS)].map(u =>
+    `<button class="chip" type="button" id="chip-${u}" aria-pressed="${u === unit}" data-u="${u}">${u === 'All' ? 'All units' : 'Unit ' + u}</button>`).join('');
+}
+chips.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  unit = b.dataset.u; try { localStorage.setItem('cl1-unit', unit); } catch (err) {}
+  renderChips(); render(); hideTip();
+});
+
+grid.addEventListener('click', e => {
+  const y = e.target.closest('.ybtn');
+  if (y) { paper = (paper === y.dataset.s) ? null : y.dataset.s; hideTip(); renderPaper(); render();
+    const f = document.getElementById('yr-' + y.dataset.s); f?.focus(); if (paper) paperEl.scrollIntoView({block:'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); return; }
+  const b = e.target.closest('.tbtn'); if (!b) return;
+  const i = +b.dataset.t; open.has(i) ? open.delete(i) : open.add(i);
+  hideTip(); render(); document.getElementById('topic-' + i)?.focus();
+});
+function showTip(td){
+  const r = T[+td.dataset.r], s = S.find(x => x[0] === td.dataset.s), c = r[2][td.dataset.s];
+  tip.innerHTML = `<span class="k">${s[1]} ${s[2]} · ${c[0] === 'E' ? 'Essay, 10 marks' : 'Short note / problem, 6 marks'}</span>${esc(c[1])}`;
+  tip.hidden = false;
+  const b = td.getBoundingClientRect(), w = tip.offsetWidth, ht = tip.offsetHeight;
+  let x = b.left + b.width/2 - w/2; x = Math.max(8, Math.min(x, window.innerWidth - w - 8));
+  let y = b.top - ht - 8; if (y < 8) y = b.bottom + 8;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip(){ tip.hidden = true; }
+grid.addEventListener('mouseover', e => { const td = e.target.closest('td.cell[data-r]'); td ? showTip(td) : hideTip(); });
+grid.addEventListener('mouseleave', hideTip);
+grid.addEventListener('focusin', e => { const td = e.target.closest('td.cell[data-r]'); if (td) showTip(td); });
+grid.addEventListener('focusout', hideTip);
+grid.addEventListener('click', e => { const td = e.target.closest('td.cell[data-r]'); if (td) showTip(td); });
+document.querySelector('.board').addEventListener('scroll', hideTip, {passive:true});
+window.addEventListener('scroll', hideTip, {passive:true});
+
+renderChips(); render();
+</script>
+
+</body></html>

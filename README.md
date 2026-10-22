@@ -7,10 +7,16 @@ Study material for the 3-year LL.B. programme (KSLU), organised by paper.
 | Paper | Folder | Status |
 | --- | --- | --- |
 | Family Law I (Hindu Law), Semester I, subject code 4004 | `family-law-1/` | Past question bank, 13 papers (June 2019 to Jan/Feb 2026) |
+| Contract I (Law of General Contract), Semester I, subject code 4002 | `contract-1/` | Question Map, 10 papers (June 2019 to Jan/Feb 2026) |
+| Criminal Law I (BNS 2023), Semester I | `criminal-law-1/` | Question Map, 4 papers (Jan/Feb 2025 to Jan/Feb 2026) |
 
-## Live page
+## Live pages
 
-The Question Map is published with GitHub Pages from `docs/index.html` (source copy: `family-law-1/question-map.html`). Page URL: https://dgpl-ananthu-nair.github.io/LegallyKH/
+The Question Maps are published with GitHub Pages from `docs/`. Each has a source copy in its paper folder (`<paper>/question-map.html`); keep the two in sync.
+
+- Family Law I: https://dgpl-ananthu-nair.github.io/LegallyKH/ (`docs/index.html`)
+- Contract I: https://dgpl-ananthu-nair.github.io/LegallyKH/contract-1/ (`docs/contract-1/index.html`)
+- Criminal Law I: https://dgpl-ananthu-nair.github.io/LegallyKH/criminal-law-1/ (`docs/criminal-law-1/index.html`)
 
 ## Layout
 
@@ -18,8 +24,14 @@ The Question Map is published with GitHub Pages from `docs/index.html` (source c
 LegallyKH/
 ├── README.md
 ├── docs/
-│   ├── index.html
-│   └── papers/            (PDF copies served by the Pages site)
+│   ├── index.html                 (Family Law I map)
+│   ├── papers/                    (PDF copies served by the Pages site)
+│   ├── contract-1/index.html
+│   └── criminal-law-1/index.html
+├── contract-1/
+│   └── question-map.html
+├── criminal-law-1/
+│   └── question-map.html
 └── family-law-1/
     ├── question-bank.md
     ├── question-map.html

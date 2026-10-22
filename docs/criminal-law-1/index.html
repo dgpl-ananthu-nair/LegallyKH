@@ -1,0 +1,340 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Criminal Law I Question Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&display=swap">
+<style>
+/* Layout: one exam-register grid. Topics down, four sittings across, a tally at the right edge. */
+:root {
+  --bg: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #7a7872;
+  --rule: #e1e0d9;
+  --axis: #c3c2b7;
+  --essay: #256abf;
+  --note: #86b6ef;
+  --prob: #c9822b;
+  --empty: #ecebe6;
+  --focus: #1c5cab;
+  --chip-on: #0b0b0b;
+  --chip-on-ink: #fcfcfb;
+  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a9890;
+    --rule: #2c2c2a; --axis: #383835; --essay: #3987e5; --note: #1c5cab; --prob: #e0a04a; --empty: #262624;
+    --focus: #86b6ef; --chip-on: #f0efec; --chip-on-ink: #1a1a19; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a9890;
+  --rule: #2c2c2a; --axis: #383835; --essay: #3987e5; --note: #1c5cab; --prob: #e0a04a; --empty: #262624;
+  --focus: #86b6ef; --chip-on: #f0efec; --chip-on-ink: #1a1a19; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 20px; }
+header { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--serif); font-weight: 650; font-size: clamp(24px, 4vw, 32px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.lede { color: var(--ink-2); font-size: 15px; line-height: 1.5; max-width: 66ch; margin: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 13px var(--sans); color: var(--ink-2); background: transparent; border: 1px solid var(--axis);
+  border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.chip:hover { border-color: var(--ink-2); color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
+.chip:focus-visible, td.cell:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; color: var(--ink-2); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.sw.e { background: var(--essay); } .sw.n { background: var(--note); } .sw.p { background: var(--prob); } .sw.x { background: var(--empty); }
+.board { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; overflow-x: auto; }
+table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 620px; font-size: 13px; }
+th, td { padding: 0; }
+thead th { font-weight: 500; color: var(--muted); font-size: 11.5px; padding: 12px 2px 8px; text-align: center;
+  font-variant-numeric: tabular-nums; line-height: 1.3; border-bottom: 1px solid var(--axis); background: var(--surface); }
+thead th.topic-h { text-align: left; padding-left: 16px; }
+thead th.tally-h { text-align: left; padding-left: 12px; }
+th.topic { text-align: left; font-weight: 450; color: var(--ink); padding: 0 12px 0 16px; height: 36px;
+  position: sticky; left: 0; background: var(--surface); z-index: 1; min-width: 220px; max-width: 280px; }
+tr.unit th { text-align: left; padding: 18px 16px 6px; font-family: var(--serif); font-weight: 650; font-size: 14px;
+  color: var(--ink); border-bottom: 1px solid var(--rule); position: sticky; left: 0; background: var(--surface); }
+tr.unit th small { font-family: var(--sans); font-weight: 400; font-size: 12px; color: var(--muted); margin-left: 8px; }
+td.cell { text-align: center; width: 72px; cursor: default; }
+td.cell i { display: inline-block; width: 24px; height: 24px; border-radius: 4px; background: var(--empty); vertical-align: middle; }
+td.cell.e i { background: var(--essay); } td.cell.n i { background: var(--note); } td.cell.p i { background: var(--prob); }
+td.cell.e, td.cell.n, td.cell.p { cursor: pointer; }
+tbody tr.row:hover th.topic, tbody tr.row:hover td { background: color-mix(in srgb, var(--surface) 88%, var(--essay)); }
+td.tally { padding: 0 16px 0 12px; min-width: 120px; }
+.bar { display: flex; align-items: center; gap: 8px; }
+.bar b { display: block; height: 8px; border-radius: 0 4px 4px 0; background: var(--essay); }
+.bar em { font-style: normal; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; white-space: nowrap; }
+.tip { position: fixed; z-index: 20; max-width: 300px; background: var(--surface); color: var(--ink); border: 1px solid var(--axis);
+  border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.45; box-shadow: 0 6px 20px rgba(0,0,0,.14); pointer-events: none; }
+.tip .k { color: var(--muted); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+.notes { color: var(--muted); font-size: 12.5px; line-height: 1.5; max-width: 80ch; margin: 0; }
+.tbtn { all: unset; cursor: pointer; display: flex; align-items: center; gap: 8px; width: 100%; padding-block: 8px; color: var(--ink); }
+.tbtn:hover span { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--axis); }
+.tbtn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.tbtn svg { flex: none; width: 10px; height: 10px; fill: var(--muted); transition: transform .15s ease; }
+.tbtn[aria-expanded="true"] svg { transform: rotate(90deg); }
+.tbtn[aria-expanded="true"] span { font-weight: 600; }
+tr.detail td { padding: 4px 16px 16px; border-bottom: 1px solid var(--rule); }
+.qlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-width: 760px; }
+.qlist li { display: grid; grid-template-columns: 7.5em 8.5em 1fr; gap: 12px; align-items: baseline; font-size: 13px; line-height: 1.45; }
+.qlist .when { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.qlist .kind { font-size: 11.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.qlist .kind i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.qlist .kind.e i { background: var(--essay); } .qlist .kind.n i { background: var(--note); } .qlist .kind.p i { background: var(--prob); }
+.qlist .q { color: var(--ink); min-width: 0; }
+.qn { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 6px; }
+.ybtn { all: unset; cursor: pointer; color: var(--focus); text-decoration: underline; text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--focus) 45%, transparent); border-radius: 4px; padding: 2px 3px; display: inline-block; }
+.ybtn:hover { text-decoration-color: currentColor; }
+.ybtn:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.ybtn[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); text-decoration: none; }
+.paper { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
+.paper-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.paper h2 { font-family: var(--serif); font-weight: 650; font-size: 20px; margin: 0; }
+.paper h2 small { font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--muted); margin-left: 8px; }
+.paper .close { font: 500 13px var(--sans); color: var(--ink-2); background: transparent; border: 1px solid var(--axis); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.paper .close:hover { color: var(--ink); border-color: var(--ink-2); }
+.paper .close:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.paper .qlist li { grid-template-columns: 4.5em 8.5em 1fr; }
+.paper .note { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+.paper .u { color: var(--muted); font-size: 12px; margin-left: 6px; }
+@media (max-width: 560px) { .qlist li, .paper .qlist li { grid-template-columns: 1fr; gap: 2px; } }
+@media (max-width: 560px) { th.topic { min-width: 150px; font-size: 12.5px; padding-left: 12px; } thead th.topic-h, tr.unit th { padding-left: 12px; } }
+@media (prefers-reduced-motion: no-preference) { .bar b { transition: width .25s ease; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">KSLU · LL.B. · Semester I · Criminal Law I (BNS 2023)</span>
+    <h1>Criminal Law I Question Map</h1>
+    <p class="lede">What KSLU asked in four Bharatiya Nyaya Sanhita papers from January 2025 to January 2026, topic by topic. Three are 100-mark papers (answer Q9, the problems, and any five of Q1 to Q8). The newest is an 80-mark paper with five units, each with an essay and a short note or problem, both with an OR choice. Click a sitting to see that whole paper, click a topic to list every question asked on it, or hover over a square to see one question.</p>
+  </header>
+
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by unit" id="chips"></div>
+    <div class="legend" aria-hidden="true">
+      <span><i class="sw e"></i>Essay (16 marks; 10 in the 80-mark paper)</span>
+      <span><i class="sw n"></i>Short note (8; 6)</span>
+      <span><i class="sw p"></i>Problem (10; 6)</span>
+      <span><i class="sw x"></i>Not asked</span>
+    </div>
+  </div>
+
+  <section class="paper" id="paper" hidden aria-live="polite"></section>
+
+  <div class="board"><table id="grid" aria-label="Topics asked in each exam sitting"></table></div>
+
+  <p class="notes">Topics are grouped under the units of the new BNS syllabus. The 100-mark papers are not printed by unit, so their questions were placed by topic, using the 80-mark paper as the guide. If a topic appeared more than once in a sitting, the square shows the larger question. "Times asked" counts papers, not questions. Where one question covers two topics (for example, criminal conspiracy and how it differs from abetment), it appears under both. In the 100-mark papers Q8 asks for any two of three short notes and Q9 for any two of three problems. The file labelled "undated" is the January/February 2025 paper. This map covers four papers; older papers were not available, so a topic that has not appeared yet may still be asked.</p>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const S = [
+  ["A","Jan–Feb","2025","100"],["B","Jun–Jul","2025","100"],["C","Jan–Feb","2026","100"],["D","Jan–Feb","2026","80"]
+];
+const MARKS = {A:{E:16,N:8,P:10},B:{E:16,N:8,P:10},C:{E:16,N:8,P:10},D:{E:10,N:6,P:6}};
+const KIND = {E:"Essay",N:"Short note",P:"Problem"};
+const UNITS = {I:"General principles, punishments, general exceptions", II:"Inchoate crimes, women and children", III:"Offences against the human body", IV:"State, public order, nuisance, trespass", V:"Property offences and defamation"};
+// cell = [type E/N/P, question wording, question number]
+const T = [
+ ["I","General exceptions: good faith, accident (problems)",{
+   A:["P","A surgeon tells a patient in good faith that he cannot live; the patient dies of the shock","Q9(a)"],
+   B:["P","A is carried off by a tiger; B fires at the tiger, knowing the shot may kill A, and A is killed","Q9(b)"],
+   C:["P","A, working with a latchet, has the head fly off and kill a man standing by","Q9(a)"],
+   D:["P","A surgeon operates on Z, who suffers a painful complaint, knowing it may cause death, but in good faith and with Z's consent","Q1(b) OR"]}],
+ ["I","Punishments under the BNS",{
+   A:["E","Explain the various types of punishment to which offenders are liable under the BNS","Q2"],
+   B:["E","Explain the various types of punishments under the BNS, 2023","Q1"],
+   D:["N","Explain the punishments prescribed under the BNS, 2023","Q1(b)"]}],
+ ["I","Community service; solitary confinement",{
+   B:["N","Community services","Q8(a)"],
+   C:["N","Solitary confinement","Q8(c)"]}],
+ ["I","Right of private defence",{
+   C:["E","What is the right of private defence? When does the right of private defence of the body extend to causing death?","Q2"]}],
+ ["I","Parties to a crime",{
+   C:["E","Explain the possible parties to a crime. How do the liabilities of the parties vary?","Q1"]}],
+ ["I","Mens rea",{
+   A:["N","Mens rea","Q8(c)"]}],
+ ["I","Crime; crime v. tort",{
+   A:["E","Define crime. Explain the difference between crime and tort","Q1"]}],
+ ["I","Rationale, history and extent of the BNS",{
+   D:["E","Rationale for replacing the IPC 1860 with the BNS and its key reforms · OR historical background, extent of operation and key features","Q1(a)"]}],
+
+ ["II","Abetment",{
+   A:["E","Explain the law relating to abetment under the BNS, 2023","Q3"],
+   B:["E","What is criminal conspiracy? How does it differ from abetment?","Q7"],
+   C:["N","Abetment","Q8(a)"]}],
+ ["II","Criminal conspiracy",{
+   B:["E","What is criminal conspiracy? How does it differ from abetment?","Q7"],
+   D:["N","Explain the provisions related to criminal conspiracy under the BNS, 2023","Q2(b) OR"]}],
+ ["II","Offences relating to marriage",{
+   B:["E","Explain the offences relating to marriage under the BNS, 2023","Q2"],
+   C:["E","Explain the offences relating to marriage under the BNS, 2023","Q3"]}],
+ ["II","Rape and sexual offences (consent of a minor)",{
+   B:["P","Z has sexual intercourse, with her consent, with Y, a minor girl below 16. Has Z committed any offence?","Q9(c)"],
+   D:["E","Discuss the offences related to rape and other sexual offences against women","Q2(a)"]}],
+ ["II","Criminal force and assault against women",{
+   B:["N","Criminal force and assault against women","Q8(c)"],
+   D:["E","What are the key elements of criminal force and assault against women under the BNS, 2023?","Q2(a) OR"]}],
+ ["II","Kidnapping (from lawful guardianship)",{
+   B:["P","A takes an unmarried girl under 16 out of her father's custody against his will. What offence has A committed?","Q9(a)"],
+   D:["N","Kidnapping","Q2(b)"]}],
+ ["II","Dowry death",{
+   A:["N","Dowry death","Q8(a)"]}],
+
+ ["III","Hurt and grievous hurt",{
+   A:["E","What is hurt? Explain the circumstances under which hurt becomes grievous hurt","Q5"],
+   B:["E","Explain the circumstances under which hurt amounts to grievous hurt","Q3"],
+   C:["P","A intends to disfigure B's face permanently; the blow does not disfigure but B suffers severe bodily pain for 16 days","Q9(c)"],
+   D:["E","Explain the circumstances under which hurt amounts to grievous hurt","Q3(a)"]}],
+ ["III","Culpable homicide v. murder",{
+   A:["E","What is culpable homicide? Explain the circumstances under which it amounts to murder","Q4"],
+   B:["E","Define murder. Explain when culpable homicide does not amount to murder","Q6"],
+   C:["E","Distinguish culpable homicide and murder. When does culpable homicide not amount to murder?","Q4"]}],
+ ["III","Wrongful restraint and wrongful confinement",{
+   A:["P","A builds a wall across a path along which B passes, so B is prevented from passing. What offence has A committed?","Q9(c)"],
+   C:["E","Define wrongful restraint. Distinguish it from wrongful confinement","Q5"],
+   D:["E","Explain wrongful restraint and how it is different from wrongful confinement","Q3(a) OR"]}],
+ ["III","Terrorist act; mob lynching",{
+   D:["N","Terrorist act · OR mob lynching","Q3(b)"]}],
+
+ ["IV","Criminal trespass (house-trespass, house-breaking)",{
+   A:["E","Explain the essential factors of criminal trespass, house-trespass and house-breaking","Q6"],
+   B:["N","Criminal trespass","Q8(b)"],
+   C:["N","Criminal trespass","Q8(b)"]}],
+ ["IV","Public nuisance",{
+   B:["E","What is public nuisance? Briefly explain the negligent acts which cause injury to public safety and health","Q4"],
+   D:["N","Public nuisance","Q4(b) OR"]}],
+ ["IV","Mischief",{
+   A:["P","A voluntarily throws Z's ring into a river, intending to cause Z wrongful loss. What offence has A committed?","Q9(b)"],
+   D:["N","Mischief","Q4(b)"]}],
+ ["IV","Offences against the State",{
+   D:["E","Explain the offences against the State","Q4(a)"]}],
+ ["IV","Election, coin and currency offences",{
+   D:["E","Explain the offences relating to election, coin and currency notes under the BNS, 2023","Q4(a) OR"]}],
+
+ ["V","Theft, extortion, robbery",{
+   A:["E","In all robbery there is either theft or extortion. Explain","Q7"],
+   B:["E","What is theft and how does it differ from extortion under the BNS, 2023?","Q5"],
+   C:["P","A threatens to publish a defamatory libel about Z unless Z gives him money, and so induces Z to pay. Has A committed any offence?","Q9(b)"],
+   D:["E","What is theft and how does it differ from extortion?","Q5(a)"]}],
+ ["V","Defamation",{
+   A:["N","Defamation","Q8(b)"],
+   C:["E","Write the essentials of defamation and state the exceptions","Q6"],
+   D:["P","The editor A is out of the district; manager X, acting as editor, lets a defamatory article about P appear. Is A liable?","Q5(b) OR"]}],
+ ["V","Criminal breach of trust; misappropriation",{
+   C:["E","What is criminal misappropriation of property? How does it differ from criminal breach of trust?","Q7"],
+   D:["E","Explain the criminal breach of trust under the BNS, 2023","Q5(a) OR"]}],
+ ["V","Receiving stolen property",{
+   D:["N","Receiving stolen property","Q5(b)"]}]
+];
+
+const NOTES = {
+  A:"The file name says 'undated'; the paper itself reads January/February 2025 (Odd Sem.). 100 marks. Answer Q9 and any five of Q1 to Q8.",
+  B:"June/July 2025 (Even Sem.). 100 marks. Answer Q9 and any five of Q1 to Q8.",
+  C:"January/February 2026 (Odd Sem.), headed 'BNS 2023-24', for the 3-year and 5-year programmes. 100 marks. Answer Q9 and any five of Q1 to Q8.",
+  D:"January/February 2026 (Odd Sem.). 80 marks. Five units; each has an essay (10 marks) and a short note or problem (6 marks), both with an OR choice. The Q1(b) choice is punishments or the surgeon problem; Q5(b) is receiving stolen property or the editor problem."
+};
+
+const grid = document.getElementById('grid'), tip = document.getElementById('tip'), chips = document.getElementById('chips');
+const paperEl = document.getElementById('paper');
+let unit = 'All';
+const open = new Set();
+let paper = null;
+try { const u = localStorage.getItem('cl1-unit'); if (u && (u === 'All' || UNITS[u])) unit = u; } catch (e) {}
+
+function esc(s){ return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function sit(id){ return S.find(x => x[0] === id); }
+function when(id){ const s = sit(id); return s[1] + ' ' + s[2] + ' · ' + s[3] + 'M'; }
+function kindLabel(id, t){ return KIND[t] + ', ' + MARKS[id][t] + ' marks'; }
+function qkey(q){ const m = /Q(\d+)(?:\(([a-z])\))?(\s+OR)?/.exec(q); return (+m[1]) * 1000 + (m[2] ? m[2].charCodeAt(0) : 0) * 2 + (m[3] ? 1 : 0); }
+
+function renderPaper(){
+  if (!paper) { paperEl.hidden = true; paperEl.innerHTML = ''; return; }
+  const s = sit(paper), rows = [], seen = new Set();
+  for (const r of T) { const c = r[2][paper]; if (!c) continue; const k = c[2] + c[1]; if (seen.has(k)) continue; seen.add(k); rows.push([c, r[0]]); }
+  rows.sort((a,b) => qkey(a[0][2]) - qkey(b[0][2]));
+  const items = rows.map(([c,u]) => `<li><span class="qn">${esc(c[2])}</span><span class="kind ${c[0].toLowerCase()}"><i></i>${KIND[c[0]]} · ${MARKS[paper][c[0]]}</span><span class="q">${esc(c[1])}<span class="u">Unit ${u}</span></span></li>`).join('');
+  paperEl.innerHTML = `<div class="paper-head"><h2>${s[1]} ${s[2]} paper<small>${s[3]} marks · questions in paper order</small></h2><button class="close" type="button" id="paper-close">Close</button></div><p class="note">${esc(NOTES[paper])}</p><ul class="qlist">${items}</ul>`;
+  paperEl.hidden = false;
+}
+paperEl.addEventListener('click', e => { if (e.target.closest('#paper-close')) { const was = paper; paper = null; renderPaper(); render(); document.getElementById('yr-' + was)?.focus(); } });
+
+function render(){
+  let h = '<thead><tr><th class="topic-h" scope="col">Topic</th>';
+  for (const [id,m,y,mk] of S) h += `<th scope="col"><button class="ybtn" type="button" id="yr-${id}" data-s="${id}" aria-pressed="${paper === id}" aria-controls="paper" title="Show the ${m} ${y} paper (${mk} marks)">${m}<br>${y}<br>${mk}M</button></th>`;
+  h += '<th class="tally-h" scope="col">Times asked (of ' + S.length + ')</th></tr></thead><tbody>';
+  for (const u of Object.keys(UNITS)) {
+    if (unit !== 'All' && unit !== u) continue;
+    h += `<tr class="unit"><th colspan="${S.length + 2}" scope="colgroup">Unit ${u}<small>${UNITS[u]}</small></th></tr>`;
+    const rows = T.map((r,i)=>[r,i]).filter(([r]) => r[0] === u).sort((a,b) => Object.keys(b[0][2]).length - Object.keys(a[0][2]).length);
+    for (const [[, topic, cells], i] of rows) {
+      const n = Object.keys(cells).length, isOpen = open.has(i);
+      h += `<tr class="row"><th class="topic" scope="row"><button class="tbtn" type="button" id="topic-${i}" data-t="${i}" aria-expanded="${isOpen}" aria-controls="detail-${i}"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l6 4-6 4z"/></svg><span>${esc(topic)}</span></button></th>`;
+      for (const [id,m,y,mk] of S) {
+        const c = cells[id];
+        if (c) h += `<td class="cell ${c[0].toLowerCase()}" tabindex="0" data-r="${i}" data-s="${id}" aria-label="${esc(topic)}, ${m} ${y} ${mk} marks paper: ${kindLabel(id,c[0])}. ${esc(c[1])}"><i></i></td>`;
+        else h += `<td class="cell" aria-label="${esc(topic)}, ${m} ${y} ${mk} marks paper: not asked"><i></i></td>`;
+      }
+      h += `<td class="tally"><div class="bar"><b style="width:${n/S.length*100}px"></b><em>${n}</em></div></td></tr>`;
+      if (isOpen) {
+        const items = S.filter(([id]) => cells[id]).map(([id]) => { const c = cells[id];
+          return `<li><span class="when">${when(id)}</span><span class="kind ${c[0].toLowerCase()}"><i></i>${KIND[c[0]]} · ${MARKS[id][c[0]]}</span><span class="q"><span class="qn">${esc(c[2])}</span>${esc(c[1])}</span></li>`; }).reverse().join('');
+        h += `<tr class="detail" id="detail-${i}"><td colspan="${S.length + 2}"><ul class="qlist" aria-label="Questions asked on ${esc(topic)}, newest first">${items}</ul></td></tr>`;
+      }
+    }
+  }
+  grid.innerHTML = h + '</tbody>';
+}
+
+function renderChips(){
+  chips.innerHTML = ['All', ...Object.keys(UNITS)].map(u =>
+    `<button class="chip" type="button" id="chip-${u}" aria-pressed="${u === unit}" data-u="${u}">${u === 'All' ? 'All units' : 'Unit ' + u}</button>`).join('');
+}
+chips.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  unit = b.dataset.u; try { localStorage.setItem('cl1-unit', unit); } catch (err) {}
+  renderChips(); render(); hideTip();
+});
+grid.addEventListener('click', e => {
+  const y = e.target.closest('.ybtn');
+  if (y) { paper = (paper === y.dataset.s) ? null : y.dataset.s; hideTip(); renderPaper(); render();
+    document.getElementById('yr-' + y.dataset.s)?.focus();
+    if (paper) paperEl.scrollIntoView({block:'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); return; }
+  const b = e.target.closest('.tbtn');
+  if (b) { const i = +b.dataset.t; open.has(i) ? open.delete(i) : open.add(i); hideTip(); render(); document.getElementById('topic-' + i)?.focus(); return; }
+  const td = e.target.closest('td.cell[data-r]'); if (td) showTip(td);
+});
+function showTip(td){
+  const r = T[+td.dataset.r], id = td.dataset.s, c = r[2][id];
+  tip.innerHTML = `<span class="k">${when(id)} · ${kindLabel(id,c[0])} · ${esc(c[2])}</span>${esc(c[1])}`;
+  tip.hidden = false;
+  const b = td.getBoundingClientRect(), w = tip.offsetWidth, ht = tip.offsetHeight;
+  let x = b.left + b.width/2 - w/2; x = Math.max(8, Math.min(x, window.innerWidth - w - 8));
+  let y = b.top - ht - 8; if (y < 8) y = b.bottom + 8;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip(){ tip.hidden = true; }
+grid.addEventListener('mouseover', e => { const td = e.target.closest('td.cell[data-r]'); td ? showTip(td) : hideTip(); });
+grid.addEventListener('mouseleave', hideTip);
+grid.addEventListener('focusin', e => { const td = e.target.closest('td.cell[data-r]'); if (td) showTip(td); });
+grid.addEventListener('focusout', hideTip);
+document.querySelector('.board').addEventListener('scroll', hideTip, {passive:true});
+window.addEventListener('scroll', hideTip, {passive:true});
+
+renderChips(); render();
+</script>
+
+</body></html>

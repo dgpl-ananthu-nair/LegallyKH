@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1d2a4a"/><rect y="90" width="33.3" height="10" fill="#d9772b"/><rect x="33.3" y="90" width="33.4" height="10" fill="#f7f4ec"/><rect x="66.7" y="90" width="33.3" height="10" fill="#2f6b45"/><text x="50" y="60" font-family="Georgia,serif" font-size="30" font-weight="700" fill="#f7f4ec" text-anchor="middle">KH</text></svg></template>
+
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,500;0,700;1,500&family=Noto+Sans:ital,wdth,wght@0,87.5,400;0,87.5,500;0,87.5,600;1,87.5,400&family=Noto+Sans+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="./data/part1-2.js"></script>
+<script src="./data/part3.js"></script>
+<script src="./data/part4.js"></script>
+<script src="./data/part5.js"></script>
+<script src="./data/part6-7.js"></script>
+<script src="./data/part8-10.js"></script>
+<script src="./data/part11.js"></script>
+<script src="./data/part12-21.js"></script>
+<script src="./data/overview.js"></script>
+<script src="./data/ui.js"></script>
+<style>body{margin:0;background:#f7f4ec}a{color:#1d2a4a}a:hover{color:#c8641e}</style>
+<script src="./mate.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#f7f4ec;color:#1d2a4a;font-family:'Noto Sans',sans-serif;font-stretch:87.5%;font-size:16px;line-height:1.55">
+  {{ loader }}
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:6px">
+    <div style="background:#d9772b"></div><div style="background:#f7f4ec"></div><div style="background:#2f6b45"></div>
+  </div>
+  <nav style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px clamp(16px,5vw,56px);border-bottom:1.5px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:13px">
+    <a href="index.html" style="text-decoration:none;font-weight:600">← Constitution of India</a>
+    <a href="papers.html" style="color:#2f6b45;font-weight:600;text-decoration:none">KSLU papers</a>
+  </nav>
+  <main style="max-width:1040px;margin:0 auto;padding:48px clamp(16px,5vw,56px) 72px;display:flex;flex-direction:column;gap:24px">
+    <header style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#c8641e">Revision aid</div>
+      <h1 style="margin:0;font-family:'Noto Serif',serif;font-weight:700;font-size:clamp(36px,6vw,60px);line-height:1.05">Cases A–Z</h1>
+      <p style="margin:4px 0 0;max-width:68ch;text-wrap:pretty">{{ intro }}</p>
+    </header>
+    <input value="{{ q }}" onChange="{{ onQ }}" placeholder="Filter by case name, citation or article…" style="font-family:'Noto Sans',sans-serif;font-size:16px;padding:11px 14px;border:1.5px solid #1d2a4a;background:#fbf9f3;color:#1d2a4a;outline:none;max-width:520px"></input>
+    <div style="display:flex;gap:4px;flex-wrap:wrap">
+      <sc-for list="{{ letters }}" as="l" hint-placeholder-count="20">
+        <a href="{{ l.hash }}" onClick="{{ jumpTo }}" style="min-width:28px;text-align:center;padding:3px 6px;border:1px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:13px;text-decoration:none;color:#1d2a4a;transition:background .2s,color .2s" style-hover="background:#1d2a4a;color:#f7f4ec">{{ l.l }}</a>
+      </sc-for>
+    </div>
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+      <section id="{{ g.anchor }}" style="display:flex;flex-direction:column;scroll-margin-top:16px">
+        <h2 style="margin:12px 0 4px;font-family:'Noto Serif',serif;font-size:28px;font-weight:700;color:#c8641e;border-bottom:1.5px solid #c8641e">{{ g.l }}</h2>
+        <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:baseline;padding:8px 0;border-bottom:1px solid #e6e0d2">
+            <span style="display:flex;flex-direction:column;gap:1px">
+              <span style="font-family:'Noto Serif',serif;font-style:italic;font-weight:500;font-size:17px;text-wrap:pretty">{{ c.name }}</span>
+              <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#5b6273">{{ c.cite }}</span>
+            </span>
+            <span style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+              <sc-for list="{{ c.links }}" as="lk" hint-placeholder-count="1">
+                <a href="{{ lk.href }}" style="font-family:'Noto Sans Mono',monospace;font-size:12px;padding:1px 7px;border:1px solid #c8641e;color:#b3561a;text-decoration:none;white-space:nowrap;transition:background .2s,color .2s" style-hover="background:#c8641e;color:#fff">{{ lk.label }}</a>
+              </sc-for>
+            </span>
+          </div>
+        </sc-for>
+      </section>
+    </sc-for>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { q: '', loading: true, leaving: false, ready: false };
+  isReady() { const p = window.COI && window.COI.parts; return !!p && ['I', 'III', 'V', 'XII', 'XXI', 'OV'].every(k => p[k]); }
+  componentDidMount() {
+    const tick = () => this.isReady() ? this.setState({ ready: true }) : (this.t = setTimeout(tick, 40));
+    tick();
+    const bootUI = () => window.COI_UI ? window.COI_UI.boot(this, () => this.isReady()) : (this.b = setTimeout(bootUI, 30));
+    bootUI();
+  }
+  componentWillUnmount() { clearTimeout(this.t); clearTimeout(this.b); }
+  build() {
+    if (this.cases) return this.cases;
+    const map = new Map();
+    const norm = s => s.toLowerCase().replace(/\([^)]*\)/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+    for (const P of Object.values(window.COI.parts)) for (const [id, a] of Object.entries(P.articles)) for (const c of (a.cases || [])) {
+      if (/ case$/i.test(c.name) && c.name.split(' ').length <= 3) continue;
+      const k = norm(c.name).split(' ').slice(0, 4).join(' ');
+      const e = map.get(k) || { name: c.name, cite: c.cite, links: [] };
+      const label = /^\d/.test(id) ? 'Art. ' + id : a.title.split(' · ')[0];
+      if (!e.links.some(l => l.label === label)) e.links.push({ label, href: 'article.html?a=' + encodeURIComponent(id) });
+      if (c.name.length > e.name.length && !/ case$/i.test(c.name)) e.name = c.name;
+      map.set(k, e);
+    }
+    const sortKey = n => n.replace(/^(In re|State of|Union of India v\.)\s*/i, '').replace(/^the\s+/i, '');
+    this.cases = [...map.values()].map(c => ({ ...c, sk: sortKey(c.name) })).sort((a, b) => a.sk.localeCompare(b.sk));
+    return this.cases;
+  }
+  renderVals() {
+    const loader = this.state.loading && window.COI_UI ? window.COI_UI.loader(React, { leaving: this.state.leaving, label: 'Cases A–Z' }) : null;
+    const base = { loader, q: this.state.q, onQ: e => this.setState({ q: e.target.value }), letters: [], groups: [], intro: '',
+      jumpTo: e => { e.preventDefault(); const el = document.getElementById(e.currentTarget.getAttribute('href').slice(1)); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 16, behavior: 'smooth' }); } };
+    if (!this.state.ready) return base;
+    const all = this.build();
+    const q = this.state.q.trim().toLowerCase();
+    const list = q ? all.filter(c => (c.name + ' ' + c.cite + ' ' + c.links.map(l => l.label).join(' ')).toLowerCase().includes(q)) : all;
+    const by = {};
+    list.forEach(c => { const l = (c.sk[0] || '#').toUpperCase(); (by[l] = by[l] || []).push(c); });
+    const keys = Object.keys(by).sort();
+    document.title = 'Cases A–Z · Constitution of India';
+    return { ...base,
+      intro: all.length + ' cases used across the article pages, sorted by party name (ignoring "State of", "Union of India v." and "In re"). Each links to every article where it is discussed.',
+      letters: keys.map(l => ({ l, hash: '#l-' + l })),
+      groups: keys.map(l => ({ l, anchor: 'l-' + l, items: by[l] })) };
+  }
+}
+</script>
+</body>
+</html>

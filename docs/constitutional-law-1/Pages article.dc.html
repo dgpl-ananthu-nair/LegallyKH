@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1d2a4a"/><rect y="90" width="33.3" height="10" fill="#d9772b"/><rect x="33.3" y="90" width="33.4" height="10" fill="#f7f4ec"/><rect x="66.7" y="90" width="33.3" height="10" fill="#2f6b45"/><text x="50" y="60" font-family="Georgia,serif" font-size="30" font-weight="700" fill="#f7f4ec" text-anchor="middle">KH</text></svg></template>
+
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,500;0,700;1,500&family=Noto+Sans:ital,wdth,wght@0,87.5,400;0,87.5,500;0,87.5,600;1,87.5,400&family=Noto+Sans+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="./data/part3.js"></script>
+<script src="./data/part4.js"></script>
+<script src="./data/part1-2.js"></script>
+<script src="./data/part5.js"></script>
+<script src="./data/part6-7.js"></script>
+<script src="./data/part8-10.js"></script>
+<script src="./data/part11.js"></script>
+<script src="./data/part12-21.js"></script>
+<script src="./data/overview.js"></script>
+<script src="./data/kslu.js"></script>
+<script src="./data/papers.js"></script>
+<script src="./data/papers2.js"></script>
+<script src="./data/ui.js"></script>
+<style>body{margin:0;background:#f7f4ec}a{color:#1d2a4a}a:hover{color:#c8641e}</style>
+<script src="./mate.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#f7f4ec;color:#1d2a4a;font-family:'Noto Sans',sans-serif;font-stretch:87.5%;font-size:16px;line-height:1.55">
+  {{ loader }}
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:6px">
+    <div style="background:#d9772b"></div><div style="background:#f7f4ec"></div><div style="background:#2f6b45"></div>
+  </div>
+  <nav style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px clamp(16px,5vw,56px);border-bottom:1.5px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:13px">
+    <a href="index.html" style="text-decoration:none;font-weight:600">← Constitution of India</a>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:#5b6273">
+      <a href="papers.html" style="color:#2f6b45;font-weight:600;text-decoration:none;padding:3px 8px;border:1px solid #2f6b45;transition:background .2s,color .2s" style-hover="background:#2f6b45;color:#fff">KSLU papers</a>
+      <a href="{{ partHref }}" style="color:#5b6273">{{ partLabel }}</a>
+      <sc-if value="{{ isArticle }}" hint-placeholder-val="{{ false }}"><span>›</span><a href="{{ groupHref }}" style="color:#5b6273">{{ groupName }}</a></sc-if>
+    </div>
+  </nav>
+
+  <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+    <main style="max-width:880px;margin:0 auto;padding:64px clamp(16px,5vw,56px)">
+      <h1 style="font-family:'Noto Serif',serif;font-size:36px;margin:0 0 12px">Not written yet</h1>
+      <p style="margin:0">This entry hasn't been prepared yet. Parts I to XI are complete; Parts XII to XXI cover the articles in the KSLU Constitutional Law I and II syllabi.</p>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isPart }}" hint-placeholder-val="{{ false }}">
+    <main style="max-width:880px;margin:0 auto;padding:48px clamp(16px,5vw,56px) 72px;display:flex;flex-direction:column;gap:28px">
+      <header style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#c8641e">{{ partEyebrow }}</div>
+          <sc-for list="{{ partBadges }}" as="bd" hint-placeholder-count="0"><span style="font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:3px 8px;border:1.5px solid #2f6b45;color:#2f6b45;white-space:nowrap">{{ bd }}</span></sc-for>
+        </div>
+        <h1 style="margin:0;font-family:'Noto Serif',serif;font-weight:700;font-size:clamp(36px,6vw,60px);line-height:1.05">{{ part.title }}</h1>
+        <p style="margin:6px 0 0;max-width:70ch;text-wrap:pretty">{{ part.intro }}</p>
+      </header>
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="8">
+        <section id="{{ g.anchor }}" style="display:flex;flex-direction:column;gap:6px;scroll-margin-top:16px">
+          <sc-if value="{{ g.chapter }}" hint-placeholder-val="{{ false }}"><div style="margin-top:14px;font-family:'Noto Serif',serif;font-weight:700;font-size:22px;color:#1d2a4a">{{ g.chapter }}</div></sc-if>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:4px;border-bottom:1.5px solid #c8641e">
+            <h2 style="margin:0;font-size:15px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#b3561a">{{ g.name }}</h2>
+            <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#b3561a">{{ g.rangeLabel }}</span>
+          </div>
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+            <a href="{{ it.href }}" style="display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:8px 6px;margin:0 -6px;border-bottom:1px solid #e6e0d2;text-decoration:none;color:#1d2a4a;transition:background .2s ease,padding .2s ease" style-hover="background:#efe9dc;padding-left:12px">
+              <span style="font-family:'Noto Sans Mono',monospace;font-weight:600;font-size:14px">{{ it.idLabel }}</span>
+              <span style="text-wrap:pretty">{{ it.title }}</span>
+              <span style="display:flex;gap:8px;align-items:baseline;justify-content:flex-end;flex-wrap:wrap">
+                <sc-if value="{{ it.unit }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Noto Sans Mono',monospace;font-size:11px;font-weight:600;padding:1px 6px;border:1px solid #2f6b45;color:#2f6b45;white-space:nowrap">{{ it.unit }}</span></sc-if>
+                <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#5b6273;white-space:nowrap">{{ it.meta }}</span>
+              </span>
+            </a>
+          </sc-for>
+        </section>
+      </sc-for>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isArticle }}" hint-placeholder-val="{{ false }}">
+    <main style="max-width:880px;margin:0 auto;padding:48px clamp(16px,5vw,56px) 40px;display:flex;flex-direction:column;gap:36px">
+      <header style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#c8641e">{{ eyebrow }}</div>
+          <sc-for list="{{ badges }}" as="bd" hint-placeholder-count="0"><span title="{{ bd.title }}" style="font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:3px 8px;border:1.5px solid #2f6b45;color:#2f6b45;white-space:nowrap">{{ bd.label }}</span></sc-for>
+        </div>
+        <h1 style="margin:0;font-family:'Noto Serif',serif;font-weight:700;font-size:clamp(30px,5vw,48px);line-height:1.12;text-wrap:balance">{{ art.title }}</h1>
+        <sc-if value="{{ art.omitted }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start;padding:6px 10px;border:1.5px solid #8a8e98;color:#5b6273;font-size:14px">{{ art.omitted }}</div>
+        </sc-if>
+      </header>
+
+      <section style="display:flex;flex-direction:column;gap:10px">
+        <h2 style="margin:0;font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5b6273">What it says</h2>
+        <p style="margin:0;font-family:'Noto Serif',serif;font-size:18px;line-height:1.6;text-wrap:pretty">{{ art.summary }}</p>
+      </section>
+
+      <sc-if value="{{ hasClauses }}" hint-placeholder-val="{{ false }}">
+        <section style="display:flex;flex-direction:column;gap:8px">
+          <h2 style="margin:0;font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5b6273">Key points</h2>
+          <sc-for list="{{ art.clauses }}" as="c" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:6px"><span style="color:#c8641e">■</span><span style="text-wrap:pretty">{{ c }}</span></div>
+          </sc-for>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ hasAmend }}" hint-placeholder-val="{{ false }}">
+        <section style="display:flex;flex-direction:column;gap:8px">
+          <h2 style="margin:0;font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5b6273">Amendments</h2>
+          <sc-for list="{{ art.amendments }}" as="c" hint-placeholder-count="2">
+            <div style="padding:6px 0;border-bottom:1px solid #e6e0d2;text-wrap:pretty">{{ c }}</div>
+          </sc-for>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ hasCases }}" hint-placeholder-val="{{ false }}">
+        <section style="display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5b6273">Case law · IRAC</h2>
+          <sc-for list="{{ art.cases }}" as="k" hint-placeholder-count="3">
+            <article style="border:1.5px solid #1d2a4a;background:#fbf9f3">
+              <div style="background:#1d2a4a;color:#f7f4ec;padding:10px 16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+                <h3 style="margin:0;font-family:'Noto Serif',serif;font-style:italic;font-weight:500;font-size:18px;line-height:1.3">{{ k.name }}</h3>
+                <span style="font-family:'Noto Sans Mono',monospace;font-size:12.5px;color:#f0b37e">{{ k.cite }}</span>
+              </div>
+              <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:0">
+                <div style="padding:10px 16px;border-bottom:1px solid #e6e0d2;font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;color:#c8641e">ISSUE</div>
+                <div style="padding:10px 16px 10px 0;border-bottom:1px solid #e6e0d2;text-wrap:pretty">{{ k.i }}</div>
+                <div style="padding:10px 16px;border-bottom:1px solid #e6e0d2;font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;color:#c8641e">RULE</div>
+                <div style="padding:10px 16px 10px 0;border-bottom:1px solid #e6e0d2;text-wrap:pretty">{{ k.r }}</div>
+                <div style="padding:10px 16px;border-bottom:1px solid #e6e0d2;font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;color:#c8641e">APPLICATION</div>
+                <div style="padding:10px 16px 10px 0;border-bottom:1px solid #e6e0d2;text-wrap:pretty">{{ k.a }}</div>
+                <div style="padding:10px 16px;font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;color:#2f6b45">CONCLUSION</div>
+                <div style="padding:10px 16px 10px 0;font-weight:500;text-wrap:pretty">{{ k.c }}</div>
+              </div>
+            </article>
+          </sc-for>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ hasAsked }}" hint-placeholder-val="{{ false }}">
+        <section style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <h2 style="margin:0;font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5b6273">Asked in KSLU papers</h2>
+            <p style="margin:0;font-size:14px;color:#1d2a4a"><b>{{ askedSummary }}</b></p>
+          </div>
+          <div style="display:flex;flex-direction:column;border-top:1.5px solid #2f6b45">
+            <sc-for list="{{ asked }}" as="q" hint-placeholder-count="3">
+              <a href="{{ q.href }}" style="display:grid;grid-template-columns:190px minmax(0,1fr);gap:4px 14px;padding:10px 6px;margin:0 -6px;border-bottom:1px solid #e6e0d2;text-decoration:none;color:#1d2a4a;transition:background .2s ease" style-hover="background:#eef3ee">
+                <span style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;color:#2f6b45">{{ q.paper }}</span>
+                  <span style="font-family:'Noto Sans Mono',monospace;font-size:11px;color:#5b6273">{{ q.kind }}</span>
+                </span>
+                <span style="text-wrap:pretty">{{ q.text }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ hasQs }}" hint-placeholder-val="{{ false }}">
+        <section style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <h2 style="margin:0;font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5b6273">Practice questions &amp; answer outlines</h2>
+            <p style="margin:0;font-size:13.5px;color:#5b6273">Practice questions framed on the KSLU syllabus, with answer outlines. Actual past-paper questions are listed above where they exist.</p>
+          </div>
+          <sc-for list="{{ art.questions }}" as="q" hint-placeholder-count="2">
+            <div style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;border-top:3px solid #2f6b45;background:#fbf9f3">
+              <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+                <span style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2f6b45">{{ q.type }}</span>
+                <span style="font-family:'Noto Serif',serif;font-weight:700;font-size:17px;line-height:1.35;text-wrap:pretty">{{ q.q }}</span>
+              </div>
+              <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:3px">
+                <sc-for list="{{ q.outline }}" as="o" hint-placeholder-count="4"><li style="text-wrap:pretty">{{ o }}</li></sc-for>
+              </ol>
+            </div>
+          </sc-for>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ hasNotes }}" hint-placeholder-val="{{ false }}">
+        <section style="display:flex;flex-direction:column;gap:6px;padding:14px 16px;border:1.5px dashed #c8641e">
+          <h2 style="margin:0;font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#b3561a">Syllabus coverage · Unit {{ art.notes.unit }}</h2>
+          <p style="margin:0;text-wrap:pretty">{{ art.notes.note }}</p>
+        </section>
+      </sc-if>
+
+      <footer style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:20px;border-top:1.5px solid #1d2a4a">
+        <sc-if value="{{ prev }}" hint-placeholder-val="{{ false }}">
+          <a href="{{ prev.href }}" style="display:flex;flex-direction:column;gap:2px;text-decoration:none">
+            <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#5b6273">← {{ prev.label }}</span>
+            <span style="font-weight:500;text-wrap:pretty">{{ prev.title }}</span>
+          </a>
+        </sc-if>
+        <sc-if value="{{ next }}" hint-placeholder-val="{{ false }}">
+          <a href="{{ next.href }}" style="grid-column:2;display:flex;flex-direction:column;gap:2px;text-align:right;text-decoration:none">
+            <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#5b6273">{{ next.label }} →</span>
+            <span style="font-weight:500;text-wrap:pretty">{{ next.title }}</span>
+          </a>
+        </sc-if>
+      </footer>
+    </main>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static NEEDED = ['I', 'II', 'III', 'IV', 'IVA', 'V', 'VI', 'VII', 'VIII', 'IX', 'IXA', 'IXB', 'X', 'XI', 'XII', 'XXI', 'OV'];
+  isReady() { const c = window.COI, p = c && c.parts; return !!p && !!c.kslu && !!c.papers && !!c.papers2 && Component.NEEDED.every(k => p[k]); }
+  state = { ready: this.isReady(), loading: true, leaving: false };
+  componentDidMount() {
+    const bootUI = () => window.COI_UI ? window.COI_UI.boot(this, () => this.isReady()) : setTimeout(bootUI, 30);
+    bootUI();
+    if (!this.state.ready) {
+      this.t = setInterval(() => { if (this.isReady()) { clearInterval(this.t); this.setState({ ready: true }); } }, 50);
+    }
+    this.scrollToGroup();
+  }
+  componentDidUpdate() { this.scrollToGroup(); }
+  componentWillUnmount() { clearInterval(this.t); clearTimeout(this.st); }
+  scrollToGroup() {
+    const g = new URLSearchParams(location.search).get('g');
+    if (!g || this.scrolled || !this.state.ready) return;
+    this.scrolled = true;
+    let n = 0;
+    const tick = () => {
+      const el = document.getElementById('g-' + g) || document.querySelector('[id^="g-' + g + '-"]');
+      if (el) { window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 16); if (n > 6) return; }
+      if (++n < 40) this.st = setTimeout(tick, 60);
+    };
+    tick();
+  }
+  renderVals() {
+    const ALL = this.state.ready ? window.COI.parts : null;
+    const qs = new URLSearchParams(location.search);
+    const id = qs.get('a');
+    const loader = this.state.loading && window.COI_UI ? window.COI_UI.loader(React, { leaving: this.state.leaving, label: id ? (/^\d/.test(id) ? 'Article ' + id : 'Overview') : 'Part ' + (qs.get('part') || 'III') }) : null;
+    const base = { loader, isPart: false, isArticle: false, notFound: false, partHref: '#', partLabel: '' };
+    if (!ALL) return base;
+    const K = window.COI.kslu;
+    const P = id ? Object.values(ALL).find(p => p.articles[id]) : ALL[qs.get('part') || 'III'];
+    if (!P) return { ...base, notFound: true };
+    const ov = P.key === 'OV';
+    base.partHref = 'article.html?part=' + P.key;
+    base.partLabel = ov ? 'Overview' : 'Part ' + P.part + ' · ' + P.title;
+    const unitOf = x => { const b = K.badges(x); return b.length ? b.map(y => y.label).join(' / ') : false; };
+    const artLabel = x => /^\d/.test(x) ? 'Article ' + x : P.articles[x].title.split(' · ')[0];
+    const strip = t => t.replace(/\s*\[Omitted\]$/, '');
+    const href = x => 'article.html?a=' + encodeURIComponent(x);
+    if (!id) {
+      const groups = P.groups.map(g => ({
+        name: g.name, range: g.range, rangeLabel: g.range && !ov ? 'Art. ' + g.range : '', anchor: 'g-' + g.slug, chapter: g.chapter || false,
+        items: g.ids.map(x => { const a = P.articles[x]; return { id: x, idLabel: ov ? '' : x, unit: unitOf(x), href: href(x), title: strip(a.title), meta: a.omitted ? 'omitted' : a.cases.length ? a.cases.length + (a.cases.length === 1 ? ' case' : ' cases') : '' }; })
+      }));
+      const sems = {};
+      P.groups.forEach(g => g.ids.forEach(x => K.semUnits(x).forEach(s => { (sems[s.sem] = sems[s.sem] || new Set()).add(s.unit); })));
+      const ord = ['I', 'II', 'III', 'IV', 'V'];
+      const partBadges = Object.keys(sems).sort().map(s => { const us = ord.filter(u => sems[s].has(u)); return 'Sem ' + s + ' · Unit' + (us.length > 1 ? 's ' : ' ') + us.join(', '); });
+      document.title = (ov ? 'Overview' : 'Part ' + P.part) + ' · Constitution of India';
+      return { ...base, isPart: true, part: P, groups, partEyebrow: ov ? P.range : 'Part ' + P.part + ' · ' + P.range, partBadges };
+    }
+    const art = P.articles[id];
+    if (!art) return { ...base, notFound: true };
+    const g = P.groups.find(x => x.ids.includes(id));
+    const order = P.groups.flatMap(x => x.ids);
+    const i = order.indexOf(id);
+    const nav = x => x ? { id: x, label: artLabel(x), href: href(x), title: strip(P.articles[x].title) } : false;
+    document.title = (ov ? art.title : 'Article ' + id) + ' · Constitution of India';
+    const refKey = id === 'constitution' ? 'intro' : id === 'preamble' ? 'preamble' : /^\d/.test(id) ? 'a' + id : id;
+    const asked = [], papersHit = new Set();
+    [['I', window.COI.papers, ''], ['II', window.COI.papers2, 's2-']].forEach(([sem, list, pre]) => list.forEach(p => p.qs.forEach(q => { if (q.refs.includes(refKey)) { papersHit.add(sem + p.id); asked.push({ paper: 'Sem ' + sem + ' · ' + p.label, kind: (q.type === 'E' ? 'Essay · 10 marks' : 'Note / problem · 6 marks') + (q.unit ? ' · Unit ' + q.unit : ''), text: q.text, href: 'papers.html#' + pre + 'p-' + p.id }); } })));
+    const u = K.unitOf(id);
+    return {
+      ...base, isArticle: true, id, art,
+      eyebrow: ov ? 'Overview · ' + (g ? g.name : '') : 'Article ' + id + ' · ' + (g && g.slug !== 'all' ? g.name : P.title),
+      badges: K.badges(id),
+      asked, hasAsked: asked.length > 0,
+      askedSummary: 'Asked ' + asked.length + (asked.length === 1 ? ' time' : ' times') + ' across ' + papersHit.size + ' of ' + (window.COI.papers.length + window.COI.papers2.length) + ' Sem I and Sem II papers (2019–2025).',
+      groupName: g && g.slug !== 'all' ? g.name : P.title, groupHref: 'article.html?part=' + P.key + '&g=' + (g ? g.slug : ''),
+      hasClauses: art.clauses.length > 0, hasAmend: art.amendments.length > 0,
+      hasCases: art.cases.length > 0, hasQs: art.questions.length > 0,
+      hasNotes: !!art.notes,
+      prev: nav(order[i - 1]), next: nav(order[i + 1])
+    };
+  }
+}
+</script>
+</body>
+</html>

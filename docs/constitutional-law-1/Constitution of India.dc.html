@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,500;0,700;1,500&family=Noto+Sans:ital,wdth,wght@0,87.5,400;0,87.5,500;0,87.5,600;1,87.5,400&family=Noto+Sans+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="./data/ui.js"></script>
+<script src="./data/part1-2.js"></script>
+<script src="./data/part3.js"></script>
+<script src="./data/part4.js"></script>
+<script src="./data/part5.js"></script>
+<script src="./data/part6-7.js"></script>
+<script src="./data/part8-10.js"></script>
+<script src="./data/part11.js"></script>
+<script src="./data/part12-21.js"></script>
+<script src="./data/overview.js"></script>
+<style>body{margin:0;background:#e9e4d8}a{color:#1d2a4a}a:hover{color:#c8641e}</style>
+<script src="./mate.js"></script>
+</helmet>
+<div style="max-width:1680px;margin:0 auto;padding-top:var(--hdr,56px);background:#f7f4ec;color:#1d2a4a;font-family:'Noto Sans',sans-serif;font-stretch:87.5%;font-size:15px;line-height:1.45">
+  {{ loader }}
+  <header ref="{{ headRef }}" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(247,244,236,0.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #1d2a4a;box-shadow:0 6px 22px rgba(29,42,74,0.14)">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:3px"><div style="background:#d9772b"></div><div style="background:#f7f4ec"></div><div style="background:#2f6b45"></div></div>
+    <div style="max-width:1680px;margin:0 auto;box-sizing:border-box;padding:8px clamp(12px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px">
+      <a onClick="{{ toTop }}" href="#top" title="LegallyKH · Back to top" style="flex:none;display:flex;align-items:center;gap:8px;text-decoration:none;color:#1d2a4a">
+        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" style="flex:none"><rect width="32" height="32" fill="#1d2a4a"></rect><rect y="29" width="10.67" height="3" fill="#d9772b"></rect><rect x="10.67" y="29" width="10.66" height="3" fill="#f7f4ec"></rect><rect x="21.33" y="29" width="10.67" height="3" fill="#2f6b45"></rect><line x1="16" y1="6" x2="16" y2="23" stroke="#f7f4ec" stroke-width="1.8"></line><line x1="7" y1="9.5" x2="25" y2="9.5" stroke="#f7f4ec" stroke-width="1.8" stroke-linecap="round"></line><circle cx="16" cy="6" r="1.8" fill="#d9772b"></circle><path d="M7 9.5 L4 16.5 M7 9.5 L10 16.5" stroke="#f7f4ec" stroke-width="1"></path><path d="M3.2 16.5 Q7 20.5 10.8 16.5 Z" fill="#f7f4ec"></path><path d="M25 9.5 L22 16.5 M25 9.5 L28 16.5" stroke="#f7f4ec" stroke-width="1"></path><path d="M21.2 16.5 Q25 20.5 28.8 16.5 Z" fill="#f7f4ec"></path><path d="M11.5 23.5 H20.5 L19 21.5 H13 Z" fill="#f7f4ec"></path></svg>
+        <span style="display:flex;flex-direction:column;line-height:1.05"><span style="font-family:'Noto Serif',serif;font-weight:700;font-size:17px;letter-spacing:-0.01em">Legally<span style="color:#c8641e">KH</span></span></span>
+      </a>
+      <span style="flex:none;width:1px;height:30px;background:#cfc7b5"></span>
+      <div style="flex:999 1 420px;min-width:0;display:flex;align-items:center">
+        <button onClick="{{ scrollL }}" aria-label="Scroll parts left" style="flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:0;background:#1d2a4a;color:#f7f4ec;font:700 17px/1 'Noto Sans',sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(29,42,74,0.35);transition:opacity .2s,transform .2s;opacity:{{ lOp }};pointer-events:{{ lOpPe }};margin-right:6px" style-hover="background:#c8641e;transform:scale(1.08)">‹</button>
+        <nav ref="{{ stripRef }}" style="flex:1;min-width:0;display:flex;align-items:center;gap:4px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding:4px 2px;font-family:'Noto Sans Mono',monospace;font-size:12.5px;-webkit-mask-image:{{ mask }};mask-image:{{ mask }}">
+          <a onClick="{{ jump }}" href="#preamble" style="flex:none;padding:6px 11px;white-space:nowrap;text-decoration:none;color:#1d2a4a;background:#ece6d8;transition:background .15s,color .15s;" style-hover="background:#1d2a4a;color:#f7f4ec">Preamble</a>
+          <span style="flex:none;width:1px;height:22px;background:#cfc7b5;margin:0 4px"></span><span style="flex:none;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8a8e98;padding:0 2px 0 4px">Part</span>
+          <sc-for list="{{ jumps }}" as="j" hint-placeholder-count="25">
+            <a onClick="{{ jump }}" href="{{ j.href }}" aria-current="{{ j.cur }}" style="flex:none;min-width:34px;box-sizing:border-box;text-align:center;padding:6px 9px;white-space:nowrap;text-decoration:none;font-weight:600;color:{{ j.fg }};background:{{ j.bg }};box-shadow:{{ j.sh }};transition:background .2s,color .2s,box-shadow .2s" style-hover="background:#1d2a4a;color:#f7f4ec">{{ j.label }}</a>
+          </sc-for>
+          <span style="flex:none;width:1px;height:22px;background:#cfc7b5;margin:0 4px"></span>
+          <a onClick="{{ jump }}" href="#schedules" style="flex:none;padding:6px 11px;white-space:nowrap;text-decoration:none;color:#1d2a4a;background:#ece6d8;transition:background .15s,color .15s;color:#b3561a" style-hover="background:#1d2a4a;color:#f7f4ec">Schedules</a>
+          <a onClick="{{ jump }}" href="#more" style="flex:none;padding:6px 11px;white-space:nowrap;text-decoration:none;color:#1d2a4a;background:#ece6d8;transition:background .15s,color .15s;color:#2f6b45" style-hover="background:#1d2a4a;color:#f7f4ec">More</a>
+          <span style="flex:none;width:1px;height:22px;background:#cfc7b5;margin:0 4px"></span>
+          <a href="Case Index.dc.html" style="flex:none;padding:6px 11px;white-space:nowrap;border:1.5px solid #1d2a4a;text-decoration:none;color:#1d2a4a;font-weight:600;transition:background .15s,color .15s" style-hover="background:#1d2a4a;color:#f7f4ec">Cases A–Z</a>
+          <a href="KSLU Papers.dc.html" style="flex:none;padding:7.5px 12px;white-space:nowrap;background:#2f6b45;text-decoration:none;color:#fff;font-weight:600;transition:background .15s" style-hover="background:#245636">KSLU papers</a>
+        </nav>
+        <button onClick="{{ scrollR }}" aria-label="Scroll parts right" style="flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:0;background:#1d2a4a;color:#f7f4ec;font:700 17px/1 'Noto Sans',sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(29,42,74,0.35);transition:opacity .2s,transform .2s;opacity:{{ rOp }};pointer-events:{{ rOpPe }};margin-left:6px" style-hover="background:#c8641e;transform:scale(1.08)">›</button>
+      </div>
+      <div style="position:relative;flex:1 1 260px;min-width:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="position:absolute;left:13px;top:12px;pointer-events:none"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#5b6273" stroke-width="2.2"></circle><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="#5b6273" stroke-width="2.4" stroke-linecap="round"></line></svg>
+        <span style="position:absolute;right:10px;top:9px;pointer-events:none;font-family:'Noto Sans Mono',monospace;font-size:11.5px;font-weight:600;padding:2px 7px;border:1px solid #cfc7b5;border-bottom-width:2px;color:#5b6273;background:#f7f4ec">/</span>
+
+    <input value="{{ q }}" onChange="{{ onQ }}" onKeyDown="{{ onKey }}" placeholder="Search articles, cases, topics…" style="font-family:'Noto Sans',sans-serif;font-size:15px;padding:9px 40px 9px 38px;width:100%;box-sizing:border-box;border:1.5px solid #1d2a4a;background:#fff;color:#1d2a4a;outline:none;box-shadow:inset 0 1px 3px rgba(29,42,74,0.08)" style-focus="border-color:#c8641e;box-shadow:0 0 0 3px rgba(217,119,43,0.18)"></input>
+    <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:0;right:0;top:100%;max-height:min(60vh,520px);overflow-y:auto;background:#fbf9f3;border:1.5px solid #1d2a4a;border-top:none;box-shadow:0 10px 28px rgba(29,42,74,0.2)">
+        <sc-for list="{{ results }}" as="res" hint-placeholder-count="0">
+          <a href="{{ res.href }}" style="display:flex;flex-direction:column;gap:1px;padding:8px 14px;border-bottom:1px solid #e6e0d2;text-decoration:none;color:#1d2a4a;transition:background .15s" style-hover="background:#efe9dc">
+            <span style="font-family:'Noto Sans Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#b3561a">{{ res.kind }}</span>
+            <span style="font-weight:600;text-wrap:pretty">{{ res.title }}</span>
+            <span style="font-size:13px;color:#5b6273;text-wrap:pretty">{{ res.sub }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;top:100%;padding:10px 14px;background:#fbf9f3;border:1.5px solid #1d2a4a;border-top:none;font-size:14px;color:#5b6273;box-shadow:0 10px 28px rgba(29,42,74,0.2)">No matches.</div></sc-if>
+        </div>
+    </div>
+  </header>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:10px">
+    <div style="background:#d9772b"></div><div style="background:#f7f4ec"></div><div style="background:#2f6b45"></div>
+  </div>
+  <header style="position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:28px;padding:clamp(28px,5vw,56px) clamp(16px,4vw,56px) clamp(20px,3vw,36px);border-bottom:3px solid #1d2a4a;margin:0 0 0">
+    <svg viewBox="-50 -50 100 100" aria-hidden="true" style="position:absolute;left:50%;top:50%;width:clamp(280px,32vw,460px);height:clamp(280px,32vw,460px);transform:translate(-50%,-50%);opacity:0.07;pointer-events:none;display:block">
+      <circle r="47" fill="none" stroke="#000080" stroke-width="2.6"></circle>
+      <circle r="5.5" fill="#000080"></circle>
+      <sc-for list="{{ spokes }}" as="a" hint-placeholder-count="0">
+        <g transform="rotate({{ a }})">
+          <path d="M0 -5.5 L1.3 -26 L0 -46 L-1.3 -26 Z" fill="#000080"></path>
+          <circle cy="-47" r="1.3" transform="rotate(7.5)" fill="#000080"></circle>
+        </g>
+      </sc-for>
+    </svg>
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div style="font-family:'Noto Serif',serif;font-style:italic;font-weight:500;font-size:clamp(17px,2.2vw,24px);letter-spacing:0.01em;color:#c8641e;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px">A complete index of Parts, Articles &amp; Schedules</div>
+      <h1 style="margin:0;font-family:'Noto Serif',serif;font-weight:700;font-size:clamp(44px,8vw,112px);line-height:0.98;letter-spacing:-0.02em;text-wrap:balance">Constitution of India</h1>
+    </div>
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+    <div style="position:relative;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:16px clamp(20px,3vw,40px)">
+      <a href="Article.dc.html?a=adopted" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 10px;text-decoration:none;color:#1d2a4a;border-bottom:2px solid transparent;transition:border-color .25s ease,transform .25s ease" style-hover="border-color:#c8641e;transform:translateY(-2px)"><div style="font-family:'Noto Serif',serif;font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1">26.11.1949</div><div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#5b6273">Adopted<span style="color:#c8641e"> ↗</span></div></a>
+      <a href="Article.dc.html?a=in-force" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 10px;text-decoration:none;color:#1d2a4a;border-bottom:2px solid transparent;transition:border-color .25s ease,transform .25s ease" style-hover="border-color:#c8641e;transform:translateY(-2px)"><div style="font-family:'Noto Serif',serif;font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1">26.01.1950</div><div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#5b6273">In force<span style="color:#c8641e"> ↗</span></div></a>
+      <a href="Article.dc.html?a=parts" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 10px;text-decoration:none;color:#1d2a4a;border-bottom:2px solid transparent;transition:border-color .25s ease,transform .25s ease" style-hover="border-color:#c8641e;transform:translateY(-2px)"><div style="font-family:'Noto Serif',serif;font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1">25</div><div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#5b6273">Parts<span style="color:#c8641e"> ↗</span></div></a>
+      <a href="Article.dc.html?a=articles" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 10px;text-decoration:none;color:#1d2a4a;border-bottom:2px solid transparent;transition:border-color .25s ease,transform .25s ease" style-hover="border-color:#c8641e;transform:translateY(-2px)"><div style="font-family:'Noto Serif',serif;font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1">395</div><div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#5b6273">Articles (original)<span style="color:#c8641e"> ↗</span></div></a>
+      <a href="Article.dc.html?a=schedules" style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 10px;text-decoration:none;color:#1d2a4a;border-bottom:2px solid transparent;transition:border-color .25s ease,transform .25s ease" style-hover="border-color:#c8641e;transform:translateY(-2px)"><div style="font-family:'Noto Serif',serif;font-size:clamp(26px,3vw,40px);font-weight:700;line-height:1">12</div><div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#5b6273">Schedules<span style="color:#c8641e"> ↗</span></div></a>
+    </div>
+    </div>
+  </header>
+
+  <main style="padding:28px clamp(16px,4vw,56px) 48px;column-width:320px;column-count:{{ columns }};column-gap:40px;column-rule:1px solid #d9d3c4">
+    <section id="preamble" style="scroll-margin-top:64px;break-inside:avoid;margin:0 0 18px;padding:18px 18px 20px;border:1.5px solid #1d2a4a;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><a href="Article.dc.html?a=preamble" style="font-family:'Noto Sans Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#c8641e;text-decoration:none">Preamble ↗</a><span style="font-family:'Noto Sans Mono',monospace;font-size:10.5px;font-weight:600;padding:1px 5px;border:1px solid #2f6b45;color:#2f6b45">Sem I · Unit I</span></div>
+      <p style="margin:0;font-family:'Noto Serif',serif;font-size:15.5px;line-height:1.5;text-wrap:pretty">WE, THE PEOPLE OF INDIA, having solemnly resolved to constitute India into a <b>SOVEREIGN SOCIALIST SECULAR DEMOCRATIC REPUBLIC</b> and to secure to all its citizens:</p>
+      <p style="margin:0;font-family:'Noto Serif',serif;font-size:15.5px;line-height:1.5"><b>JUSTICE</b>, social, economic and political;<br><b>LIBERTY</b> of thought, expression, belief, faith and worship;<br><b>EQUALITY</b> of status and of opportunity;<br>and to promote among them all<br><b>FRATERNITY</b> assuring the dignity of the individual and the unity and integrity of the Nation;</p>
+      <p style="margin:0;font-family:'Noto Serif',serif;font-size:15.5px;line-height:1.5;text-wrap:pretty">IN OUR CONSTITUENT ASSEMBLY this twenty-sixth day of November, 1949, do HEREBY ADOPT, ENACT AND GIVE TO OURSELVES THIS CONSTITUTION.</p>
+    </section>
+
+    <sc-for list="{{ rows }}" as="r" hint-placeholder-count="0">
+      <sc-if value="{{ r.isPart }}" hint-placeholder-val="{{ false }}">
+        <a id="{{ r.anchor }}" href="{{ r.href }}" style="scroll-margin-top:64px;break-inside:avoid;break-after:avoid;margin:20px 0 8px;background:#1d2a4a;color:#f7f4ec;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px;text-decoration:none">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-family:'Noto Sans Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#f0b37e"><span style="white-space:nowrap">{{ r.a }}</span><sc-if value="{{ r.unit }}" hint-placeholder-val="{{ false }}"><span style="letter-spacing:0.04em;padding:0 5px;background:#2f6b45;color:#fff;white-space:nowrap">{{ r.unit }}</span></sc-if><span style="margin-left:auto;white-space:nowrap">{{ r.c }}</span></div>
+          <div style="font-family:'Noto Serif',serif;font-size:20px;font-weight:700;line-height:1.15;text-wrap:balance">{{ r.b }}<span style="color:#f0b37e;font-size:15px">{{ r.mark }}</span></div>
+        </a>
+      </sc-if>
+      <sc-if value="{{ r.isChapter }}" hint-placeholder-val="{{ false }}">
+        <a href="{{ r.href }}" style="break-inside:avoid;break-after:avoid;margin:12px 0 5px;padding-bottom:3px;border-bottom:1.5px solid #c8641e;display:flex;justify-content:space-between;align-items:baseline;gap:8px;text-decoration:none">
+          <span style="font-weight:600;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;color:#b3561a;text-wrap:balance">{{ r.a }} · {{ r.b }}<span style="text-transform:none">{{ r.mark }}</span></span>
+          <span style="font-family:'Noto Sans Mono',monospace;font-size:11px;color:#b3561a;white-space:nowrap">{{ r.c }}</span>
+        </a>
+      </sc-if>
+      <sc-if value="{{ r.isSub }}" hint-placeholder-val="{{ false }}">
+        <a href="{{ r.href }}" style="break-inside:avoid;break-after:avoid;margin:9px 0 3px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 8px;color:#2f6b45;text-decoration:none">
+          <span style="font-weight:600;font-style:italic;font-size:13px">{{ r.a }}<span style="color:#c8641e;font-style:normal">{{ r.mark }}</span></span>
+          <span style="display:flex;gap:6px;align-items:baseline;font-family:'Noto Sans Mono',monospace;font-size:11px;white-space:nowrap"><sc-if value="{{ r.unit }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:600;padding:0 4px;border:1px solid #2f6b45">{{ r.unit }}</span></sc-if>{{ r.b }}</span>
+        </a>
+      </sc-if>
+      <sc-if value="{{ r.isArt }}" hint-placeholder-val="{{ false }}">
+        <a href="{{ r.href }}" style="break-inside:avoid;display:grid;grid-template-columns:50px minmax(0,1fr);gap:6px;align-items:baseline;padding:1.5px 0;color:#1d2a4a;text-decoration:none;transition:color .2s ease" style-hover="color:#c8641e">
+          <span style="font-family:'Noto Sans Mono',monospace;font-weight:600;font-size:11.5px;padding-top:1px">{{ r.n }}</span>
+          <span style="text-wrap:pretty">{{ r.t }}<span style="color:#c8641e">{{ r.mark }}</span><sc-if value="{{ r.unit }}" hint-placeholder-val="{{ false }}"><span style="margin-left:6px;font-family:'Noto Sans Mono',monospace;font-size:10px;font-weight:600;padding:0 4px;border:1px solid #2f6b45;color:#2f6b45;-webkit-box-decoration-break:clone;box-decoration-break:clone">{{ r.unit }}</span></sc-if></span>
+        </a>
+      </sc-if>
+      <sc-if value="{{ r.isOm }}" hint-placeholder-val="{{ false }}">
+        <a href="{{ r.href }}" style="break-inside:avoid;display:grid;grid-template-columns:50px minmax(0,1fr);gap:6px;align-items:baseline;padding:1.5px 0;color:#8a8e98;text-decoration:none">
+          <span style="font-family:'Noto Sans Mono',monospace;font-weight:500;font-size:11.5px;padding-top:1px">{{ r.n }}</span>
+          <span style="font-style:italic">[Omitted]<span style="color:#c8641e;font-style:normal">{{ r.mark }}</span><sc-if value="{{ r.unit }}" hint-placeholder-val="{{ false }}"><span style="margin-left:6px;font-family:'Noto Sans Mono',monospace;font-size:10px;font-weight:600;padding:0 4px;border:1px solid #8a8e98;-webkit-box-decoration-break:clone;box-decoration-break:clone">{{ r.unit }}</span></sc-if></span>
+        </a>
+      </sc-if>
+      <sc-if value="{{ r.isNote }}" hint-placeholder-val="{{ false }}">
+        <div style="break-inside:avoid;display:grid;grid-template-columns:50px 22px minmax(0,1fr);gap:0;padding:1px 0">
+          <span></span>
+          <span style="font-family:'Noto Sans Mono',monospace;font-size:11px;color:#c8641e;padding-top:1px">{{ r.n }}</span>
+          <span style="text-wrap:pretty">{{ r.t }}</span>
+        </div>
+      </sc-if>
+    </sc-for>
+
+    <div id="schedules" style="scroll-margin-top:64px;break-inside:avoid;break-after:avoid;margin:24px 0 8px;background:#c8641e;color:#fff;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase">I – XII</div>
+      <div style="font-family:'Noto Serif',serif;font-size:20px;font-weight:700;line-height:1.15">Schedules</div>
+    </div>
+    <sc-for list="{{ schedules }}" as="s" hint-placeholder-count="12">
+      <a href="{{ s.href }}" style="break-inside:avoid;display:grid;grid-template-columns:50px minmax(0,1fr);gap:6px;align-items:baseline;padding:2px 0;color:#1d2a4a;text-decoration:none;transition:color .2s ease" style-hover="color:#c8641e">
+        <span style="font-family:'Noto Sans Mono',monospace;font-weight:600;font-size:11.5px;padding-top:1px;color:#b3561a">{{ s.n }}</span>
+        <span style="text-wrap:pretty">{{ s.t }}<span style="color:#c8641e">{{ s.mark }}</span><sc-if value="{{ s.unit }}" hint-placeholder-val="{{ false }}"><span style="margin-left:6px;font-family:'Noto Sans Mono',monospace;font-size:10px;font-weight:600;padding:0 4px;border:1px solid #2f6b45;color:#2f6b45;-webkit-box-decoration-break:clone;box-decoration-break:clone">{{ s.unit }}</span></sc-if></span>
+      </a>
+    </sc-for>
+
+    <div id="more" style="scroll-margin-top:64px;break-inside:avoid;break-after:avoid;margin:24px 0 8px;background:#2f6b45;color:#fff;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase">Borrowed features</div>
+      <div style="font-family:'Noto Serif',serif;font-size:20px;font-weight:700;line-height:1.15">Sources of the Constitution</div>
+    </div>
+    <sc-for list="{{ sources }}" as="s" hint-placeholder-count="11">
+      <div style="break-inside:avoid;padding:3px 0 5px;border-bottom:1px dotted #d9d3c4;text-wrap:pretty"><b style="font-weight:600;color:#2f6b45">{{ s.n }}</b> — {{ s.t }}</div>
+    </sc-for>
+
+    <div style="break-inside:avoid;margin:24px 0 0">
+      <div style="background:#1d2a4a;color:#f7f4ec;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#f0b37e">Fourth Schedule · Art. 81</div>
+        <div style="font-family:'Noto Serif',serif;font-size:20px;font-weight:700;line-height:1.15">States: Seats in Parliament</div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 64px 64px;gap:0 8px;padding:6px 0 2px;border-bottom:1.5px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:#5b6273"><span>State</span><span style="text-align:right">R. Sabha</span><span style="text-align:right">L. Sabha</span></div>
+      <sc-for list="{{ states }}" as="s" hint-placeholder-count="28">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 64px 64px;gap:0 8px;padding:2px 0;border-bottom:1px solid #e6e0d2"><span>{{ s.n }}</span><span style="text-align:right;font-family:'Noto Sans Mono',monospace;font-size:12px">{{ s.r }}</span><span style="text-align:right;font-family:'Noto Sans Mono',monospace;font-size:12px">{{ s.l }}</span></div>
+      </sc-for>
+    </div>
+    <div style="break-inside:avoid;margin:14px 0 0">
+      <div style="margin:0 0 4px;padding-bottom:3px;border-bottom:1.5px solid #c8641e;font-weight:600;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;color:#b3561a">Union Territories</div>
+      <sc-for list="{{ uts }}" as="s" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 64px 64px;gap:0 8px;padding:2px 0;border-bottom:1px solid #e6e0d2"><span>{{ s.n }}</span><span style="text-align:right;font-family:'Noto Sans Mono',monospace;font-size:12px">{{ s.r }}</span><span style="text-align:right;font-family:'Noto Sans Mono',monospace;font-size:12px">{{ s.l }}</span></div>
+      </sc-for>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 64px 64px;gap:0 8px;padding:4px 0;border-top:1.5px solid #1d2a4a;font-weight:600"><span>Total elected (+12 nominated to Rajya Sabha)</span><span style="text-align:right;font-family:'Noto Sans Mono',monospace;font-size:12px">233</span><span style="text-align:right;font-family:'Noto Sans Mono',monospace;font-size:12px">543</span></div>
+    </div>
+
+    <div style="break-inside:avoid;break-after:avoid;margin:24px 0 8px;background:#1d2a4a;color:#f7f4ec;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#f0b37e">Key institutions</div>
+      <div style="font-family:'Noto Serif',serif;font-size:20px;font-weight:700;line-height:1.15">Important Topics</div>
+    </div>
+    <sc-for list="{{ topics }}" as="s" hint-placeholder-count="7">
+      <div style="break-inside:avoid;padding:4px 0 6px;border-bottom:1px dotted #d9d3c4;text-wrap:pretty"><b style="font-weight:600">{{ s.n }}</b> <span style="font-family:'Noto Sans Mono',monospace;font-size:11px;color:#b3561a">{{ s.a }}</span> — {{ s.t }}</div>
+    </sc-for>
+
+    <div style="break-inside:avoid;margin:24px 0 0">
+      <div style="background:#c8641e;color:#fff;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase">Sworn in 2 September 1946</div>
+        <div style="font-family:'Noto Serif',serif;font-size:20px;font-weight:700;line-height:1.15">Interim Government</div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:0 10px;padding:6px 0 2px;border-bottom:1.5px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:#5b6273"><span>Member</span><span>Portfolio</span></div>
+      <sc-for list="{{ interim }}" as="s" hint-placeholder-count="14">
+        <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:0 10px;padding:2px 0;border-bottom:1px solid #e6e0d2"><span style="font-weight:500">{{ s.n }}</span><span>{{ s.t }}</span></div>
+      </sc-for>
+    </div>
+
+    <div style="break-inside:avoid;margin:24px 0 0">
+      <div style="background:#2f6b45;color:#fff;padding:8px 12px 10px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase">1946 – 1949</div>
+        <div style="font-family:'Noto Serif',serif;font-size:20px;font-weight:700;line-height:1.15">Constituent Assembly Committees</div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:0 10px;padding:6px 0 2px;border-bottom:1.5px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:#5b6273"><span>Committee</span><span>Chairman</span></div>
+      <sc-for list="{{ committees }}" as="s" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:0 10px;padding:2px 0;border-bottom:1px solid #e6e0d2"><span>{{ s.n }}</span><span style="font-weight:500">{{ s.t }}</span></div>
+      </sc-for>
+    </div>
+  </main>
+
+  <footer style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:18px clamp(16px,4vw,56px) 22px;border-top:3px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:12px;color:#5b6273">
+    <span>Article headings follow the marginal notes of the official text. Greyed entries were omitted or repealed by later amendments.</span>
+    <span>As amended up to the 106th Amendment, 2023</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;columns&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:5,&quot;min&quot;:1,&quot;max&quot;:7,&quot;step&quot;:1,&quot;tsType&quot;:&quot;number&quot;}}">
+const DATA = `
+# PART I|The Union and its Territory|Art. 1–4
+1 Name and territory of the Union.
+2 Admission or establishment of new States.
+2A [Omitted]
+3 Formation of new States and alteration of areas, boundaries or names of existing States.
+4 Laws made under articles 2 and 3 to provide for the amendment of the First and Fourth Schedules and supplemental, incidental and consequential matters.
+# PART II|Citizenship|Art. 5–11
+5 Citizenship at the commencement of the Constitution.
+6 Rights of citizenship of certain persons who have migrated to India from Pakistan.
+7 Rights of citizenship of certain migrants to Pakistan.
+8 Rights of citizenship of certain persons of Indian origin residing outside India.
+9 Persons voluntarily acquiring citizenship of a foreign State not to be citizens.
+10 Continuance of the rights of citizenship.
+11 Parliament to regulate the right of citizenship by law.
+# PART III|Fundamental Rights|Art. 12–35
+### General|12–13
+12 Definition.
+13 Laws inconsistent with or in derogation of the fundamental rights.
+### Right to Equality|14–18
+14 Equality before law.
+15 Prohibition of discrimination on grounds of religion, race, caste, sex or place of birth.
+16 Equality of opportunity in matters of public employment.
+17 Abolition of Untouchability.
+18 Abolition of titles.
+### Right to Freedom|19–22
+19 Protection of certain rights regarding freedom of speech, etc.
+20 Protection in respect of conviction for offences.
+21 Protection of life and personal liberty.
+21A Right to education.
+22 Protection against arrest and detention in certain cases.
+### Right against Exploitation|23–24
+23 Prohibition of traffic in human beings and forced labour.
+24 Prohibition of employment of children in factories, etc.
+### Right to Freedom of Religion|25–28
+25 Freedom of conscience and free profession, practice and propagation of religion.
+26 Freedom to manage religious affairs.
+27 Freedom as to payment of taxes for promotion of any particular religion.
+28 Freedom as to attendance at religious instruction or religious worship in certain educational institutions.
+### Cultural and Educational Rights|29–30
+29 Protection of interests of minorities.
+30 Right of minorities to establish and administer educational institutions.
+31 [Omitted]
+### Saving of Certain Laws|31A–31D
+31A Saving of laws providing for acquisition of estates, etc.
+31B Validation of certain Acts and Regulations.
+31C Saving of laws giving effect to certain directive principles.
+31D [Omitted]
+### Right to Constitutional Remedies|32–35
+32 Remedies for enforcement of rights conferred by this Part.
+32A [Omitted]
+33 Power of Parliament to modify the rights conferred by this Part in their application to forces, etc.
+34 Restriction on rights conferred by this Part while martial law is in force in any area.
+35 Legislation to give effect to the provisions of this Part.
+# PART IV|Directive Principles of State Policy|Art. 36–51
+36 Definition.
+37 Application of the principles contained in this Part.
+38 State to secure a social order for the promotion of welfare of the people.
+39 Certain principles of policy to be followed by the State.
+39A Equal justice and free legal aid.
+40 Organisation of village panchayats.
+41 Right to work, to education and to public assistance in certain cases.
+42 Provision for just and humane conditions of work and maternity relief.
+43 Living wage, etc., for workers.
+43A Participation of workers in management of industries.
+43B Promotion of co-operative societies.
+44 Uniform civil code for the citizens.
+45 Provision for early childhood care and education to children below the age of six years.
+46 Promotion of educational and economic interests of Scheduled Castes, Scheduled Tribes and other weaker sections.
+47 Duty of the State to raise the level of nutrition and the standard of living and to improve public health.
+48 Organisation of agriculture and animal husbandry.
+48A Protection and improvement of environment and safeguarding of forests and wild life.
+49 Protection of monuments and places and objects of national importance.
+50 Separation of judiciary from executive.
+51 Promotion of international peace and security.
+# PART IVA|Fundamental Duties|Art. 51A
+51A Fundamental duties. It shall be the duty of every citizen of India —
+- (a) to abide by the Constitution and respect its ideals and institutions, the National Flag and the National Anthem;
+- (b) to cherish and follow the noble ideals which inspired our national struggle for freedom;
+- (c) to uphold and protect the sovereignty, unity and integrity of India;
+- (d) to defend the country and render national service when called upon to do so;
+- (e) to promote harmony and the spirit of common brotherhood amongst all the people of India transcending religious, linguistic and regional or sectional diversities; to renounce practices derogatory to the dignity of women;
+- (f) to value and preserve the rich heritage of our composite culture;
+- (g) to protect and improve the natural environment including forests, lakes, rivers and wild life, and to have compassion for living creatures;
+- (h) to develop the scientific temper, humanism and the spirit of inquiry and reform;
+- (i) to safeguard public property and to abjure violence;
+- (j) to strive towards excellence in all spheres of individual and collective activity so that the nation constantly rises to higher levels of endeavour and achievement;
+- (k) who is a parent or guardian to provide opportunities for education to his child or, as the case may be, ward between the age of six and fourteen years.
+# PART V|The Union|Art. 52–151
+## Chapter I|The Executive|52–78
+### The President and Vice-President|52–73
+52 The President of India.
+53 Executive power of the Union.
+54 Election of President.
+55 Manner of election of President.
+56 Term of office of President.
+57 Eligibility for re-election.
+58 Qualifications for election as President.
+59 Conditions of President's office.
+60 Oath or affirmation by the President.
+61 Procedure for impeachment of the President.
+62 Time of holding election to fill vacancy in the office of President and the term of office of person elected to fill casual vacancy.
+63 The Vice-President of India.
+64 The Vice-President to be ex officio Chairman of the Council of States.
+65 The Vice-President to act as President or to discharge his functions during casual vacancies in the office, or during the absence, of President.
+66 Election of Vice-President.
+67 Term of office of Vice-President.
+68 Time of holding election to fill vacancy in the office of Vice-President and the term of office of person elected to fill casual vacancy.
+69 Oath or affirmation by the Vice-President.
+70 Discharge of President's functions in other contingencies.
+71 Matters relating to, or connected with, the election of a President or Vice-President.
+72 Power of President to grant pardons, etc., and to suspend, remit or commute sentences in certain cases.
+73 Extent of executive power of the Union.
+### Council of Ministers|74–75
+74 Council of Ministers to aid and advise President.
+75 Other provisions as to Ministers.
+### The Attorney-General for India|76
+76 Attorney-General for India.
+### Conduct of Government Business|77–78
+77 Conduct of business of the Government of India.
+78 Duties of Prime Minister as respects the furnishing of information to the President, etc.
+## Chapter II|Parliament|79–122
+### General|79–88
+79 Constitution of Parliament.
+80 Composition of the Council of States.
+81 Composition of the House of the People.
+82 Readjustment after each census.
+83 Duration of Houses of Parliament.
+84 Qualification for membership of Parliament.
+85 Sessions of Parliament, prorogation and dissolution.
+86 Right of President to address and send messages to Houses.
+87 Special address by the President.
+88 Rights of Ministers and Attorney-General as respects Houses.
+### Officers of Parliament|89–98
+89 The Chairman and Deputy Chairman of the Council of States.
+90 Vacation and resignation of, and removal from, the office of Deputy Chairman.
+91 Power of the Deputy Chairman or other person to perform the duties of the office of, or to act as, Chairman.
+92 The Chairman or the Deputy Chairman not to preside while a resolution for his removal from office is under consideration.
+93 The Speaker and Deputy Speaker of the House of the People.
+94 Vacation and resignation of, and removal from, the offices of Speaker and Deputy Speaker.
+95 Power of the Deputy Speaker or other person to perform the duties of the office of, or to act as, Speaker.
+96 The Speaker or the Deputy Speaker not to preside while a resolution for his removal from office is under consideration.
+97 Salaries and allowances of the Chairman and Deputy Chairman and the Speaker and Deputy Speaker.
+98 Secretariat of Parliament.
+### Conduct of Business|99–100
+99 Oath or affirmation by members.
+100 Voting in Houses, power of Houses to act notwithstanding vacancies and quorum.
+### Disqualifications of Members|101–104
+101 Vacation of seats.
+102 Disqualifications for membership.
+103 Decision on questions as to disqualifications of members.
+104 Penalty for sitting and voting before making oath or affirmation under article 99 or when not qualified or when disqualified.
+### Powers, Privileges and Immunities of Parliament and its Members|105–106
+105 Powers, privileges, etc., of the Houses of Parliament and of the members and committees thereof.
+106 Salaries and allowances of members.
+### Legislative Procedure|107–111
+107 Provisions as to introduction and passing of Bills.
+108 Joint sitting of both Houses in certain cases.
+109 Special procedure in respect of Money Bills.
+110 Definition of "Money Bills".
+111 Assent to Bills.
+### Procedure in Financial Matters|112–117
+112 Annual financial statement.
+113 Procedure in Parliament with respect to estimates.
+114 Appropriation Bills.
+115 Supplementary, additional or excess grants.
+116 Votes on account, votes of credit and exceptional grants.
+117 Special provisions as to financial Bills.
+### Procedure Generally|118–122
+118 Rules of procedure.
+119 Regulation by law of procedure in Parliament in relation to financial business.
+120 Language to be used in Parliament.
+121 Restriction on discussion in Parliament.
+122 Courts not to inquire into proceedings of Parliament.
+## Chapter III|Legislative Powers of the President|123
+123 Power of President to promulgate Ordinances during recess of Parliament.
+## Chapter IV|The Union Judiciary|124–147
+124 Establishment and constitution of the Supreme Court.
+124A National Judicial Appointments Commission.
+124B Functions of Commission.
+124C Power of Parliament to make law.
+125 Salaries, etc., of Judges.
+126 Appointment of acting Chief Justice.
+127 Appointment of ad hoc Judges.
+128 Attendance of retired Judges at sittings of the Supreme Court.
+129 Supreme Court to be a court of record.
+130 Seat of Supreme Court.
+131 Original jurisdiction of the Supreme Court.
+131A [Omitted]
+132 Appellate jurisdiction of Supreme Court in appeals from High Courts in certain cases.
+133 Appellate jurisdiction of Supreme Court in appeals from High Courts in regard to civil matters.
+134 Appellate jurisdiction of Supreme Court in regard to criminal matters.
+134A Certificate for appeal to the Supreme Court.
+135 Jurisdiction and powers of the Federal Court under existing law to be exercisable by the Supreme Court.
+136 Special leave to appeal by the Supreme Court.
+137 Review of judgments or orders by the Supreme Court.
+138 Enlargement of the jurisdiction of the Supreme Court.
+139 Conferment on the Supreme Court of powers to issue certain writs.
+139A Transfer of certain cases.
+140 Ancillary powers of Supreme Court.
+141 Law declared by Supreme Court to be binding on all courts.
+142 Enforcement of decrees and orders of Supreme Court and orders as to discovery, etc.
+143 Power of President to consult Supreme Court.
+144 Civil and judicial authorities to act in aid of the Supreme Court.
+144A [Omitted]
+145 Rules of Court, etc.
+146 Officers and servants and the expenses of the Supreme Court.
+147 Interpretation.
+## Chapter V|Comptroller and Auditor-General of India|148–151
+148 Comptroller and Auditor-General of India.
+149 Duties and powers of the Comptroller and Auditor-General.
+150 Form of accounts of the Union and of the States.
+151 Audit reports.
+# PART VI|The States|Art. 152–237
+## Chapter I|General|152
+152 Definition.
+## Chapter II|The Executive|153–167
+### The Governor|153–162
+153 Governors of States.
+154 Executive power of State.
+155 Appointment of Governor.
+156 Term of office of Governor.
+157 Qualifications for appointment as Governor.
+158 Conditions of Governor's office.
+159 Oath or affirmation by the Governor.
+160 Discharge of the functions of the Governor in certain contingencies.
+161 Power of Governor to grant pardons, etc., and to suspend, remit or commute sentences in certain cases.
+162 Extent of executive power of State.
+### Council of Ministers|163–164
+163 Council of Ministers to aid and advise Governor.
+164 Other provisions as to Ministers.
+### The Advocate-General for the State|165
+165 Advocate-General for the State.
+### Conduct of Government Business|166–167
+166 Conduct of business of the Government of a State.
+167 Duties of Chief Minister as respects the furnishing of information to Governor, etc.
+## Chapter III|The State Legislature|168–212
+### General|168–177
+168 Constitution of Legislatures in States.
+169 Abolition or creation of Legislative Councils in States.
+170 Composition of the Legislative Assemblies.
+171 Composition of the Legislative Councils.
+172 Duration of State Legislatures.
+173 Qualification for membership of the State Legislature.
+174 Sessions of the State Legislature, prorogation and dissolution.
+175 Right of Governor to address and send messages to the House or Houses.
+176 Special address by the Governor.
+177 Rights of Ministers and Advocate-General as respects the Houses.
+### Officers of the State Legislature|178–187
+178 The Speaker and Deputy Speaker of the Legislative Assembly.
+179 Vacation and resignation of, and removal from, the offices of Speaker and Deputy Speaker.
+180 Power of the Deputy Speaker or other person to perform the duties of the office of, or to act as, Speaker.
+181 The Speaker or the Deputy Speaker not to preside while a resolution for his removal from office is under consideration.
+182 The Chairman and Deputy Chairman of the Legislative Council.
+183 Vacation and resignation of, and removal from, the offices of Chairman and Deputy Chairman.
+184 Power of the Deputy Chairman or other person to perform the duties of the office of, or to act as, Chairman.
+185 The Chairman or the Deputy Chairman not to preside while a resolution for his removal from office is under consideration.
+186 Salaries and allowances of the Speaker and Deputy Speaker and the Chairman and Deputy Chairman.
+187 Secretariat of State Legislature.
+### Conduct of Business|188–189
+188 Oath or affirmation by members.
+189 Voting in Houses, power of Houses to act notwithstanding vacancies and quorum.
+### Disqualification of Members|190–193
+190 Vacation of seats.
+191 Disqualifications for membership.
+192 Decision on questions as to disqualifications of members.
+193 Penalty for sitting and voting before making oath or affirmation under article 188 or when not qualified or when disqualified.
+### Powers, Privileges and Immunities of State Legislatures and their Members|194–195
+194 Powers, privileges, etc., of the Houses of Legislatures and of the members and committees thereof.
+195 Salaries and allowances of members.
+### Legislative Procedure|196–201
+196 Provisions as to introduction and passing of Bills.
+197 Restriction on powers of Legislative Council as to Bills other than Money Bills.
+198 Special procedure in respect of Money Bills.
+199 Definition of "Money Bills".
+200 Assent to Bills.
+201 Bills reserved for consideration.
+### Procedure in Financial Matters|202–207
+202 Annual financial statement.
+203 Procedure in Legislature with respect to estimates.
+204 Appropriation Bills.
+205 Supplementary, additional or excess grants.
+206 Votes on account, votes of credit and exceptional grants.
+207 Special provisions as to financial Bills.
+### Procedure Generally|208–212
+208 Rules of procedure.
+209 Regulation by law of procedure in the Legislature of the State in relation to financial business.
+210 Language to be used in the Legislature.
+211 Restriction on discussion in the Legislature.
+212 Courts not to inquire into proceedings of the Legislature.
+## Chapter IV|Legislative Power of the Governor|213
+213 Power of Governor to promulgate Ordinances during recess of Legislature.
+## Chapter V|The High Courts in the States|214–232
+214 High Courts for States.
+215 High Courts to be courts of record.
+216 Constitution of High Courts.
+217 Appointment and conditions of the office of a Judge of a High Court.
+218 Application of certain provisions relating to Supreme Court to High Courts.
+219 Oath or affirmation by Judges of High Courts.
+220 Restriction on practice after being a permanent Judge.
+221 Salaries, etc., of Judges.
+222 Transfer of a Judge from one High Court to another.
+223 Appointment of acting Chief Justice.
+224 Appointment of additional and acting Judges.
+224A Appointment of retired Judges at sittings of High Courts.
+225 Jurisdiction of existing High Courts.
+226 Power of High Courts to issue certain writs.
+226A [Omitted]
+227 Power of superintendence over all courts by the High Court.
+228 Transfer of certain cases to High Court.
+228A [Omitted]
+229 Officers and servants and the expenses of High Courts.
+230 Extension of jurisdiction of High Courts to Union territories.
+231 Establishment of a common High Court for two or more States.
+232 [Omitted]
+## Chapter VI|Subordinate Courts|233–237
+233 Appointment of district judges.
+233A Validation of appointments of, and judgments, etc., delivered by, certain district judges.
+234 Recruitment of persons other than district judges to the judicial service.
+235 Control over subordinate courts.
+236 Interpretation.
+237 Application of the provisions of this Chapter to certain class or classes of magistrates.
+# PART VII|The States in Part B of the First Schedule|Art. 238
+238 [Omitted]
+# PART VIII|The Union Territories|Art. 239–242
+239 Administration of Union territories.
+239A Creation of local Legislatures or Council of Ministers or both for certain Union territories.
+239AA Special provisions with respect to Delhi.
+239AB Provision in case of failure of constitutional machinery.
+239B Power of administrator to promulgate Ordinances during recess of Legislature.
+240 Power of President to make regulations for certain Union territories.
+241 High Courts for Union territories.
+242 [Omitted]
+# PART IX|The Panchayats|Art. 243–243O
+243 Definitions.
+243A Gram Sabha.
+243B Constitution of Panchayats.
+243C Composition of Panchayats.
+243D Reservation of seats.
+243E Duration of Panchayats, etc.
+243F Disqualifications for membership.
+243G Powers, authority and responsibilities of Panchayats.
+243H Powers to impose taxes by, and Funds of, the Panchayats.
+243I Constitution of Finance Commission to review financial position.
+243J Audit of accounts of Panchayats.
+243K Elections to the Panchayats.
+243L Application to Union territories.
+243M Part not to apply to certain areas.
+243N Continuance of existing laws and Panchayats.
+243O Bar to interference by courts in electoral matters.
+# PART IXA|The Municipalities|Art. 243P–243ZG
+243P Definitions.
+243Q Constitution of Municipalities.
+243R Composition of Municipalities.
+243S Constitution and composition of Wards Committees, etc.
+243T Reservation of seats.
+243U Duration of Municipalities, etc.
+243V Disqualifications for membership.
+243W Powers, authority and responsibilities of Municipalities, etc.
+243X Power to impose taxes by, and Funds of, the Municipalities.
+243Y Finance Commission.
+243Z Audit of accounts of Municipalities.
+243ZA Elections to the Municipalities.
+243ZB Application to Union territories.
+243ZC Part not to apply to certain areas.
+243ZD Committee for district planning.
+243ZE Committee for Metropolitan planning.
+243ZF Continuance of existing laws and Municipalities.
+243ZG Bar to interference by courts in electoral matters.
+# PART IXB|The Co-operative Societies|Art. 243ZH–243ZT
+243ZH Definitions.
+243ZI Incorporation of co-operative societies.
+243ZJ Number and term of members of board and its office bearers.
+243ZK Election of members of board.
+243ZL Supersession and suspension of board and interim management.
+243ZM Audit of accounts of co-operative societies.
+243ZN Convening of general body meetings.
+243ZO Right of a member to get information.
+243ZP Returns.
+243ZQ Offences and penalties.
+243ZR Application to multi-State co-operative societies.
+243ZS Application to Union territories.
+243ZT Continuance of existing laws.
+# PART X|The Scheduled and Tribal Areas|Art. 244–244A
+244 Administration of Scheduled Areas and Tribal Areas.
+244A Formation of an autonomous State comprising certain tribal areas in Assam and creation of local Legislature or Council of Ministers or both therefor.
+# PART XI|Relations between the Union and the States|Art. 245–263
+## Chapter I|Legislative Relations|245–255
+### Distribution of Legislative Powers|245–255
+245 Extent of laws made by Parliament and by the Legislatures of States.
+246 Subject-matter of laws made by Parliament and by the Legislatures of States.
+246A Special provision with respect to goods and services tax.
+247 Power of Parliament to provide for the establishment of certain additional courts.
+248 Residuary powers of legislation.
+249 Power of Parliament to legislate with respect to a matter in the State List in the national interest.
+250 Power of Parliament to legislate with respect to any matter in the State List if a Proclamation of Emergency is in operation.
+251 Inconsistency between laws made by Parliament under articles 249 and 250 and laws made by the Legislatures of States.
+252 Power of Parliament to legislate for two or more States by consent and adoption of such legislation by any other State.
+253 Legislation for giving effect to international agreements.
+254 Inconsistency between laws made by Parliament and laws made by the Legislatures of States.
+255 Requirements as to recommendations and previous sanctions to be regarded as matters of procedure only.
+## Chapter II|Administrative Relations|256–263
+### General|256–261
+256 Obligation of States and the Union.
+257 Control of the Union over States in certain cases.
+257A [Omitted]
+258 Power of the Union to confer powers, etc., on States in certain cases.
+258A Power of the States to entrust functions to the Union.
+259 [Omitted]
+260 Jurisdiction of the Union in relation to territories outside India.
+261 Public acts, records and judicial proceedings.
+### Disputes relating to Waters|262
+262 Adjudication of disputes relating to waters of inter-State rivers or river valleys.
+### Co-ordination between States|263
+263 Provisions with respect to an inter-State Council.
+# PART XII|Finance, Property, Contracts and Suits|Art. 264–300A
+## Chapter I|Finance|264–291
+### General|264–267
+264 Interpretation.
+265 Taxes not to be imposed save by authority of law.
+266 Consolidated Funds and public accounts of India and of the States.
+267 Contingency Fund.
+### Distribution of Revenues between the Union and the States|268–281
+268 Duties levied by the Union but collected and appropriated by the States.
+268A [Omitted]
+269 Taxes levied and collected by the Union but assigned to the States.
+269A Levy and collection of goods and services tax in course of inter-State trade or commerce.
+270 Taxes levied and distributed between the Union and the States.
+271 Surcharge on certain duties and taxes for purposes of the Union.
+272 [Omitted]
+273 Grants in lieu of export duty on jute and jute products.
+274 Prior recommendation of President required to Bills affecting taxation in which States are interested.
+275 Grants from the Union to certain States.
+276 Taxes on professions, trades, callings and employments.
+277 Savings.
+278 [Omitted]
+279 Calculation of "net proceeds", etc.
+279A Goods and Services Tax Council.
+280 Finance Commission.
+281 Recommendations of the Finance Commission.
+### Miscellaneous Financial Provisions|282–291
+282 Expenditure defrayable by the Union or a State out of its revenues.
+283 Custody, etc., of Consolidated Funds, Contingency Funds and moneys credited to the public accounts.
+284 Custody of suitors' deposits and other moneys received by public servants and courts.
+285 Exemption of property of the Union from State taxation.
+286 Restrictions as to imposition of tax on the sale or purchase of goods.
+287 Exemption from taxes on electricity.
+288 Exemption from taxation by States in respect of water or electricity in certain cases.
+289 Exemption of property and income of a State from Union taxation.
+290 Adjustment in respect of certain expenses and pensions.
+290A Annual payment to certain Devaswom Funds.
+291 [Omitted]
+## Chapter II|Borrowing|292–293
+292 Borrowing by the Government of India.
+293 Borrowing by States.
+## Chapter III|Property, Contracts, Rights, Liabilities, Obligations and Suits|294–300
+294 Succession to property, assets, rights, liabilities and obligations in certain cases.
+295 Succession to property, assets, rights, liabilities and obligations in other cases.
+296 Property accruing by escheat or lapse or as bona vacantia.
+297 Things of value within territorial waters or continental shelf and resources of the exclusive economic zone to vest in the Union.
+298 Power to carry on trade, etc.
+299 Contracts.
+300 Suits and proceedings.
+## Chapter IV|Right to Property|300A
+300A Persons not to be deprived of property save by authority of law.
+# PART XIII|Trade, Commerce and Intercourse within the Territory of India|Art. 301–307
+301 Freedom of trade, commerce and intercourse.
+302 Power of Parliament to impose restrictions on trade, commerce and intercourse.
+303 Restrictions on the legislative powers of the Union and of the States with regard to trade and commerce.
+304 Restrictions on trade, commerce and intercourse among States.
+305 Saving of existing laws and laws providing for State monopolies.
+306 [Omitted]
+307 Appointment of authority for carrying out the purposes of articles 301 to 304.
+# PART XIV|Services under the Union and the States|Art. 308–323
+## Chapter I|Services|308–314
+308 Interpretation.
+309 Recruitment and conditions of service of persons serving the Union or a State.
+310 Tenure of office of persons serving the Union or a State.
+311 Dismissal, removal or reduction in rank of persons employed in civil capacities under the Union or a State.
+312 All-India services.
+312A Power of Parliament to vary or revoke conditions of service of officers of certain services.
+313 Transitional provisions.
+314 [Omitted]
+## Chapter II|Public Service Commissions|315–323
+315 Public Service Commissions for the Union and for the States.
+316 Appointment and term of office of members.
+317 Removal and suspension of a member of a Public Service Commission.
+318 Power to make regulations as to conditions of service of members and staff of the Commission.
+319 Prohibition as to the holding of offices by members of Commission on ceasing to be such members.
+320 Functions of Public Service Commissions.
+321 Power to extend functions of Public Service Commissions.
+322 Expenses of Public Service Commissions.
+323 Reports of Public Service Commissions.
+# PART XIVA|Tribunals|Art. 323A–323B
+323A Administrative tribunals.
+323B Tribunals for other matters.
+# PART XV|Elections|Art. 324–329A
+324 Superintendence, direction and control of elections to be vested in an Election Commission.
+325 No person to be ineligible for inclusion in, or to claim to be included in a special, electoral roll on grounds of religion, race, caste or sex.
+326 Elections to the House of the People and to the Legislative Assemblies of States to be on the basis of adult suffrage.
+327 Power of Parliament to make provision with respect to elections to Legislatures.
+328 Power of Legislature of a State to make provision with respect to elections to such Legislature.
+329 Bar to interference by courts in electoral matters.
+329A [Omitted]
+# PART XVI|Special Provisions relating to Certain Classes|Art. 330–342A
+330 Reservation of seats for Scheduled Castes and Scheduled Tribes in the House of the People.
+330A Reservation of seats for women in the House of the People.
+331 Representation of the Anglo-Indian community in the House of the People.
+332 Reservation of seats for Scheduled Castes and Scheduled Tribes in the Legislative Assemblies of the States.
+332A Reservation of seats for women in the Legislative Assemblies of the States.
+333 Representation of the Anglo-Indian community in the Legislative Assemblies of the States.
+334 Reservation of seats and special representation to cease after certain period.
+334A Reservation of seats for women to take effect.
+335 Claims of Scheduled Castes and Scheduled Tribes to services and posts.
+336 Special provision for Anglo-Indian community in certain services.
+337 Special provision with respect to educational grants for the benefit of Anglo-Indian community.
+338 National Commission for Scheduled Castes.
+338A National Commission for Scheduled Tribes.
+338B National Commission for Backward Classes.
+339 Control of the Union over the administration of Scheduled Areas and the welfare of Scheduled Tribes.
+340 Appointment of a Commission to investigate the conditions of backward classes.
+341 Scheduled Castes.
+342 Scheduled Tribes.
+342A Socially and educationally backward classes.
+# PART XVII|Official Language|Art. 343–351
+## Chapter I|Language of the Union|343–344
+343 Official language of the Union.
+344 Commission and Committee of Parliament on official language.
+## Chapter II|Regional Languages|345–347
+345 Official language or languages of a State.
+346 Official language for communication between one State and another or between a State and the Union.
+347 Special provision relating to language spoken by a section of the population of a State.
+## Chapter III|Language of the Supreme Court, High Courts, etc.|348–349
+348 Language to be used in the Supreme Court and in the High Courts and for Acts, Bills, etc.
+349 Special procedure for enactment of certain laws relating to language.
+## Chapter IV|Special Directives|350–351
+350 Language to be used in representations for redress of grievances.
+350A Facilities for instruction in mother-tongue at primary stage.
+350B Special Officer for linguistic minorities.
+351 Directive for development of the Hindi language.
+# PART XVIII|Emergency Provisions|Art. 352–360
+352 Proclamation of Emergency.
+353 Effect of Proclamation of Emergency.
+354 Application of provisions relating to distribution of revenues while a Proclamation of Emergency is in operation.
+355 Duty of the Union to protect States against external aggression and internal disturbance.
+356 Provisions in case of failure of constitutional machinery in States.
+357 Exercise of legislative powers under Proclamation issued under article 356.
+358 Suspension of provisions of article 19 during emergencies.
+359 Suspension of the enforcement of the rights conferred by Part III during emergencies.
+359A [Omitted]
+360 Provisions as to financial emergency.
+# PART XIX|Miscellaneous|Art. 361–367
+361 Protection of President and Governors and Rajpramukhs.
+361A Protection of publication of proceedings of Parliament and State Legislatures.
+361B Disqualification for appointment on remunerative political post.
+362 [Omitted]
+363 Bar to interference by courts in disputes arising out of certain treaties, agreements, etc.
+363A Recognition granted to Rulers of Indian States to cease and privy purses to be abolished.
+364 Special provisions as to major ports and aerodromes.
+365 Effect of failure to comply with, or to give effect to, directions given by the Union.
+366 Definitions.
+367 Interpretation.
+# PART XX|Amendment of the Constitution|Art. 368
+368 Power of Parliament to amend the Constitution and procedure therefor.
+# PART XXI|Temporary, Transitional and Special Provisions|Art. 369–392
+369 Temporary power to Parliament to make laws with respect to certain matters in the State List as if they were matters in the Concurrent List.
+370 Temporary provisions with respect to the State of Jammu and Kashmir.
+371 Special provision with respect to the States of Maharashtra and Gujarat.
+371A Special provision with respect to the State of Nagaland.
+371B Special provision with respect to the State of Assam.
+371C Special provision with respect to the State of Manipur.
+371D Special provisions with respect to the State of Andhra Pradesh or the State of Telangana.
+371E Establishment of Central University in Andhra Pradesh.
+371F Special provisions with respect to the State of Sikkim.
+371G Special provision with respect to the State of Mizoram.
+371H Special provision with respect to the State of Arunachal Pradesh.
+371I Special provision with respect to the State of Goa.
+371J Special provisions with respect to the State of Karnataka.
+372 Continuance in force of existing laws and their adaptation.
+372A Power of the President to adapt laws.
+373 Power of President to make order in respect of persons under preventive detention in certain cases.
+374 Provisions as to Judges of the Federal Court and proceedings pending in the Federal Court or before His Majesty in Council.
+375 Courts, authorities and officers to continue to function subject to the provisions of the Constitution.
+376 Provisions as to Judges of High Courts.
+377 Provisions as to Comptroller and Auditor-General of India.
+378 Provisions as to Public Service Commissions.
+378A Special provision as to duration of Andhra Pradesh Legislative Assembly.
+379–391 [Omitted]
+392 Power of the President to remove difficulties.
+# PART XXII|Short Title, Commencement, Authoritative Text in Hindi and Repeals|Art. 393–395
+393 Short title.
+394 Commencement.
+394A Authoritative text in the Hindi language.
+395 Repeals.
+`;
+
+const LINKED = { 'PART I': 'I', 'PART II': 'II', 'PART III': 'III', 'PART IV': 'IV', 'PART IVA': 'IVA', 'PART V': 'V', 'PART VI': 'VI', 'PART VII': 'VII', 'PART VIII': 'VIII', 'PART IX': 'IX', 'PART IXA': 'IXA', 'PART IXB': 'IXB', 'PART X': 'X', 'PART XI': 'XI', 'PART XII': 'XII', 'PART XIII': 'XIII', 'PART XIV': 'XIV', 'PART XIVA': 'XIVA', 'PART XV': 'XV', 'PART XVII': 'XVII', 'PART XVIII': 'XVIII', 'PART XX': 'XX', 'PART XXI': 'XXI' };
+const PARTIAL = {"PART XII":["265","266","267","268","269","270","275","280","282","292","293","298","299","300","300A"],"PART XIII":["301","302","303","304","305","307"],"PART XIV":["309","310","311","312","315","316","317","320"],"PART XIVA":["323A","323B"],"PART XV":["324","325","326","327","329"],"PART XVII":["343","345","348","350A","351"],"PART XVIII":["352","353","354","355","356","357","358","359","360"],"PART XX":["368"],"PART XXI":["370","371","371A","371D","371J"]};
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const MARK = ' \u2197';
+function semUnits(id) {
+  const out = [];
+  const S1 = { I: '1 2 2A 3 4 5 6 7 8 9 10 11 constitution preamble adopted in-force', II: '12 13 14', III: '15 16 17 18 19', IV: '20 21 21A 22 23 24 25 26 27 28', V: '29 30 31 31A 31B 31C 31D 32 32A 33 34 35 36 37 38 39 39A 40 41 42 43 43A 43B 44 45 46 47 48 48A 49 50 51 51A 226 300A' };
+  for (const u in S1) if (S1[u].split(' ').includes(id)) out.push({ sem: 'I', unit: u });
+  const SP = { 'seventh-schedule': 'I', 'tenth-schedule': 'III', 'schedules': 'V' };
+  if (SP[id]) out.push({ sem: 'II', unit: SP[id] });
+  const m = /^(\d+)([A-Z]*)$/.exec(id || '');
+  if (m) {
+    const n = +m[1], suf = m[2];
+    const r = (a, b) => n >= a && n <= b;
+    let u = null;
+    if (n === 243 && !/^Z[H-T]$/.test(suf) || r(1, 4) || r(239, 242) || r(245, 263) || r(264, 293) || r(301, 307) || r(343, 351) || n === 370 || n === 371) u = 'I';
+    else if ([93, 94, 95, 96, 105, 178, 179, 180, 181, 194].includes(n) || r(124, 147) || r(214, 232)) u = 'III';
+    else if (r(52, 123) || r(152, 213)) u = 'II';
+    else if (r(233, 237) || n === 300 && !suf || r(308, 323) || r(324, 329)) u = 'IV';
+    else if (r(352, 360) || n === 368) u = 'V';
+    if (u) out.push({ sem: 'II', unit: u });
+  }
+  return out;
+}
+const UNIT_LABEL = n => semUnits(n).map(x => 'Sem ' + x.sem + ' · Unit ' + x.unit).join(' / ') || false;
+const PART_UNIT = { 'PART I': 'Sem I · Unit I / Sem II · Unit I', 'PART VIII': 'Sem II · Unit I', 'PART II': 'Sem I · Unit I', 'PART III': 'Sem I · Units II–V', 'PART IV': 'Sem I · Unit V', 'PART IVA': 'Sem I · Unit V', 'PART V': 'Sem II · Units II–III', 'PART VI': 'Sem II · Units II–IV', 'PART IX': 'Sem II · Unit I', 'PART IXA': 'Sem II · Unit I', 'PART XI': 'Sem II · Unit I', 'PART XII': 'Sem II · Units I, IV', 'PART XIII': 'Sem II · Unit I', 'PART XIV': 'Sem II · Unit IV', 'PART XIVA': 'Sem II · Unit IV', 'PART XV': 'Sem II · Unit IV', 'PART XVII': 'Sem II · Unit I', 'PART XVIII': 'Sem II · Unit V', 'PART XX': 'Sem II · Unit V', 'PART XXI': 'Sem II · Unit I' };
+const SUB_UNIT = { 'General': 'II', 'Right to Equality': 'II–III', 'Right to Freedom': 'III–IV', 'Right against Exploitation': 'IV', 'Right to Freedom of Religion': 'IV', 'Cultural and Educational Rights': 'V', 'Saving of Certain Laws': 'V', 'Right to Constitutional Remedies': 'V' };
+function parse(src) {
+  let part = '', ch = '';
+  return src.split('\n').map(l => l.trim()).filter(Boolean).map(l => {
+    const base = { isPart: false, isChapter: false, isSub: false, isArt: false, isOm: false, isNote: false, href: undefined, mark: '', unit: false };
+    const on = () => LINKED[part];
+    const link = h => on() ? { href: h, mark: MARK } : {};
+    const glink = h => PARTIAL[part] ? {} : link(h);
+    if (l.startsWith('### ')) { const [a, b] = l.slice(4).split('|'); return { ...base, isSub: true, a, b: 'Art. ' + b, unit: part === 'PART III' && SUB_UNIT[a] ? 'Sem I · U ' + SUB_UNIT[a] : false, ...glink('Article.dc.html?part=' + LINKED[part] + '&g=' + (ch ? ch + '-' : '') + slugify(a)) }; }
+    if (l.startsWith('## ')) { const [a, b, c] = l.slice(3).split('|'); ch = 'ch' + a.replace('Chapter ', '').toLowerCase(); return { ...base, isChapter: true, a, b, c, ...glink('Article.dc.html?part=' + LINKED[part] + '&g=' + ch) }; }
+    if (l.startsWith('# ')) { const [a, b, c] = l.slice(2).split('|'); part = a; ch = ''; return { ...base, isPart: true, a, b, c, unit: PART_UNIT[a] || false, anchor: 'part-' + a.replace('PART ', ''), ...link('Article.dc.html?part=' + LINKED[a]) }; }
+    if (l.startsWith('- ')) { const m = l.slice(2).match(/^(\(\w\))\s(.*)$/); return { ...base, isNote: true, n: m[1], t: m[2] }; }
+    const i = l.indexOf(' '); const n = l.slice(0, i), t = l.slice(i + 1);
+    const lk = !PARTIAL[part] || PARTIAL[part].includes(n) ? link('Article.dc.html?a=' + encodeURIComponent(n)) : {};
+    const unit = UNIT_LABEL(n);
+    return t === '[Omitted]' ? { ...base, isOm: true, n, unit, ...lk } : { ...base, isArt: true, n, t, unit, ...lk };
+  });
+}
+const ROWS = parse(DATA);
+
+const SCHEDULES = [
+  ['1st', 'Names of the States and Union territories and their territorial jurisdiction.'],
+  ['2nd', 'Emoluments, allowances and privileges of the President, Governors, Speakers and Deputy Speakers, Chairmen and Deputy Chairmen, Judges of the Supreme Court and High Courts, and the Comptroller and Auditor-General.'],
+  ['3rd', 'Forms of oaths or affirmations.'],
+  ['4th', 'Allocation of seats in the Council of States (Rajya Sabha).'],
+  ['5th', 'Administration and control of Scheduled Areas and Scheduled Tribes.'],
+  ['6th', 'Administration of Tribal Areas in the States of Assam, Meghalaya, Tripura and Mizoram.'],
+  ['7th', 'Division of powers: Union List, State List and Concurrent List.'],
+  ['8th', 'Languages recognised by the Constitution (22).'],
+  ['9th', 'Validation of certain Acts and Regulations (added by the 1st Amendment, 1951).'],
+  ['10th', 'Disqualification on ground of defection (added by the 52nd Amendment, 1985).'],
+  ['11th', 'Powers, authority and responsibilities of Panchayats: 29 subjects (73rd Amendment, 1992).'],
+  ['12th', 'Powers, authority and responsibilities of Municipalities: 18 subjects (74th Amendment, 1992).']
+].map(([n, t]) => ({ n, t }));
+
+const SOURCES = [
+  ['Government of India Act, 1935', 'Federal scheme, office of Governor, judiciary, Public Service Commissions, emergency provisions and administrative details.'],
+  ['British Constitution', 'Parliamentary government, rule of law, legislative procedure, single citizenship, cabinet system, prerogative writs, parliamentary privileges and bicameralism.'],
+  ['US Constitution', 'Fundamental rights, independence of judiciary, judicial review, impeachment of the President, removal of Supreme Court and High Court judges, and post of Vice-President.'],
+  ['Irish Constitution', 'Directive Principles of State Policy, nomination of members to Rajya Sabha and method of election of the President.'],
+  ['Canadian Constitution', 'Federation with a strong Centre, residuary powers vested in the Centre, appointment of State Governors by the Centre, and advisory jurisdiction of the Supreme Court.'],
+  ['Australian Constitution', 'Concurrent List, freedom of trade, commerce and intercourse, and joint sitting of the two Houses of Parliament.'],
+  ['Weimar Constitution (Germany)', 'Suspension of Fundamental Rights during Emergency.'],
+  ['Soviet Constitution (USSR)', 'Fundamental Duties and the ideal of justice (social, economic and political) in the Preamble.'],
+  ['French Constitution', 'Republic and the ideals of liberty, equality and fraternity in the Preamble.'],
+  ['South African Constitution', 'Procedure for amendment of the Constitution and election of members of Rajya Sabha.'],
+  ['Japanese Constitution', 'Procedure established by law.']
+].map(([n, t]) => ({ n, t }));
+
+const STATES = [
+  ['Andhra Pradesh', 11, 25], ['Arunachal Pradesh', 1, 2], ['Assam', 7, 14], ['Bihar', 16, 40], ['Chhattisgarh', 5, 11], ['Goa', 1, 2], ['Gujarat', 11, 26], ['Haryana', 5, 10], ['Himachal Pradesh', 3, 4], ['Jharkhand', 6, 14], ['Karnataka', 12, 28], ['Kerala', 9, 20], ['Madhya Pradesh', 11, 29], ['Maharashtra', 19, 48], ['Manipur', 1, 2], ['Meghalaya', 1, 2], ['Mizoram', 1, 1], ['Nagaland', 1, 1], ['Odisha', 10, 21], ['Punjab', 7, 13], ['Rajasthan', 10, 25], ['Sikkim', 1, 1], ['Tamil Nadu', 18, 39], ['Telangana', 7, 17], ['Tripura', 1, 2], ['Uttar Pradesh', 31, 80], ['Uttarakhand', 3, 5], ['West Bengal', 16, 42]
+].map(([n, r, l]) => ({ n, r, l }));
+
+const UTS = [
+  ['Andaman & Nicobar Islands', '–', 1], ['Chandigarh', '–', 1], ['Dadra & Nagar Haveli and Daman & Diu', '–', 2], ['Delhi', 3, 7], ['Jammu & Kashmir', 4, 5], ['Ladakh', '–', 1], ['Lakshadweep', '–', 1], ['Puducherry', 1, 1]
+].map(([n, r, l]) => ({ n, r, l }));
+
+const TOPICS = [
+  ['Parliament', 'Art. 79', 'Consists of the President and two Houses: the Council of States (Rajya Sabha, up to 250 members, 12 nominated by the President) and the House of the People (Lok Sabha, up to 550 elected members; currently 543).'],
+  ['President', 'Art. 52–62', 'Head of the Union executive. Elected by an electoral college of elected members of both Houses of Parliament and of the State and UT Legislative Assemblies, by proportional representation through the single transferable vote. Five-year term; removable by impeachment under Art. 61.'],
+  ['Vice-President', 'Art. 63–71', 'Ex officio Chairman of the Rajya Sabha. Elected by members of both Houses of Parliament for five years; acts as President during a vacancy.'],
+  ['Council of Ministers', 'Art. 74–75', 'Headed by the Prime Minister to aid and advise the President. Collectively responsible to the Lok Sabha; total size capped at 15% of Lok Sabha strength (91st Amendment, 2003).'],
+  ['Prime Minister', 'Art. 75, 78', 'Appointed by the President; other Ministers are appointed on the Prime Minister\u2019s advice. Communicates Cabinet decisions to the President.'],
+  ['Supreme Court', 'Art. 124', 'Inaugurated on 28 January 1950. Chief Justice of India and up to 33 other judges; judges hold office until age 65. Guardian of Fundamental Rights under Art. 32.'],
+  ['Judicial Review', 'Art. 13, 32, 226', 'Power of the courts to strike down laws and executive actions that violate the Constitution. Kesavananda Bharati v. State of Kerala (1973) held that amendments cannot alter the basic structure.']
+].map(([n, a, t]) => ({ n, a, t }));
+
+const INTERIM = [
+  ['Jawaharlal Nehru', 'External Affairs & Commonwealth Relations; Vice-President of the Council'], ['Sardar Vallabhbhai Patel', 'Home, Information & Broadcasting'], ['Dr. Rajendra Prasad', 'Food & Agriculture'], ['Dr. John Mathai', 'Industries & Supplies'], ['Jagjivan Ram', 'Labour'], ['Sardar Baldev Singh', 'Defence'], ['C. H. Bhabha', 'Works, Mines & Power'], ['Liaquat Ali Khan', 'Finance'], ['Abdur Rab Nishtar', 'Posts & Air'], ['Asaf Ali', 'Railways & Transport'], ['C. Rajagopalachari', 'Education & Arts'], ['I. I. Chundrigar', 'Commerce'], ['Ghazanfar Ali Khan', 'Health'], ['Jogendra Nath Mandal', 'Law']
+].map(([n, t]) => ({ n, t }));
+
+const COMMITTEES = [
+  ['Drafting Committee', 'Dr. B. R. Ambedkar'], ['Union Powers Committee', 'Jawaharlal Nehru'], ['Union Constitution Committee', 'Jawaharlal Nehru'], ['States Committee', 'Jawaharlal Nehru'], ['Provincial Constitution Committee', 'Sardar Vallabhbhai Patel'], ['Advisory Committee on Fundamental Rights, Minorities and Tribal Areas', 'Sardar Vallabhbhai Patel'], ['Rules of Procedure Committee', 'Dr. Rajendra Prasad'], ['Steering Committee', 'Dr. Rajendra Prasad']
+].map(([n, t]) => ({ n, t }));
+
+class Component extends DCLogic {
+  state = { loading: true, leaving: false, q: '', canL: false, canR: true };
+  stripRef = React.createRef();
+  headRef = React.createRef();
+  updStrip = () => { const el = this.stripRef.current; if (!el) return; const l = el.scrollLeft > 4, r = el.scrollLeft + el.clientWidth < el.scrollWidth - 4; if (l !== this.state.canL || r !== this.state.canR) this.setState({ canL: l, canR: r }); };
+  componentWillUnmount() { document.removeEventListener('keydown', this.onSlash); window.removeEventListener('resize', this.updStrip); window.removeEventListener('scroll', this.spy); this.ro && this.ro.disconnect(); }
+  buildIndex() {
+    const C = window.COI; if (!C || !C.parts || this.idx) return this.idx;
+    const idx = [];
+    for (const P of Object.values(C.parts)) for (const [id, a] of Object.entries(P.articles)) {
+      const num = /^\d/.test(id);
+      const t = a.title.replace(/\s*\[Omitted\]$/, '');
+      idx.push({ kind: num ? 'Article ' + id : 'Overview', title: num ? t : t, sub: num ? (P.key === 'OV' ? '' : 'Part ' + P.part + ' · ' + P.title) : '', href: 'Article.dc.html?a=' + encodeURIComponent(id), hay: (num ? 'art ' + id + ' article ' + id + ' ' : '') + t + ' ' + (a.clauses || []).join(' '), id, num });
+      (a.cases || []).forEach(c => idx.push({ kind: 'Case', title: c.name, sub: c.cite + ' · ' + (num ? 'Art. ' + id : t), href: 'Article.dc.html?a=' + encodeURIComponent(id), hay: c.name + ' ' + c.cite }));
+    }
+    this.idx = idx; return idx;
+  }
+  componentDidMount() {
+    this.onSlash = e => { if (e.key === '/' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); const i = document.querySelector('input'); i && i.focus(); } };
+    document.addEventListener('keydown', this.onSlash);
+    const strip = this.stripRef.current, head = this.headRef.current;
+    if (strip) {
+      strip.addEventListener('scroll', this.updStrip, { passive: true });
+      strip.addEventListener('wheel', e => { if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && strip.scrollWidth > strip.clientWidth) { e.preventDefault(); strip.scrollLeft += e.deltaY; } }, { passive: false });
+      setTimeout(() => { this.updStrip(); let seen = false; try { seen = sessionStorage.getItem('coi-nudge'); sessionStorage.setItem('coi-nudge', '1'); } catch (e) {} if (!seen && strip.scrollWidth > strip.clientWidth + 4) { strip.scrollTo({ left: 90, behavior: 'smooth' }); setTimeout(() => strip.scrollTo({ left: 0, behavior: 'smooth' }), 750); } }, 1400);
+    }
+    window.addEventListener('resize', this.updStrip);
+    this.spy = () => {
+      if (this.spyRaf) return;
+      this.spyRaf = requestAnimationFrame(() => {
+        this.spyRaf = 0;
+        const off = (this.headH || 56) + 24; let cur = null;
+        const els = [...document.querySelectorAll('a[id^="part-"]')];
+        const lefts = els.map(el => Math.round(el.getBoundingClientRect().left));
+        const oneCol = lefts.every(l => Math.abs(l - lefts[0]) < 3);
+        if (oneCol) els.forEach(el => { if (el.getBoundingClientRect().top - off <= 0) cur = el.id; });
+        if (cur !== this.state.active) {
+          this.setState({ active: cur });
+          const s = this.stripRef.current, c = cur && s && s.querySelector('a[href="#' + cur + '"]');
+          if (c) { const l = c.offsetLeft - s.offsetLeft, w = c.offsetWidth; if (l < s.scrollLeft + 40 || l + w > s.scrollLeft + s.clientWidth - 40) s.scrollTo({ left: l - s.clientWidth / 2 + w / 2, behavior: 'smooth' }); }
+        }
+      });
+    };
+    window.addEventListener('scroll', this.spy, { passive: true });
+    if (head && window.ResizeObserver) { this.ro = new ResizeObserver(() => { this.headH = head.offsetHeight; document.documentElement.style.setProperty('--hdr', head.offsetHeight + 'px'); this.updStrip(); }); this.ro.observe(head); }
+    const bootUI = () => window.COI_UI ? window.COI_UI.boot(this) : setTimeout(bootUI, 30);
+    bootUI();
+  }
+  renderVals() {
+    return {
+      ...(() => {
+        const q = this.state.q.trim().toLowerCase();
+        if (q.length < 1) return { q: this.state.q, results: [], hasResults: false, noResults: false };
+        const idx = this.buildIndex() || [];
+        const words = q.split(/\s+/);
+        const numQ = /^(art\.?\s*)?(\d+[a-z]*)$/.exec(q);
+        const scored = [];
+        for (const r of idx) {
+          let s = 0;
+          if (numQ && r.num && r.id.toLowerCase() === numQ[2]) s = 100;
+          else if (numQ && r.num && r.id.toLowerCase().startsWith(numQ[2])) s = 50 - r.id.length;
+          else { const h = r.hay.toLowerCase(); if (words.every(w => h.includes(w))) s = (r.title.toLowerCase().includes(q) ? 20 : 10) + (r.kind === 'Case' ? 0 : 2); }
+          if (s) scored.push([s, r]);
+        }
+        scored.sort((a, b) => b[0] - a[0]);
+        const results = scored.slice(0, 14).map(x => x[1]);
+        return { q: this.state.q, results, hasResults: results.length > 0, noResults: results.length === 0 };
+      })(),
+      onQ: e => this.setState({ q: e.target.value }),
+      onKey: e => { if (e.key === 'Escape') this.setState({ q: '' }); if (e.key === 'Enter') { const a = document.querySelector('input + div a'); if (a) a.click(); } },
+      loader: this.state.loading && window.COI_UI ? window.COI_UI.loader(React, { leaving: this.state.leaving, label: 'A complete index' }) : null,
+      columns: this.props.columns ?? 5,
+      jump: e => {
+        e.preventDefault();
+        const el = document.getElementById(e.currentTarget.getAttribute('href').slice(1));
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - (this.headH || 56) - 10, behavior: 'smooth' });
+      },
+      headRef: this.headRef, stripRef: this.stripRef,
+      scrollL: () => { const el = this.stripRef.current; el && el.scrollBy({ left: -el.clientWidth * 0.7, behavior: 'smooth' }); },
+      scrollR: () => { const el = this.stripRef.current; el && el.scrollBy({ left: el.clientWidth * 0.7, behavior: 'smooth' }); },
+      lOp: this.state.canL ? 1 : 0, lOpPe: this.state.canL ? 'auto' : 'none',
+      rOp: this.state.canR ? 1 : 0, rOpPe: this.state.canR ? 'auto' : 'none',
+      mask: 'linear-gradient(to right, ' + (this.state.canL ? 'transparent 0, #000 40px' : '#000 0') + ', ' + (this.state.canR ? '#000 calc(100% - 40px), transparent 100%' : '#000 100%') + ')',
+      toTop: e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      jumps: ROWS.filter(r => r.isPart).map(r => { const on = this.state.active === r.anchor; return { label: r.a.replace('PART ', ''), href: '#' + r.anchor, cur: on ? 'true' : 'false', bg: on ? '#1d2a4a' : '#ece6d8', fg: on ? '#f7f4ec' : '#1d2a4a', sh: on ? 'inset 0 -3px 0 #d9772b' : 'none' }; }),
+      spokes: Array.from({ length: 24 }, (_, i) => i * 15),
+      rows: ROWS, schedules: (Array.isArray(SCHEDULES[0]) ? SCHEDULES.map(([n, t]) => ({ n, t })) : SCHEDULES).map(s => { const k = { '7th': 'seventh-schedule', '10th': 'tenth-schedule' }[s.n]; return { ...s, href: k ? 'Article.dc.html?a=' + k : undefined, mark: k ? MARK : '', unit: k ? UNIT_LABEL(k) : s.n === '9th' ? 'Sem II · Unit V' : false }; }), sources: SOURCES, states: STATES, uts: UTS,
+      topics: TOPICS, interim: INTERIM, committees: COMMITTEES
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,500;0,700;1,500&family=Noto+Sans:ital,wdth,wght@0,87.5,400;0,87.5,500;0,87.5,600;1,87.5,400&family=Noto+Sans+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="./data/part3.js"></script>
+<script src="./data/part4.js"></script>
+<script src="./data/part1-2.js"></script>
+<script src="./data/part5.js"></script>
+<script src="./data/part6-7.js"></script>
+<script src="./data/part8-10.js"></script>
+<script src="./data/part11.js"></script>
+<script src="./data/part12-21.js"></script>
+<script src="./data/overview.js"></script>
+<script src="./data/kslu.js"></script>
+<script src="./data/papers.js"></script>
+<script src="./data/papers2.js"></script>
+<script src="./data/ui.js"></script>
+<style>body{margin:0;background:#f7f4ec}a{color:#1d2a4a}a:hover{color:#c8641e}</style>
+<script src="./mate.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#f7f4ec;color:#1d2a4a;font-family:'Noto Sans',sans-serif;font-stretch:87.5%;font-size:16px;line-height:1.55">
+  {{ loader }}
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:6px">
+    <div style="background:#d9772b"></div><div style="background:#f7f4ec"></div><div style="background:#2f6b45"></div>
+  </div>
+  <nav style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px clamp(16px,5vw,56px);border-bottom:1.5px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:13px">
+    <a href="Constitution of India.dc.html" style="text-decoration:none;font-weight:600">← Constitution of India</a>
+    <span style="color:#5b6273">KSLU · Past papers</span>
+  </nav>
+
+  <main style="max-width:1040px;margin:0 auto;padding:48px clamp(16px,5vw,56px) 72px;display:flex;flex-direction:column;gap:32px">
+    <header style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-family:'Noto Sans Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#2f6b45">{{ courseLabel }}</div>
+      <h1 style="margin:0;font-family:'Noto Serif',serif;font-weight:700;font-size:clamp(36px,6vw,60px);line-height:1.05">Past question papers</h1>
+      <p style="margin:4px 0 0;max-width:68ch;text-wrap:pretty">Ten papers per course from June 2019 to June 2025, transcribed and mapped to the articles and syllabus units they test. Every question links to its article page, where all questions on that article are collected.</p>
+      <div style="display:flex;gap:0;border:1.5px solid #2f6b45;align-self:flex-start;margin-top:8px">
+        <button onClick="{{ showSem1 }}" style="{{ sem1Style }}">Sem I · Con. Law I</button>
+        <button onClick="{{ showSem2 }}" style="{{ sem2Style }}">Sem II · Con. Law II</button>
+      </div>
+    </header>
+
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+      <sc-for list="{{ units }}" as="u" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:6px;padding:12px 14px;border:1.5px solid #1d2a4a;background:#fbf9f3">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <span style="font-family:'Noto Serif',serif;font-weight:700;font-size:20px">Unit {{ u.u }}</span>
+            <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#2f6b45;font-weight:600">{{ u.count }} Qs</span>
+          </div>
+          <p style="margin:0;font-size:13.5px;line-height:1.45;color:#3a4256;text-wrap:pretty">{{ u.text }}</p>
+        </div>
+      </sc-for>
+    </section>
+
+    <div style="display:flex;gap:0;border:1.5px solid #1d2a4a;align-self:flex-start">
+      <button onClick="{{ showTopics }}" style="{{ tabTopicStyle }}">By topic</button>
+      <button onClick="{{ showPapers }}" style="{{ tabPaperStyle }}">By paper</button>
+    </div>
+
+    <sc-if value="{{ isTopics }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <sc-for list="{{ topicUnits }}" as="tu" hint-placeholder-count="5">
+          <section style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:4px;border-bottom:1.5px solid #2f6b45">
+              <h2 style="margin:0;font-size:15px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#2f6b45">Unit {{ tu.u }}</h2>
+              <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#2f6b45">times asked</span>
+            </div>
+            <sc-for list="{{ tu.items }}" as="t" hint-placeholder-count="4">
+              <a href="{{ t.href }}" style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 40px;gap:14px;align-items:center;padding:9px 6px;margin:0 -6px;border-bottom:1px solid #e6e0d2;text-decoration:none;color:#1d2a4a;transition:background .2s ease" style-hover="background:#eef3ee">
+                <span style="display:flex;flex-direction:column;gap:1px;min-width:0">
+                  <span style="font-weight:600;text-wrap:pretty">{{ t.label }}</span>
+                  <span style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;color:#5b6273">{{ t.years }}</span>
+                </span>
+                <span style="height:8px;background:#e6e0d2;position:relative;overflow:hidden">
+                  <span style="{{ t.barStyle }}"></span>
+                </span>
+                <span style="font-family:'Noto Serif',serif;font-weight:700;font-size:18px;text-align:right">{{ t.count }}</span>
+              </a>
+            </sc-for>
+          </section>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isPapers }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:36px">
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <sc-for list="{{ papers }}" as="p" hint-placeholder-count="10">
+            <a href="{{ p.hash }}" onClick="{{ jumpTo }}" style="padding:4px 9px;border:1px solid #1d2a4a;font-family:'Noto Sans Mono',monospace;font-size:12px;text-decoration:none;color:#1d2a4a;transition:background .2s,color .2s" style-hover="background:#1d2a4a;color:#f7f4ec">{{ p.short }}</a>
+          </sc-for>
+        </div>
+        <sc-for list="{{ papers }}" as="p" hint-placeholder-count="2">
+          <section id="{{ p.anchor }}" style="display:flex;flex-direction:column;gap:10px;scroll-margin-top:20px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;background:#1d2a4a;color:#f7f4ec;padding:10px 16px">
+              <h2 style="margin:0;font-family:'Noto Serif',serif;font-weight:700;font-size:22px">{{ p.label }}</h2>
+              <span style="font-family:'Noto Sans Mono',monospace;font-size:12px;color:#f0b37e">{{ p.pattern }}</span>
+            </div>
+            <sc-for list="{{ p.groups }}" as="g" hint-placeholder-count="5">
+              <div style="display:flex;flex-direction:column">
+                <div style="font-family:'Noto Sans Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2f6b45;padding:10px 0 4px;border-bottom:1.5px solid #2f6b45">{{ g.title }}</div>
+                <sc-for list="{{ g.qs }}" as="q" hint-placeholder-count="4">
+                  <div style="display:grid;grid-template-columns:58px minmax(0,1fr);gap:4px 12px;padding:10px 0;border-bottom:1px solid #e6e0d2">
+                    <span style="display:flex;flex-direction:column;gap:2px">
+                      <span style="font-family:'Noto Sans Mono',monospace;font-weight:600;font-size:13px">Q{{ q.q }}</span>
+                      <span style="font-family:'Noto Sans Mono',monospace;font-size:11px;color:#5b6273">{{ q.marks }}</span>
+                    </span>
+                    <span style="display:flex;flex-direction:column;gap:6px">
+                      <span style="text-wrap:pretty">{{ q.text }}</span>
+                      <span style="display:flex;gap:6px;flex-wrap:wrap">
+                        <sc-for list="{{ q.links }}" as="l" hint-placeholder-count="1">
+                          <a href="{{ l.href }}" style="font-family:'Noto Sans Mono',monospace;font-size:11.5px;padding:1px 7px;border:1px solid #c8641e;color:#b3561a;text-decoration:none;transition:background .2s,color .2s" style-hover="background:#c8641e;color:#fff">{{ l.label }} ↗</a>
+                        </sc-for>
+                      </span>
+                    </span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </section>
+        </sc-for>
+      </div>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sem: /^#s2/.test(location.hash) || new URLSearchParams(location.search).get('sem') === '2' ? 'II' : 'I', view: /^#(s2-)?p-/.test(location.hash) ? 'papers' : 'topics', loading: true, leaving: false, ready: false };
+  isReady() { const c = window.COI; return !!(c && c.papers && c.papers2 && c.kslu && c.parts && ['I', 'II', 'III', 'IV', 'IVA', 'V', 'VI', 'OV'].every(k => c.parts[k])); }
+  componentDidMount() {
+    const tick = () => this.isReady() ? this.setState({ ready: true }) : (this.t = setTimeout(tick, 40));
+    tick();
+    const bootUI = () => window.COI_UI ? window.COI_UI.boot(this, () => this.isReady()) : (this.b = setTimeout(bootUI, 30));
+    bootUI();
+  }
+  componentDidUpdate() {
+    if (!this.state.loading && !this.didHashScroll) {
+      this.didHashScroll = true;
+      if (/^#(s2-)?p-/.test(location.hash)) this.scrollToId(location.hash.slice(1));
+    }
+  }
+  componentWillUnmount() { clearTimeout(this.t); clearTimeout(this.b); }
+  scrollToId(id) {
+    requestAnimationFrame(() => { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' }); });
+  }
+  renderVals() {
+    const loader = this.state.loading && window.COI_UI ? window.COI_UI.loader(React, { leaving: this.state.leaving, label: 'Past papers' }) : null;
+    const tab = on => ({ padding: '8px 18px', border: 'none', cursor: 'pointer', fontFamily: "'Noto Sans Mono',monospace", fontSize: 13, fontWeight: 600, background: on ? '#1d2a4a' : 'transparent', color: on ? '#f7f4ec' : '#1d2a4a', transition: 'background .25s ease, color .25s ease' });
+    const view = this.state.view;
+    const base = { loader, isTopics: view === 'topics', isPapers: view === 'papers', tabTopicStyle: tab(view === 'topics'), tabPaperStyle: tab(view === 'papers'),
+      showTopics: () => this.setState({ view: 'topics' }), showPapers: () => this.setState({ view: 'papers' }),
+      jumpTo: e => { e.preventDefault(); const id = e.currentTarget.getAttribute('href').slice(1); history.replaceState(null, '', '#' + id); this.scrollToId(id); },
+      showSem1: () => this.setState({ sem: 'I' }), showSem2: () => this.setState({ sem: 'II' }),
+      sem1Style: { ...tab(this.state.sem === 'I'), background: this.state.sem === 'I' ? '#2f6b45' : 'transparent', color: this.state.sem === 'I' ? '#fff' : '#2f6b45' },
+      sem2Style: { ...tab(this.state.sem === 'II'), background: this.state.sem === 'II' ? '#2f6b45' : 'transparent', color: this.state.sem === 'II' ? '#fff' : '#2f6b45' },
+      courseLabel: this.state.sem === 'I' ? 'KSLU · Sem I · Constitutional Law – I' : 'KSLU · Sem II · Constitutional Law – II',
+      units: [], topicUnits: [], papers: [] };
+    if (!this.state.ready) return base;
+    const C = window.COI, K = C.kslu, S2 = this.state.sem === 'II', PAPERS = S2 ? C.papers2 : C.papers, SYL = S2 ? K.syllabus2 : K.syllabus, pre = S2 ? 's2-' : '';
+    const semUnit = n => { if (!S2) return K.unitOf(n); const x = K.semUnits(n).find(y => y.sem === 'II'); return x ? x.unit : null; };
+    const find = id => { for (const p of Object.values(C.parts)) if (p.articles[id]) return p.articles[id]; return null; };
+    const refInfo = r => {
+      if (r === 'intro') return { id: 'constitution', label: 'Constitution: meaning & features', href: 'Article.dc.html?a=constitution', unit: 'I' };
+      if (r === 'preamble') return { id: 'preamble', label: 'Preamble', href: 'Article.dc.html?a=preamble', unit: 'I' };
+      if (r === 'II') return { id: 'II', label: 'Part II · Citizenship', href: 'Article.dc.html?part=II', unit: 'I' };
+      if (r === 'tenth-schedule') return { id: r, label: 'Tenth Schedule · Anti-defection', href: 'Article.dc.html?a=tenth-schedule', unit: 'III' };
+      if (r === 'schedules') return { id: r, label: 'The Schedules', href: 'Article.dc.html?a=schedules', unit: 'V' };
+      if (r === 'adopted') return { id: r, label: 'Constituent Assembly & interpretation', href: 'Article.dc.html?a=adopted', unit: 'V' };
+      const n = r.slice(1), a = find(n);
+      return { id: n, label: 'Art. ' + n + (a ? ' · ' + a.title.replace(/\s*\[Omitted\]$/, '').replace(/\.$/, '') : ''), short: 'Art. ' + n, href: 'Article.dc.html?a=' + encodeURIComponent(n), unit: semUnit(n) };
+    };
+    const shortLabel = id => { const d = id.split('-'); const m = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+d[1]]; return m + ' ' + d[0]; };
+    const unitCount = { I: 0, II: 0, III: 0, IV: 0, V: 0 };
+    const topics = {};
+    PAPERS.forEach(p => p.qs.forEach(q => {
+      const infos = q.refs.map(refInfo);
+      const u = q.unit || (infos.find(i => i.unit) || {}).unit;
+      if (u && unitCount[u] !== undefined) unitCount[u]++;
+      infos.forEach(i => {
+        const t = topics[i.id] || (topics[i.id] = { ...i, unit: i.unit || u, count: 0, years: new Set() });
+        t.count++; t.years.add(shortLabel(p.id));
+      });
+    }));
+    const max = Math.max(...Object.values(topics).map(t => t.count));
+    const topicUnits = ['I', 'II', 'III', 'IV', 'V'].map(u => ({
+      u, items: Object.values(topics).filter(t => t.unit === u).sort((a, b) => b.count - a.count).map(t => ({
+        label: t.label, href: t.href, count: t.count, years: [...t.years].join(' · '),
+        barStyle: { position: 'absolute', left: 0, top: 0, bottom: 0, width: (t.count / max * 100) + '%', background: t.count >= max * 0.6 ? '#c8641e' : '#2f6b45', transition: 'width .6s ease' }
+      }))
+    })).filter(x => x.items.length);
+    const papers = PAPERS.map(p => {
+      const groups = [];
+      if (p.old) groups.push({ title: 'Any five from (a) · any five from (b)', qs: p.qs });
+      else ['I', 'II', 'III', 'IV', 'V'].forEach(u => { const qs = p.qs.filter(q => q.unit === u); if (qs.length) groups.push({ title: 'Unit ' + u + ' · ' + SYL[u].split(';')[0], qs }); });
+      return {
+        id: p.id, label: p.label, short: shortLabel(p.id), anchor: pre + 'p-' + p.id, hash: '#' + pre + 'p-' + p.id,
+        pattern: p.old ? 'Old pattern · 10 questions' : 'Unit pattern · 5 units, 80 marks',
+        groups: groups.map(g => ({ title: g.title, qs: g.qs.map(q => ({ q: q.q, text: q.text, marks: q.type === 'E' ? '10 marks' : '6 marks', links: q.refs.map(refInfo).map(i => ({ href: i.href, label: i.short || i.label })) })) }))
+      };
+    });
+    const units = ['I', 'II', 'III', 'IV', 'V'].map(u => ({ u, text: SYL[u], count: unitCount[u] }));
+    document.title = 'KSLU Constitutional Law – ' + (S2 ? 'II' : 'I') + ' · Past papers';
+    return { ...base, units, topicUnits, papers };
+  }
+}
+</script>
+</body>
+</html>
